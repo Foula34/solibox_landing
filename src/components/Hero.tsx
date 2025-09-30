@@ -84,7 +84,7 @@ export const Hero: React.FC = () => {
                 
                 <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
                   Avec <span className="font-semibold text-orange-600 dark:text-orange-400">SoliBox</span>, 
-                  l'électricité que vous n\'utilisez pas alimente vos voisins, 
+                  l'électricité que vous n'utilisez pas alimente vos voisins, 
                   renforce votre communauté et vous génère un revenu.
                 </p>
               </div>

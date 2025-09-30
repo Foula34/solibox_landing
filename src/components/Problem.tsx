@@ -124,7 +124,7 @@ export const Problem: React.FC = () => {
               {/* Before */}
               <div className="space-y-4">
                 <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-300 text-center">
-                  🔴 Sans partage d'énergie
+                  Sans partage d'énergie
                 </h4>
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
                   <div className="space-y-3">
@@ -153,7 +153,7 @@ export const Problem: React.FC = () => {
               {/* After */}
               <div className="space-y-4">
                 <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-300 text-center">
-                  🟢 Avec SoliBox
+                  Avec SoliBox
                 </h4>
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-200 dark:border-gray-700">
                   <div className="space-y-3">
@@ -170,7 +170,7 @@ export const Problem: React.FC = () => {
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-orange-600 dark:text-orange-400 font-medium">Surplus partagé 💰</span>
+                      <span className="text-orange-600 dark:text-orange-400 font-medium">Surplus partagé</span>
                       <div className="w-32 bg-orange-200 dark:bg-orange-900/30 h-4 rounded-full">
                         <div className="bg-gradient-to-r from-orange-400 to-orange-600 h-4 rounded-full w-2/5 animate-pulse"></div>
                       </div>

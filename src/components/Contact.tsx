@@ -58,14 +58,14 @@ export const Contact: React.FC = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'contact@solidbox.gn',
+      value: 'solidboxosc@gmail.com',
       description: 'Écrivez-nous pour toute question',
       gradient: 'from-blue-500 to-blue-600'
     },
     {
       icon: Phone,
       title: 'Téléphone',
-      value: '+224 123 456 789',
+      value: '+224 624 36 68 97',
       description: 'Appelez-nous du lundi au vendredi',
       gradient: 'from-green-500 to-green-600'
     },
