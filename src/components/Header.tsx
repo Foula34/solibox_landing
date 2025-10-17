@@ -30,19 +30,19 @@ export const Header: React.FC = () => {
         : 'bg-transparent'
     }`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2 group cursor-pointer">
+          <div className="flex items-center space-x-1.5 sm:space-x-2 group cursor-pointer flex-shrink-0">
             <div className="relative">
              {/*<Zap className="h-8 w-8 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" />*/} 
              <img 
                 src="/assets/logo/soliboxlogo-removebg-preview.png" 
                 alt="SoliBox Logo" 
-                className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110"
+                className="h-7 w-7 sm:h-10 sm:w-10 object-contain transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-orange-400 rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-blue-600 bg-clip-text text-transparent">
+            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
               SoliBox
             </span>
           </div>
@@ -63,18 +63,19 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
             <ThemeToggle />
             
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              aria-label="Ouvrir le menu"
+              className="md:hidden p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-gray-400" />
               ) : (
-                <Menu className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-gray-400" />
               )}
             </button>
           </div>
@@ -82,7 +83,7 @@ export const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="py-4 space-y-2">
             {navItems.map((item) => (
