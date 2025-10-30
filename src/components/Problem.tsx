@@ -46,7 +46,7 @@ export const Problem: React.FC = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
               <div className="absolute top-6 right-6">
-                <Home className="w-8 h-8 text-red-500 opacity-30" />
+                <Home className="w-8 h-8 text-orange-500 opacity-30" />
               </div>
               
               <div className="space-y-4">
@@ -59,8 +59,8 @@ export const Problem: React.FC = () => {
                 </h3>
                 
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  <span className="font-semibold text-red-600 dark:text-red-400">60% des zones rurales</span> en 
-                  Afrique de l'Ouest n\'ont pas d'accès fiable à l\'électricité, limitant le développement économique et social.
+                  <span className="font-semibold text-orange-600 dark:text-red-400">60% des zones rurales</span> en 
+                  Afrique de l'Ouest n'ont pas d'accès fiable à l'électricité, limitant le développement économique et social.
                 </p>
                 
                 <div className="pt-4">
@@ -69,7 +69,7 @@ export const Problem: React.FC = () => {
                     <span>40%</span>
                   </div>
                   <div className="w-full bg-red-200 dark:bg-red-900/30 rounded-full h-3">
-                    <div className="bg-red-500 h-3 rounded-full w-2/5 animate-pulse"></div>
+                    <div className="bg-orange-500 h-3 rounded-full w-2/5 animate-pulse"></div>
                   </div>
                 </div>
               </div>
@@ -131,19 +131,19 @@ export const Problem: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600 dark:text-gray-400">Énergie produite</span>
                       <div className="w-32 bg-green-200 dark:bg-green-900/30 h-4 rounded-full">
-                        <div className="bg-green-500 h-4 rounded-full w-full"></div>
+                        <div className="bg-orange-500 h-4 rounded-full w-full"></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600 dark:text-gray-400">Énergie utilisée</span>
                       <div className="w-32 bg-blue-200 dark:bg-blue-900/30 h-4 rounded-full">
-                        <div className="bg-blue-500 h-4 rounded-full w-3/5"></div>
+                        <div className="bg-orange-500 h-4 rounded-full w-3/5"></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-red-600 dark:text-red-400 font-medium">Surplus gaspillé</span>
+                      <span className="text-orange-600 dark:text-red-400 font-medium">Surplus gaspillé</span>
                       <div className="w-32 bg-red-200 dark:bg-red-900/30 h-4 rounded-full">
-                        <div className="bg-red-500 h-4 rounded-full w-2/5 animate-pulse"></div>
+                        <div className="bg-orange-500 h-4 rounded-full w-2/5 animate-pulse"></div>
                       </div>
                     </div>
                   </div>
@@ -160,13 +160,13 @@ export const Problem: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600 dark:text-gray-400">Énergie produite</span>
                       <div className="w-32 bg-green-200 dark:bg-green-900/30 h-4 rounded-full">
-                        <div className="bg-green-500 h-4 rounded-full w-full"></div>
+                        <div className="bg-orange-500 h-4 rounded-full w-full"></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-gray-600 dark:text-gray-400">Énergie utilisée (foyer)</span>
                       <div className="w-32 bg-blue-200 dark:bg-blue-900/30 h-4 rounded-full">
-                        <div className="bg-blue-500 h-4 rounded-full w-3/5"></div>
+                        <div className="bg-orange-500 h-4 rounded-full w-3/5"></div>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">

@@ -38,8 +38,8 @@ export const Solution: React.FC = () => {
       title: 'Dispositif IoT Intelligent',
       description: 'Détecte automatiquement votre surplus d\'énergie solaire et optimise la distribution en temps réel.',
       features: ['Détection automatique', 'Mesure précise', 'Installation simple'],
-      gradient: 'from-blue-500 to-blue-600',
-      bgGradient: 'from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20'
+      gradient: 'from-orange-500 to-orange-600',
+      bgGradient: 'from-orange-50 to-orange-100 dark:from-blue-900/20 dark:to-blue-800/20'
     },
     {
       icon: Smartphone,
@@ -54,8 +54,8 @@ export const Solution: React.FC = () => {
       title: 'Intelligence Artificielle',
       description: 'Algorithmes avancés pour optimiser la distribution d\'énergie et maximiser vos revenus.',
       features: ['Prédiction de consommation', 'Optimisation automatique', 'Apprentissage continu'],
-      gradient: 'from-green-500 to-green-600',
-      bgGradient: 'from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20'
+      gradient: 'from-orange-500 to-orange-600',
+      bgGradient: 'from-orange-50 to-orange-100 dark:from-green-900/20 dark:to-green-800/20'
     }
   ];
 
@@ -65,21 +65,21 @@ export const Solution: React.FC = () => {
       title: 'Surplus détecté',
       description: 'SoliBox détecte automatiquement votre surplus d\'énergie',
       icon: Zap,
-      color: 'text-yellow-500'
+      color: 'text-orange-500'
     },
     {
       step: 2,
       title: 'Énergie partagée',
       description: 'L\'énergie est distribuée intelligemment aux voisins',
       icon: Users,
-      color: 'text-blue-500'
+      color: 'text-orange-500'
     },
     {
       step: 3,
       title: 'Revenus générés',
       description: 'Vous gagnez de l\'argent pour chaque kWh partagé',
       icon: TrendingUp,
-      color: 'text-green-500'
+      color: 'text-orange-500'
     }
   ];
 

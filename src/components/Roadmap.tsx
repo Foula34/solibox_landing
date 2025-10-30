@@ -37,8 +37,8 @@ export const Roadmap: React.FC = () => {
         'Validation du concept technique',
         'Premiers revenus générés: +2,000 GNF/mois'
       ],
-      gradient: 'from-green-500 to-green-600',
-      bgGradient: 'from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20'
+      gradient: 'from-orange-500 to-orange-600',
+      bgGradient: 'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20'
     },
     {
       phase: 'Phase 2',
@@ -69,8 +69,8 @@ export const Roadmap: React.FC = () => {
         'Centres de maintenance régionaux',
         'Formation d\'entrepreneurs locaux'
       ],
-      gradient: 'from-blue-500 to-blue-600',
-      bgGradient: 'from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20'
+      gradient: 'from-orange-500 to-orange-600',
+      bgGradient: 'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20'
     },
     {
       phase: 'Phase 4',
@@ -85,8 +85,8 @@ export const Roadmap: React.FC = () => {
         'Plateforme B2B pour entreprises',
         'Impact environnemental majeur'
       ],
-      gradient: 'from-purple-500 to-purple-600',
-      bgGradient: 'from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20'
+      gradient: 'from-orange-500 to-orange-600',
+      bgGradient: 'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20'
     }
   ];
 
@@ -139,12 +139,12 @@ export const Roadmap: React.FC = () => {
                 key={index}
                 className={`text-center p-6 rounded-xl border transition-all duration-300 hover:scale-105 ${
                   milestone.achieved 
-                    ? 'bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border-green-200 dark:border-green-800/30' 
-                    : 'bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border-gray-200 dark:border-gray-700'
+                    ? 'bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 border-orange-200 dark:border-orange-800/30' 
+                    : 'bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-800 dark:to-orange-900 border-orange-200 dark:border-orange-700'
                 }`}
               >
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
-                  milestone.achieved ? 'bg-green-500' : 'bg-gray-400 dark:bg-gray-600'
+                  milestone.achieved ? 'bg-orange-500' : 'bg-orange-400 dark:bg-orange-600'
                 }`}>
                   {milestone.achieved ? (
                     <CheckCircle className="w-6 h-6 text-white" />
@@ -155,8 +155,8 @@ export const Roadmap: React.FC = () => {
                 
                 <div className={`text-2xl sm:text-3xl font-bold mb-2 ${
                   milestone.achieved 
-                    ? 'text-green-600 dark:text-green-400' 
-                    : 'text-gray-500 dark:text-gray-400'
+                    ? 'text-orange-600 dark:orange-orange-400' 
+                    : 'text-orange-500 dark:text-orange-400'
                 }`}>
                   {milestone.metric}
                 </div>
@@ -206,7 +206,7 @@ export const Roadmap: React.FC = () => {
                       <div className="text-center md:text-left">
                         <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 ${
                           isCompleted 
-                            ? 'bg-green-500 shadow-lg shadow-green-500/30' 
+                            ? 'bg-orange-500 shadow-lg shadow-orange-500/30' 
                             : isCurrent 
                               ? `bg-gradient-to-r ${step.gradient} shadow-lg shadow-orange-500/30` 
                               : 'bg-gray-400 dark:bg-gray-600'
@@ -222,7 +222,7 @@ export const Roadmap: React.FC = () => {
                           isCurrent 
                             ? 'text-orange-600 dark:text-orange-400' 
                             : isCompleted 
-                              ? 'text-green-600 dark:text-green-400' 
+                              ? 'text-orange-600 dark:text-orange-400' 
                               : 'text-gray-500 dark:text-gray-400'
                         }`}>
                           {step.phase}
@@ -248,7 +248,7 @@ export const Roadmap: React.FC = () => {
                               </span>
                             )}
                             {isCompleted && (
-                              <span className="ml-2 inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full">
+                              <span className="ml-2 inline-flex items-center px-2 py-1 text-xs font-medium  dark:bg-green-900/30 text-orange-600 dark:text-orange-400 rounded-full">
                                 Terminé
                               </span>
                             )}

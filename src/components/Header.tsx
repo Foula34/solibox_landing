@@ -29,20 +29,20 @@ export const Header: React.FC = () => {
         ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-orange-200/20 dark:border-blue-500/20' 
         : 'bg-transparent'
     }`}>
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16">
+      <nav className="container mx-auto px-3 sm:px-6 lg:px-8 max-w-full">
+        <div className="flex items-center justify-between h-14 sm:h-16 w-full">
           {/* Logo */}
-          <div className="flex items-center space-x-1.5 sm:space-x-2 group cursor-pointer flex-shrink-0">
-            <div className="relative">
+          <div className="flex items-center space-x-1 sm:space-x-2 group cursor-pointer flex-shrink-0 min-w-0">
+            <div className="relative flex-shrink-0">
              {/*<Zap className="h-8 w-8 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" />*/} 
              <img 
                 src="/assets/logo/soliboxlogo-removebg-preview.png" 
                 alt="SoliBox Logo" 
-                className="h-7 w-7 sm:h-10 sm:w-10 object-contain transition-transform duration-300 group-hover:scale-110"
+                className="h-6 w-6 sm:h-10 sm:w-10 object-contain transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-orange-400 rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
             </div>
-            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
+            <span className="text-base sm:text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
               SoliBox
             </span>
           </div>
@@ -63,14 +63,16 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-            <ThemeToggle />
+          <div className="flex items-center space-x-1 sm:space-x-4 flex-shrink-0">
+            <div className="flex-shrink-0">
+              <ThemeToggle />
+            </div>
             
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Ouvrir le menu"
-              className="md:hidden p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              className="md:hidden p-1 sm:p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 flex-shrink-0"
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-gray-400" />

@@ -29,8 +29,8 @@ export const Benefits: React.FC = () => {
       title: 'Monétisez votre surplus',
       description: 'Transformez votre énergie solaire inutilisée en revenus passifs réguliers',
       icon: DollarSign,
-      color: 'from-green-500 to-green-600',
-      bgColor: 'from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20',
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20',
       features: [
         'Revenus automatiques 24/7',
         'Tarifs préférentiels garantis',
@@ -42,8 +42,8 @@ export const Benefits: React.FC = () => {
       title: 'Électricité abordable',
       description: 'Accédez à une énergie propre et fiable à des prix compétitifs',
       icon: Home,
-      color: 'from-blue-500 to-blue-600',
-      bgColor: 'from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20',
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20',
       features: [
         'Tarifs jusqu\'à 30% moins chers',
         'Alimentation stable et continue',
@@ -55,8 +55,8 @@ export const Benefits: React.FC = () => {
       title: 'Réseaux résilients',
       description: 'Créez des micro-réseaux communautaires autonomes et solidaires',
       icon: Users,
-      color: 'from-purple-500 to-purple-600',
-      bgColor: 'from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20',
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20',
       features: [
         'Indépendance énergétique',
         'Solidarité communautaire',
@@ -68,8 +68,8 @@ export const Benefits: React.FC = () => {
       title: 'Impact écologique',
       description: 'Réduisez les émissions et optimisez l\'utilisation d\'énergies renouvelables',
       icon: Leaf,
-      color: 'from-emerald-500 to-emerald-600',
-      bgColor: 'from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20',
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20',
       features: [
         'Zéro émission carbone',
         'Réduction du gaspillage énergétique',
@@ -79,10 +79,10 @@ export const Benefits: React.FC = () => {
   ];
 
   const stats = [
-    { value: '+40%', label: 'Revenus supplémentaires', icon: TrendingUp, color: 'text-green-500' },
-    { value: '24/7', label: 'Disponibilité énergétique', icon: Shield, color: 'text-blue-500' },
-    { value: '100%', label: 'Énergie renouvelable', icon: Leaf, color: 'text-emerald-500' },
-    { value: '300+', label: 'Familles connectées', icon: Users, color: 'text-purple-500' }
+    { value: '+40%', label: 'Revenus supplémentaires', icon: TrendingUp, color: 'text-orange-500' },
+    { value: '24/7', label: 'Disponibilité énergétique', icon: Shield, color: 'text-orange-500' },
+    { value: '100%', label: 'Énergie renouvelable', icon: Leaf, color: 'text-orange-500' },
+    { value: '300+', label: 'Familles connectées', icon: Users, color: 'text-orange-500' }
   ];
 
   return (

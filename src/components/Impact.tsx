@@ -25,7 +25,7 @@ export const Impact: React.FC = () => {
 
   const testimonials = [
     {
-      name: 'Mamadou Diallo',
+      name: 'Foula Fofana',
       role: 'Propriétaire de panneaux solaires',
       location: 'Conakry, Guinée',
       image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
@@ -36,10 +36,10 @@ export const Impact: React.FC = () => {
       after: 'Revenus réguliers'
     },
     {
-      name: 'Aïssatou Baldé',
-      role: 'Commerçante',
+      name: 'Alseny Bangoura',
+      role: 'Commerçant',
       location: 'Labé, Guinée',
-      image: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
+      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
       rating: 5,
       text: 'Mon petit commerce bénéficie maintenant d\'une électricité stable grâce aux panneaux solaires de mes voisins. Je peux enfin travailler le soir et mes clients sont contents.',
       impact: 'Électricité stable 24/7',
@@ -47,7 +47,7 @@ export const Impact: React.FC = () => {
       after: 'Commerce prospère'
     },
     {
-      name: 'Ibrahim Touré',
+      name: 'Boubacar Diallo',
       role: 'Responsable communautaire',
       location: 'Kankan, Guinée',
       image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
@@ -58,7 +58,7 @@ export const Impact: React.FC = () => {
       after: 'Micro-réseau communautaire'
     },
     {
-      name: 'Fatou Camara',
+      name: 'Hawa Barry',
       role: 'Enseignante',
       location: 'Boké, Guinée',
       image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
@@ -142,25 +142,25 @@ export const Impact: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Before */}
                 <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-red-600 dark:text-red-400 flex items-center">
-                    🔴 Avant SoliBox
+                  <h4 className="text-lg font-semibold text-orange-600 dark:text-orange-400 flex items-center">
+                     Avant SoliBox
                   </h4>
                   <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 p-6 rounded-xl border border-red-200 dark:border-red-800/30">
                     <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                       <li className="flex items-start space-x-3">
-                        <span className="text-red-500 mt-1">•</span>
+                        <span className="text-orange-500 mt-1">•</span>
                         <span>Surplus solaire gaspillé (40% de l'énergie produite)</span>
                       </li>
                       <li className="flex items-start space-x-3">
-                        <span className="text-red-500 mt-1">•</span>
+                        <span className="text-orange-500 mt-1">•</span>
                         <span>Voisins dépendants de générateurs coûteux et polluants</span>
                       </li>
                       <li className="flex items-start space-x-3">
-                        <span className="text-red-500 mt-1">•</span>
+                        <span className="text-orange-500 mt-1">•</span>
                         <span>Coupures d'électricité fréquentes</span>
                       </li>
                       <li className="flex items-start space-x-3">
-                        <span className="text-red-500 mt-1">•</span>
+                        <span className="text-orange-500 mt-1">•</span>
                         <span>Pas de revenus additionnels pour les propriétaires</span>
                       </li>
                     </ul>
@@ -169,26 +169,26 @@ export const Impact: React.FC = () => {
 
                 {/* After */}
                 <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-green-600 dark:text-green-400 flex items-center">
-                    🟢 Avec SoliBox
+                  <h4 className="text-lg font-semibold text-orange-600 dark:text-orange-400 flex items-center">
+                     Avec SoliBox
                   </h4>
-                  <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-6 rounded-xl border border-green-200 dark:border-green-800/30">
+                  <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orane-800/20 p-6 rounded-xl border border-orange-200 dark:border-orange-800/30">
                     <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                       <li className="flex items-start space-x-3">
-                        <span className="text-green-500 mt-1">•</span>
+                        <span className="text-orange-500 mt-1">•</span>
                         <span>100% du surplus solaire valorisé et partagé</span>
                       </li>
                       <li className="flex items-start space-x-3">
-                        <span className="text-green-500 mt-1">•</span>
+                        <span className="text-orange-500 mt-1">•</span>
                         <span>Énergie propre et abordable pour tous les voisins</span>
                       </li>
                       <li className="flex items-start space-x-3">
-                        <span className="text-green-500 mt-1">•</span>
+                        <span className="text-orange-500 mt-1">•</span>
                         <span>Alimentation électrique stable 24/7</span>
                       </li>
                       <li className="flex items-start space-x-3">
-                        <span className="text-green-500 mt-1">•</span>
-                        <span>Revenus passifs de 2,000-5,000 GNF/mois</span>
+                        <span className="text-orange-500 mt-1">•</span>
+                        <span>Revenus passifs de 200,000-500,000 GNF/mois</span>
                       </li>
                     </ul>
                   </div>
@@ -237,7 +237,7 @@ export const Impact: React.FC = () => {
                             alt={testimonial.name}
                             className="w-24 h-24 rounded-full object-cover border-4 border-orange-200 dark:border-orange-800"
                           />
-                          <div className="absolute -bottom-2 -right-2 bg-green-500 rounded-full p-2">
+                          <div className="absolute -bottom-2 -right-2 bg-orange-500 rounded-full p-2">
                             <div className="w-4 h-4 bg-white rounded-full"></div>
                           </div>
                         </div>
@@ -276,7 +276,7 @@ export const Impact: React.FC = () => {
                           </div>
                           
                           <div className="text-center p-4 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-xl">
-                            <div className="text-lg font-bold text-red-600 dark:text-red-400 mb-1">
+                            <div className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-1">
                               Avant
                             </div>
                             <div className="text-sm text-gray-700 dark:text-gray-300">
@@ -284,8 +284,8 @@ export const Impact: React.FC = () => {
                             </div>
                           </div>
                           
-                          <div className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl">
-                            <div className="text-lg font-bold text-green-600 dark:text-green-400 mb-1">
+                          <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-xl">
+                            <div className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-1">
                               Après
                             </div>
                             <div className="text-sm text-gray-700 dark:text-gray-300">

@@ -62,11 +62,11 @@ export const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-300">
                 <Mail className="w-4 h-4 text-orange-400" />
-                <span className="text-sm">contact@solidbox.gn</span>
+                <span className="text-sm">solidboxosc@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <Phone className="w-4 h-4 text-orange-400" />
-                <span className="text-sm">+224 123 456 789</span>
+                <span className="text-sm">+224 624 36 68 97</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-300">
                 <MapPin className="w-4 h-4 text-orange-400" />
@@ -189,7 +189,7 @@ export const Footer: React.FC = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © {currentYear} SoliBox. Tous droits réservés. Fait avec ❤️ en Guinée.
+              © {currentYear} SoliBox. Tous droits réservés.
             </div>
             
             <div className="flex items-center space-x-6 text-sm">
@@ -206,19 +206,19 @@ export const Footer: React.FC = () => {
         <div className="mt-8 pt-8 border-t border-gray-800">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-2xl font-bold text-orange-400 mb-1">500+</div>
+              <div className="text-2xl font-bold  mb-1">500+</div>
               <div className="text-xs text-gray-400">Foyers connectés</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-blue-400 mb-1">2.5M</div>
+              <div className="text-2xl font-bold  mb-1">2.5M</div>
               <div className="text-xs text-gray-400">kWh partagés</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-green-400 mb-1">15M</div>
+              <div className="text-2xl font-bold  mb-1">15M</div>
               <div className="text-xs text-gray-400">GNF économisés</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-purple-400 mb-1">95%</div>
+              <div className="text-2xl font-bold mb-1">95%</div>
               <div className="text-xs text-gray-400">Satisfaction client</div>
             </div>
           </div>
