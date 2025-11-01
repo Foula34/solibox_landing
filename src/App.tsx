@@ -7,7 +7,9 @@ import { Solution } from './components/Solution';
 import { Benefits } from './components/Benefits';
 import { Earnings } from './components/Earnings';
 import { Impact } from './components/Impact';
+import { Team } from './components/Team';
 import { Roadmap } from './components/Roadmap';
+import { Partners } from './components/Partners';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
@@ -104,7 +106,9 @@ function App() {
           <Benefits />
           <Earnings />
           <Impact />
+          <Team />
           <Roadmap />
+          <Partners />
           <Contact />
         </main>
         <Footer />
