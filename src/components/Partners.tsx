@@ -41,25 +41,25 @@ export const Partners: React.FC = () => {
   const partners = [
     {
       name: 'Orange',
-      logo: null, // Remplacer par l'URL du logo Orange
+      logo: "assets/partenaires/orange.png", 
       description: 'Partenaire télécommunications et connectivité',
       website: 'https://www.orange.com'
     },
     {
       name: 'PNUD',
-      logo: null, // Remplacer par l'URL du logo PNUD
+      logo: "assets/partenaires/pnud.png", 
       description: 'Programme des Nations Unies pour le Développement',
       website: 'https://www.undp.org'
     },
     {
       name: 'AWS',
-      logo: null, // Remplacer par l'URL du logo AWS
+      logo: "assets/partenaires/aws.png", 
       description: 'Amazon Web Services - Infrastructure cloud',
       website: 'https://aws.amazon.com'
     },
     {
       name: 'Orange Energies',
-      logo: null, // Remplacer par l'URL du logo Orange Energies
+      logo: "assets/partenaires/orange-energie.jpeg", 
       description: 'Solutions énergétiques innovantes',
       website: 'https://www.orange.com'
     }
