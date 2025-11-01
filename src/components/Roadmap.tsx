@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle, Circle, Zap, Users, Globe, Building } from 'lucide-react';
+import { scrollToSection } from '../utils/scrollUtils';
 
 export const Roadmap: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -113,25 +114,25 @@ export const Roadmap: React.FC = () => {
   ];
 
   return (
-    <section id="roadmap" ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 transition-colors duration-300">
+    <section id="roadmap" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${
+          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
               Notre 
-              <span className="bg-gradient-to-r from-orange-500 to-blue-600 bg-clip-text text-transparent"> Vision</span>
-              <br />& Roadmap
+              <span className="text-gray-900 dark:text-white"> Vision</span>
+              <br className="hidden sm:block" />& Roadmap
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               Découvrez notre plan ambitieux pour révolutionner l'accès à l'énergie en Afrique de l'Ouest
             </p>
           </div>
 
           {/* Current Milestones */}
-          <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 transition-all duration-1000 delay-200 ${
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 transition-all duration-1000 delay-200 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {milestones.map((milestone, index) => (
@@ -139,12 +140,12 @@ export const Roadmap: React.FC = () => {
                 key={index}
                 className={`text-center p-6 rounded-xl border transition-all duration-300 hover:scale-105 ${
                   milestone.achieved 
-                    ? 'bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 border-orange-200 dark:border-orange-800/30' 
-                    : 'bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-800 dark:to-orange-900 border-orange-200 dark:border-orange-700'
+                    ? 'bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700' 
+                    : 'bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-700'
                 }`}
               >
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
-                  milestone.achieved ? 'bg-orange-500' : 'bg-orange-400 dark:bg-orange-600'
+                  milestone.achieved ? 'bg-gray-700 dark:bg-gray-600' : 'bg-gray-600 dark:bg-gray-700'
                 }`}>
                   {milestone.achieved ? (
                     <CheckCircle className="w-6 h-6 text-white" />
@@ -155,8 +156,8 @@ export const Roadmap: React.FC = () => {
                 
                 <div className={`text-2xl sm:text-3xl font-bold mb-2 ${
                   milestone.achieved 
-                    ? 'text-orange-600 dark:orange-orange-400' 
-                    : 'text-orange-500 dark:text-orange-400'
+                    ? 'text-gray-700 dark:text-gray-300' 
+                    : 'text-gray-600 dark:text-gray-400'
                 }`}>
                   {milestone.metric}
                 </div>
@@ -190,7 +191,7 @@ export const Roadmap: React.FC = () => {
                       <div 
                         className={`w-full bg-gradient-to-b transition-all duration-1000 ${
                           completedSteps > index 
-                            ? 'from-orange-500 to-blue-500 h-full' 
+                            ? 'from-gray-600 to-gray-700 h-full' 
                             : 'from-orange-500 to-orange-500 h-0'
                         }`}
                         style={{ transitionDelay: `${600 + index * 200}ms` }}
@@ -198,10 +199,10 @@ export const Roadmap: React.FC = () => {
                     </div>
                   )}
 
-                  <div className={`relative bg-gradient-to-br ${step.bgGradient} rounded-2xl p-8 border border-white/20 dark:border-gray-700/30 backdrop-blur-sm ${
+                  <div className={`relative bg-gradient-to-br ${step.bgGradient} rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 dark:border-gray-700/30 backdrop-blur-sm ${
                     isCurrent ? 'ring-2 ring-orange-400 ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-900' : ''
-                  } ${isCompleted ? 'shadow-lg shadow-green-500/10' : ''}`}>
-                    <div className="grid md:grid-cols-4 gap-6 items-start">
+                  } ${isCompleted ? 'shadow-lg shadow-gray-500/10' : ''}`}>
+                    <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 items-start">
                       {/* Phase Info */}
                       <div className="text-center md:text-left">
                         <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 ${
@@ -238,7 +239,7 @@ export const Roadmap: React.FC = () => {
                         <div>
                           <h3 className={`text-xl font-bold mb-2 ${
                             isCurrent 
-                              ? 'text-transparent bg-gradient-to-r from-orange-500 to-blue-600 bg-clip-text' 
+                              ? 'text-gray-900 dark:text-white font-bold' 
                               : 'text-gray-900 dark:text-white'
                           }`}>
                             {step.title}
@@ -248,7 +249,7 @@ export const Roadmap: React.FC = () => {
                               </span>
                             )}
                             {isCompleted && (
-                              <span className="ml-2 inline-flex items-center px-2 py-1 text-xs font-medium  dark:bg-green-900/30 text-orange-600 dark:text-orange-400 rounded-full">
+                              <span className="ml-2 inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-700 dark:bg-gray-600 text-white rounded-full">
                                 Terminé
                               </span>
                             )}
@@ -270,7 +271,7 @@ export const Roadmap: React.FC = () => {
                             >
                               <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
                                 isCompleted 
-                                  ? 'bg-green-500' 
+                                  ? 'bg-gray-600' 
                                   : isCurrent 
                                     ? 'bg-orange-500' 
                                     : 'bg-gray-400 dark:bg-gray-600'
@@ -290,21 +291,27 @@ export const Roadmap: React.FC = () => {
           </div>
 
           {/* CTA */}
-          <div className={`text-center mt-16 transition-all duration-1000 delay-1000 ${
+          <div className={`text-center mt-12 sm:mt-16 transition-all duration-1000 delay-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="bg-gradient-to-r from-orange-500 to-blue-600 p-8 rounded-2xl text-white">
-              <h3 className="text-2xl font-bold mb-4">
+            <div className="bg-gray-900 dark:bg-gray-800 p-6 sm:p-8 rounded-xl sm:rounded-2xl text-white border border-gray-700">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 px-4">
                 Rejoignez la révolution énergétique dès maintenant
               </h3>
-              <p className="text-orange-100 mb-6 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-gray-300 mb-6 max-w-2xl mx-auto px-4">
                 Ne manquez pas l'opportunité de faire partie des pionniers qui transforment l'accès à l'énergie en Afrique
               </p>
               <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-                <button className="w-full sm:w-auto bg-white text-orange-600 font-semibold px-8 py-3 rounded-xl hover:bg-orange-50 hover:scale-105 transition-all duration-300 shadow-lg">
+                <button 
+                  onClick={() => scrollToSection('#contact')}
+                  className="w-full sm:w-auto bg-orange-600 text-white text-sm sm:text-base font-semibold px-6 sm:px-8 py-3 rounded-xl hover:bg-orange-700 hover:scale-105 transition-all duration-300 shadow-lg"
+                >
                   Rejoindre la communauté
                 </button>
-                <button className="w-full sm:w-auto bg-white/20 backdrop-blur-sm text-white font-semibold px-8 py-3 rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300">
+                <button 
+                  onClick={() => scrollToSection('#contact')}
+                  className="w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white text-sm sm:text-base font-semibold px-6 sm:px-8 py-3 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                >
                   Devenir partenaire
                 </button>
               </div>

@@ -95,35 +95,35 @@ export const Impact: React.FC = () => {
   }, [isVisible, currentTestimonial]);
 
   return (
-    <section id="impact" ref={sectionRef} className="py-20 bg-gradient-to-br from-blue-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 transition-colors duration-300">
+    <section id="impact" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${
+          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
               Histoires d'
-              <span className="bg-gradient-to-r from-orange-500 to-blue-600 bg-clip-text text-transparent">Impact</span>
+              <span className="text-gray-900 dark:text-white">Impact</span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               Découvrez comment SoliBox transforme la vie des communautés en Guinée
             </p>
           </div>
 
           {/* Impact Stats */}
-          <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 transition-all duration-1000 delay-200 ${
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 transition-all duration-1000 delay-200 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {impactStats.map((stat, index) => (
               <div
                 key={index}
-                className="text-center p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-white/20 dark:border-gray-700/30 shadow-lg hover:scale-105 transition-all duration-300"
+                className="text-center p-4 sm:p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-white/20 dark:border-gray-700/30 shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <div className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                  {stat.value}<span className="text-lg">{stat.unit}</span>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">
+                  {stat.value}<span className="text-base sm:text-lg">{stat.unit}</span>
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 px-1">
                   {stat.label}
                 </div>
               </div>
@@ -131,15 +131,15 @@ export const Impact: React.FC = () => {
           </div>
 
           {/* Before/After Visual */}
-          <div className={`mb-16 transition-all duration-1000 delay-400 ${
+          <div className={`mb-12 sm:mb-16 transition-all duration-1000 delay-400 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
+            <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6 sm:mb-8">
                 Transformation d'un quartier avec SoliBox
               </h3>
               
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 {/* Before */}
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold text-orange-600 dark:text-orange-400 flex items-center">
@@ -210,10 +210,10 @@ export const Impact: React.FC = () => {
               </p>
             </div>
 
-            <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl overflow-hidden">
+            <div className="relative bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl overflow-hidden">
               {/* Background Quote */}
               <div className="absolute top-4 right-4 opacity-5">
-                <Quote className="w-32 h-32 text-gray-600" />
+                <Quote className="w-24 h-24 sm:w-32 sm:h-32 text-gray-600" />
               </div>
 
               <div className="relative z-10">
@@ -228,7 +228,7 @@ export const Impact: React.FC = () => {
                           : 'opacity-0 translate-x-full absolute inset-0'
                     }`}
                   >
-                    <div className="grid md:grid-cols-3 gap-8 items-center">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center">
                       {/* User Info */}
                       <div className="text-center md:text-left">
                         <div className="inline-block relative mb-4">

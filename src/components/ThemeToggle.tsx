@@ -18,7 +18,7 @@ export const ThemeToggle: React.FC = () => {
           }`}
         />
         <Moon 
-          className={`absolute inset-0 w-6 h-6 text-blue-300 transition-all duration-500 ${
+          className={`absolute inset-0 w-6 h-6 text-gray-300 transition-all duration-500 ${
             isDark ? 'scale-100 rotate-0 opacity-100' : 'scale-0 -rotate-90 opacity-0'
           }`}
         />

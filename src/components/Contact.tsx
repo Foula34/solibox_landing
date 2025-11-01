@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, Loader } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Loader, X } from 'lucide-react';
+import { scrollToSection } from '../utils/scrollUtils';
 
 export const Contact: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,16 +37,47 @@ export const Contact: React.FC = () => {
     e.preventDefault();
     setFormStatus('loading');
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Simulation d'envoi - À remplacer par un vrai appel API
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Ici vous pouvez ajouter l'appel API réel :
+      // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
+      
       setFormStatus('success');
       setFormData({ name: '', email: '', phone: '', interest: '', message: '' });
       
       // Reset to idle after showing success
       setTimeout(() => {
         setFormStatus('idle');
+      }, 4000);
+    } catch (error) {
+      setFormStatus('error');
+      setTimeout(() => {
+        setFormStatus('idle');
       }, 3000);
-    }, 2000);
+    }
+  };
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes('@')) {
+      setNewsletterStatus('error');
+      setTimeout(() => setNewsletterStatus('idle'), 2000);
+      return;
+    }
+
+    try {
+      // Simulation d'envoi - À remplacer par un vrai appel API
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setNewsletterStatus('success');
+      setNewsletterEmail('');
+      setTimeout(() => setNewsletterStatus('idle'), 3000);
+    } catch (error) {
+      setNewsletterStatus('error');
+      setTimeout(() => setNewsletterStatus('idle'), 2000);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -60,14 +94,14 @@ export const Contact: React.FC = () => {
       title: 'Email',
       value: 'solidboxosc@gmail.com',
       description: 'Écrivez-nous pour toute question',
-      gradient: 'from-blue-500 to-blue-600'
+      gradient: 'from-gray-600 to-gray-700'
     },
     {
       icon: Phone,
       title: 'Téléphone',
       value: '+224 624 36 68 97',
       description: 'Appelez-nous du lundi au vendredi',
-      gradient: 'from-green-500 to-green-600'
+      gradient: 'from-gray-600 to-gray-700'
     },
     {
       icon: MapPin,
@@ -88,26 +122,26 @@ export const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="contact" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${
+          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
               Rejoignez la révolution énergétique
-              <br />
-              <span className="bg-gradient-to-r from-orange-500 to-blue-600 bg-clip-text text-transparent">
+              <br className="hidden sm:block" />
+              <span className="text-gray-900 dark:text-white">
                 Partagez, alimentez, gagnez
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
               Prêt à transformer votre surplus solaire en revenus ? Contactez-nous pour commencer votre parcours SoliBox
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Information */}
             <div className={`space-y-8 transition-all duration-1000 delay-200 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
@@ -126,10 +160,22 @@ export const Contact: React.FC = () => {
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
                   const IconComponent = info.icon;
+                  const isEmail = info.title === 'Email';
+                  const isPhone = info.title === 'Téléphone';
+                  
+                  const handleClick = () => {
+                    if (isEmail) {
+                      window.location.href = `mailto:${info.value}`;
+                    } else if (isPhone) {
+                      window.location.href = `tel:${info.value.replace(/\s/g, '')}`;
+                    }
+                  };
+                  
                   return (
                     <div
                       key={index}
-                      className={`bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:scale-105 transition-all duration-300 group ${
+                      onClick={handleClick}
+                      className={`bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:scale-105 transition-all duration-300 group cursor-pointer ${
                         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                       }`}
                       style={{ transitionDelay: `${400 + index * 100}ms` }}
@@ -156,23 +202,36 @@ export const Contact: React.FC = () => {
               </div>
 
               {/* Newsletter Signup */}
-              <div className="bg-gradient-to-r from-orange-50 to-blue-50 dark:from-orange-900/20 dark:to-blue-900/20 p-6 rounded-xl border border-orange-200 dark:border-orange-800/30">
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-300 dark:border-gray-700">
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                   📧 Restez informé
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
                   Recevez les dernières nouvelles de SoliBox et les opportunités de revenus dans votre région
                 </p>
-                <div className="flex gap-2">
+                <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
                   <input
                     type="email"
+                    required
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
                     placeholder="Votre email"
-                    className="flex-1 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors duration-300"
+                    className="flex-1 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-600 focus:border-gray-600 outline-none transition-colors duration-300"
                   />
-                  <button className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300">
-                    S'abonner
+                  <button 
+                    type="submit"
+                    disabled={newsletterStatus !== 'idle'}
+                    className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {newsletterStatus === 'success' ? '✓' : newsletterStatus === 'error' ? '✕' : "S'abonner"}
                   </button>
-                </div>
+                </form>
+                {newsletterStatus === 'success' && (
+                  <p className="text-sm text-green-600 dark:text-green-400 mt-2">Merci pour votre inscription !</p>
+                )}
+                {newsletterStatus === 'error' && (
+                  <p className="text-sm text-red-600 dark:text-red-400 mt-2">Veuillez entrer un email valide.</p>
+                )}
               </div>
             </div>
 
@@ -180,10 +239,10 @@ export const Contact: React.FC = () => {
             <div className={`transition-all duration-1000 delay-400 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`}>
-              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl">
+              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 p-6 sm:p-8 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl">
                 {formStatus === 'success' ? (
                   <div className="text-center py-12">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500 rounded-full mb-6">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-700 dark:bg-gray-600 rounded-full mb-6">
                       <CheckCircle className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -193,10 +252,31 @@ export const Contact: React.FC = () => {
                       Merci pour votre intérêt. Notre équipe vous contactera dans les 24 heures.
                     </p>
                     <button
+                    onClick={() => {
+                      setFormStatus('idle');
+                      scrollToSection('#contact');
+                    }}
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300"
+                  >
+                    Envoyer un autre message
+                  </button>
+                  </div>
+                ) : formStatus === 'error' ? (
+                  <div className="text-center py-12">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-red-500 rounded-full mb-6">
+                      <X className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                      Erreur lors de l'envoi
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">
+                      Une erreur s'est produite. Veuillez réessayer plus tard.
+                    </p>
+                    <button
                       onClick={() => setFormStatus('idle')}
                       className="bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold px-6 py-3 rounded-xl hover:shadow-lg transition-all duration-300"
                     >
-                      Envoyer un autre message
+                      Réessayer
                     </button>
                   </div>
                 ) : (
@@ -222,7 +302,7 @@ export const Contact: React.FC = () => {
                           required
                           value={formData.name}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors duration-300"
+                          className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-600 focus:border-gray-600 outline-none transition-colors duration-300"
                           placeholder="Votre nom"
                         />
                       </div>
@@ -237,7 +317,7 @@ export const Contact: React.FC = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors duration-300"
+                          className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-gray-600 focus:border-gray-600 outline-none transition-colors duration-300"
                           placeholder="+224 XXX XXX XXX"
                         />
                       </div>
@@ -298,7 +378,7 @@ export const Contact: React.FC = () => {
                     <button
                       type="submit"
                       disabled={formStatus === 'loading'}
-                      className="w-full bg-gradient-to-r from-orange-500 to-blue-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+                      className="w-full bg-orange-600 text-white font-semibold py-4 rounded-xl hover:bg-orange-700 hover:shadow-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
                     >
                       {formStatus === 'loading' ? (
                         <>
