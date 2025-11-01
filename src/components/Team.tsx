@@ -40,45 +40,45 @@ export const Team: React.FC = () => {
 
   const teamMembers = [
     {
-      name: 'Membre 1',
-      role: 'Fondateur & CEO',
-      bio: 'Visionnaire passionné par l\'énergie solaire et l\'innovation technologique en Afrique',
+      name: 'Foula Fofana',
+      role: 'Développeur',
+      bio: 'Ingénieur logiciel passionné par les solutions énergétiques durables',
       image: null, // Remplacer par l'URL de la photo réelle
       linkedin: '#',
-      github: '#',
-      email: 'membre1@solibox.com'
+      github: 'https//github.com/Foula34',
+      email: 'fofanafoula70@gmail.com'
     },
     {
-      name: 'Membre 2',
-      role: 'CTO & Co-fondateur',
-      bio: 'Expert en développement logiciel et architectures distribuées pour l\'énergie',
+      name: 'Hawa Barry',
+      role: 'Designer',
+      bio: 'Experte en design UX/UI avec une passion pour les énergies renouvelables',
       image: null,
       linkedin: '#',
       github: '#',
       email: 'membre2@solibox.com'
     },
     {
-      name: 'Membre 3',
-      role: 'Chef de produit',
-      bio: 'Spécialiste en expérience utilisateur et développement de produits énergétiques',
+      name: 'Boubacar Diallo',
+      role: 'Ingénieur IOT',
+      bio: 'Spécialiste en solutions IoT pour la gestion intelligente de l\'énergie',
       image: null,
       linkedin: '#',
       github: '#',
       email: 'membre3@solibox.com'
     },
     {
-      name: 'Membre 4',
-      role: 'Responsable technique',
-      bio: 'Ingénieur électricien expert en systèmes photovoltaïques et micro-réseaux',
+      name: 'Alseny Bangoura',
+      role: 'Financier et Responsable Communication',
+      bio: 'Expert en finance et communication pour les projets durables',
       image: null,
       linkedin: '#',
       github: '#',
       email: 'membre4@solibox.com'
     },
     {
-      name: 'Membre 5',
-      role: 'Responsable partenariats',
-      bio: 'Experte en relations publiques et développement d\'alliances stratégiques',
+      name: 'Sekou Doumbouya',
+      role: 'Développeur IA',
+      bio: 'Développeur spécialisé en intelligence artificielle appliquée aux énergies renouvelables',
       image: null,
       linkedin: '#',
       github: '#',
