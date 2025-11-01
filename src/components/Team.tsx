@@ -43,8 +43,8 @@ export const Team: React.FC = () => {
       name: 'Foula Fofana',
       role: 'Développeur',
       bio: 'Ingénieur logiciel passionné par les solutions énergétiques durables',
-      image: null, // Remplacer par l'URL de la photo réelle
-      linkedin: '#',
+      image: "assets/equipe/foula.jpg",
+      linkedin: 'https://www.linkedin.com/in/foula-fofana-1769782a5/',
       github: 'https//github.com/Foula34',
       email: 'fofanafoula70@gmail.com'
     },
