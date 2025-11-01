@@ -65,6 +65,24 @@ export const Partners: React.FC = () => {
     }
   ];
 
+  // Override Tailwind grayscale filter for logos so original colors are shown by default
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.setAttribute('data-partners-style', 'true');
+    style.textContent = `
+      /* Force partner logos to display original colors (override Tailwind filters) */
+      #partners img {
+        filter: none !important;
+        -webkit-filter: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      const existing = document.head.querySelector('style[data-partners-style="true"]');
+      if (existing) document.head.removeChild(existing);
+    };
+  }, []);
+
   return (
     <section id="partners" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
