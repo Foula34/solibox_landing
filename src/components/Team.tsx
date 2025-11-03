@@ -70,10 +70,10 @@ export const Team: React.FC = () => {
       name: 'Alseny Bangoura',
       role: 'Financier et Responsable Communication',
       bio: 'Expert en finance et communication pour les projets durables',
-      image: null,
-      linkedin: '#',
+      image: "assets/equipe/alseny.jpg",
+      linkedin: 'http://www.linkedin.com/in/alseny-gn',
       github: '#',
-      email: 'membre4@solibox.com'
+      email: 'bangoura33072@gmail.com'
     },
     {
       name: 'Sekou Doumbouya',
