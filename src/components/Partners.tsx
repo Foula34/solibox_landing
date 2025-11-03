@@ -181,3 +181,4 @@ export const Partners: React.FC = () => {
   );
 };
 
+

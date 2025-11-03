@@ -45,26 +45,26 @@ export const Team: React.FC = () => {
       bio: 'Ingénieur logiciel passionné par les solutions énergétiques durables',
       image: "assets/equipe/foula.jpg",
       linkedin: 'https://www.linkedin.com/in/foula-fofana-1769782a5/',
-      github: 'https//github.com/Foula34',
+      github: 'https://github.com/Foula34',
       email: 'fofanafoula70@gmail.com'
     },
     {
       name: 'Hawa Barry',
       role: 'Designer',
       bio: 'Experte en design UX/UI avec une passion pour les énergies renouvelables',
-      image: null,
-      linkedin: '#',
+      image: "assets/equipe/hawa.jpg",
+      linkedin: 'https://www.linkedin.com/in/hawa-barry-7b92b6336?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       github: '#',
-      email: 'membre2@solibox.com'
+      email: 'hawab5139@gmail.com'
     },
     {
       name: 'Boubacar Diallo',
       role: 'Ingénieur IOT',
       bio: 'Spécialiste en solutions IoT pour la gestion intelligente de l\'énergie',
-      image: null,
-      linkedin: '#',
+      image: "assets/equipe/boubacar.jpg",
+      linkedin: 'https://www.linkedin.com/in/thierno-boubacar-diallo-711b41349?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       github: '#',
-      email: 'membre3@solibox.com'
+      email: 'siddiguediallo2000@gmail.com'
     },
     {
       name: 'Alseny Bangoura',
@@ -104,18 +104,18 @@ export const Team: React.FC = () => {
           </div>
 
           {/* Team Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 sm:gap-4">
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className={`bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 group ${
+                className={`bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-lg hover:shadow-xl transition-all duration-300 group h-full flex flex-col ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${200 + index * 100}ms` }}
               >
                 {/* Member Photo */}
-                <div className="relative mb-6">
-                  <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                <div className="relative mb-3">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
                     {member.image ? (
                       <img 
                         src={member.image} 
@@ -123,53 +123,53 @@ export const Team: React.FC = () => {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <User className="w-16 h-16 text-gray-400 dark:text-gray-500" />
+                      <User className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400 dark:text-gray-500" />
                     )}
                   </div>
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Zap className="w-4 h-4 text-white" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Zap className="w-3 h-3 text-white" />
                   </div>
                 </div>
 
                 {/* Member Info */}
-                <div className="text-center mb-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                <div className="text-center mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-0.5">
                     {member.name}
                   </h3>
-                  <p className="text-sm sm:text-base text-orange-600 dark:text-orange-400 font-semibold mb-3">
+                  <p className="text-xs text-orange-600 dark:text-orange-400 font-semibold mb-1.5">
                     {member.role}
                   </p>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">
                     {member.bio}
                   </p>
                 </div>
 
                 {/* Social Links */}
-                <div className="flex justify-center space-x-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <div className="flex justify-center space-x-1.5 pt-2 border-t border-gray-200 dark:border-gray-700 mt-auto">
                   <a
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300 group"
+                    className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 dark:bg-gray-700 rounded flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300 group"
                     aria-label={`LinkedIn de ${member.name}`}
                   >
-                    <Linkedin className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
+                    <Linkedin className="w-3.5 h-3.5 text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
                   </a>
                   <a
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300 group"
+                    className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 dark:bg-gray-700 rounded flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300 group"
                     aria-label={`GitHub de ${member.name}`}
                   >
-                    <Github className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
+                    <Github className="w-3.5 h-3.5 text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
                   </a>
                   <a
                     href={`mailto:${member.email}`}
-                    className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300 group"
+                    className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 dark:bg-gray-700 rounded flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300 group"
                     aria-label={`Email de ${member.name}`}
                   >
-                    <Mail className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
+                    <Mail className="w-3.5 h-3.5 text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300" />
                   </a>
                 </div>
               </div>

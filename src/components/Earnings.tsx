@@ -68,38 +68,48 @@ export const Earnings: React.FC = () => {
   }, [isVisible]);
 
 
-  const revenueStreams = [
+  const pricingPlans = [
     {
-      title: 'Vente directe d\'énergie',
+      title: 'Location Simple',
+      percentage: 60,
+      amount: '120,000',
+      description: 'Location mensuelle de la SoliBox avec maintenance incluse',
+      color: 'from-orange-500 to-orange-600',
+      features: [
+        'Accès à la plateforme de suivi',
+        'Maintenance incluse',
+        'Support technique 24/7',
+        'Garantie complète'
+      ]
+    },
+    {
+      title: 'Partage des Revenus',
       percentage: 70,
-      amount: '1,680',
-      description: 'Revenus directs de la vente de surplus aux voisins',
-      color: 'from-gray-600 to-gray-700'
+      amount: '30%',
+      description: 'Partage des revenus sur la vente du surplus d\'énergie',
+      color: 'from-orange-500 to-orange-600',
+      features: [
+        '30% des revenus de vente d\'énergie',
+        'Paiements mensuels',
+        'Tableau de bord en temps réel',
+        'Rapports détaillés'
+      ]
     },
     {
-      title: 'Prime de stabilité réseau',
-      percentage: 20,
-      amount: '480',
-      description: 'Bonus pour contribution à la stabilité du micro-réseau',
-      color: 'from-gray-500 to-gray-600'
-    },
-    {
-      title: 'Récompenses de partage',
-      percentage: 10,
-      amount: '240',
-      description: 'Incentives pour participation active au réseau communautaire',
-      color: 'from-orange-400 to-orange-600'
+      title: 'Location-Partage',
+      percentage: 80,
+      amount: '90,000',
+      description: 'Formule combinée avec loyer réduit et partage des revenus',
+      color: 'from-orange-400 to-orange-600',
+      features: [
+        'Loyer mensuel réduit',
+        '15% des revenus d\'énergie',
+        'Maintenance incluse',
+        'Support prioritaire'
+      ]
     }
   ];
 
-  const monthlyBreakdown = [
-    { month: 'Jan', revenue: 2400, surplus: 8.2 },
-    { month: 'Fév', revenue: 2650, surplus: 8.8 },
-    { month: 'Mar', revenue: 2800, surplus: 9.1 },
-    { month: 'Avr', revenue: 2950, surplus: 9.5 },
-    { month: 'Mai', revenue: 3200, surplus: 10.2 },
-    { month: 'Jun', revenue: 3400, surplus: 10.8 }
-  ];
 
   return (
     <section id="earnings" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -110,12 +120,12 @@ export const Earnings: React.FC = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
-              Générez des 
-              <span className="text-gray-900 dark:text-white"> Revenus</span>
-              <br className="hidden sm:block" />avec SoliBox
+              Notre Modèle 
+              <span className="text-gray-900 dark:text-white"> Économique</span>
+              <br className="hidden sm:block" />Flexible et Rentable
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-              Découvrez comment votre surplus solaire peut devenir une source de revenus stable et prévisible
+              Choisissez la formule qui correspond à vos besoins et générez des revenus avec votre SoliBox
             </p>
           </div>
 
@@ -133,29 +143,29 @@ export const Earnings: React.FC = () => {
                 <DollarSign className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
               </div>
               
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2">Revenus moyens mensuels</h3>
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2">Formules Adaptées à Tous</h3>
               
               <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 break-words">
-                {Math.round(animatedValue).toLocaleString()} 
-                <span className="text-lg sm:text-xl lg:text-2xl font-normal ml-1 sm:ml-2">GNF</span>
+                À partir de 
+                <span className="text-orange-400"> 90,000 GNF</span>
               </div>
               
               <p className="text-sm sm:text-base lg:text-lg text-gray-300 px-2">
-                Soit environ <span className="font-semibold">+40% de revenus supplémentaires</span> pour un foyer moyen
+                Choisissez entre <span className="font-semibold">location simple</span> ou <span className="font-semibold">partage des revenus</span>
               </p>
               
               <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-700">
                 <div className="text-center">
-                  <div className="text-lg sm:text-xl lg:text-2xl font-bold">8 kWh</div>
-                  <div className="text-xs sm:text-sm text-gray-400">Surplus quotidien moyen</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold">0 GNF</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Frais d'installation</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg sm:text-xl lg:text-2xl font-bold">200 GNF</div>
-                  <div className="text-xs sm:text-sm text-gray-400">Prix par kWh</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold">24/7</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Support technique</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg sm:text-xl lg:text-2xl font-bold">30 jours</div>
-                  <div className="text-xs sm:text-sm text-gray-400">Génération continue</div>
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold">100%</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Satisfaction</div>
                 </div>
               </div>
             </div>
@@ -167,89 +177,54 @@ export const Earnings: React.FC = () => {
           }`}>
             <div className="text-center mb-6 sm:mb-8">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-                Sources de revenus détaillées
+                Nos Formules Tarifaires
               </h3>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                Diversifiez vos revenus avec plusieurs flux de rémunération
+                Choisissez la formule qui correspond le mieux à vos besoins
               </p>
             </div>
 
             <div className="space-y-4 sm:space-y-6">
-              {revenueStreams.map((stream, index) => (
+              {pricingPlans.map((plan, index) => (
                 <div
                   key={index}
                   className="relative overflow-hidden"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
                     <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">
-                      {stream.title}
+                      {plan.title}
                     </h4>
                     <span className="text-sm sm:text-base font-bold text-gray-700 dark:text-gray-300">
-                      {stream.amount} GNF
+                      {plan.amount} {plan.title !== 'Partage des Revenus' ? 'GNF/mois' : 'des revenus'}
                     </span>
                   </div>
                   
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                    {stream.description}
+                    {plan.description}
                   </p>
+                  <ul className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 space-y-1 mb-3">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-start">
+                        <svg className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                   
                   <div className="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                     <div 
-                      className={`h-full bg-gradient-to-r ${stream.color} rounded-full transition-all duration-1000 delay-${index * 200}`}
+                      className={`h-full bg-gradient-to-r ${plan.color} rounded-full transition-all duration-1000 delay-${index * 200}`}
                       style={{ 
-                        width: isVisible ? `${stream.percentage}%` : '0%',
+                        width: isVisible ? `${plan.percentage}%` : '0%',
                         transitionDelay: `${600 + index * 200}ms`
                       }}
                     ></div>
                   </div>
                   
                   <div className="text-right text-sm text-gray-500 dark:text-gray-400 mt-1">
-                    {stream.percentage}% du revenu total
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Monthly Projection */}
-          <div className={`bg-gray-50 dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 mb-12 sm:mb-16 transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-                Évolution des revenus sur 6 mois
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 px-4">
-                Vos revenus augmentent avec l'optimisation du réseau et la croissance de la communauté
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-              {monthlyBreakdown.map((data, index) => (
-                <div
-                  key={index}
-                  className={`bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-xl text-center shadow-lg hover:scale-105 transition-all duration-300 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
-                  style={{ transitionDelay: `${800 + index * 100}ms` }}
-                >
-                  <div className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 dark:text-white mb-1">
-                    {data.month}
-                  </div>
-                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-700 dark:text-gray-300 mb-1">
-                    {data.revenue.toLocaleString()}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    {data.surplus} kWh/j
-                  </div>
-                  <div className="mt-2 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gray-600 dark:bg-gray-500 rounded-full transition-all duration-1000"
-                      style={{ 
-                        width: isVisible ? `${(data.revenue / 3400) * 100}%` : '0%',
-                        transitionDelay: `${1000 + index * 100}ms`
-                      }}
-                    ></div>
+                    {plan.percentage}% des utilisateurs choisissent cette option
                   </div>
                 </div>
               ))}

@@ -14,7 +14,7 @@ export const Roadmap: React.FC = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 } // Ajusté pour déclencher plus tôt
     );
 
     if (sectionRef.current) {
@@ -100,7 +100,7 @@ export const Roadmap: React.FC = () => {
           }
           return prev;
         });
-      }, 800);
+      }, 500); // Animation plus rapide
 
       return () => clearInterval(timer);
     }
@@ -114,47 +114,47 @@ export const Roadmap: React.FC = () => {
   ];
 
   return (
-    <section id="roadmap" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
+    <section id="roadmap" ref={sectionRef} className="py-8 sm:py-12 lg:py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          <div className={`text-center mb-8 sm:mb-12 transition-all duration-500 ${
+            isVisible ? 'opacity-100' : 'opacity-0'
           }`}>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
               Notre 
-              <span className="text-gray-900 dark:text-white"> Vision</span>
+              <span className="text-orange-600 dark:text-orange-400"> Vision</span>
               <br className="hidden sm:block" />& Roadmap
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Découvrez notre plan ambitieux pour révolutionner l'accès à l'énergie en Afrique de l'Ouest
             </p>
           </div>
 
           {/* Current Milestones */}
-          <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 transition-all duration-1000 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 sm:mb-12 transition-all duration-500 ${
+            isVisible ? 'opacity-100' : 'opacity-0'
           }`}>
             {milestones.map((milestone, index) => (
               <div
                 key={index}
-                className={`text-center p-6 rounded-xl border transition-all duration-300 hover:scale-105 ${
+                className={`text-center p-4 sm:p-6 rounded-xl border transition-all duration-300 hover:scale-105 ${
                   milestone.achieved 
                     ? 'bg-gray-50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-700' 
                     : 'bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-700'
                 }`}
               >
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
+                <div className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl mb-3 ${
                   milestone.achieved ? 'bg-gray-700 dark:bg-gray-600' : 'bg-gray-600 dark:bg-gray-700'
                 }`}>
                   {milestone.achieved ? (
-                    <CheckCircle className="w-6 h-6 text-white" />
+                    <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   ) : (
-                    <Circle className="w-6 h-6 text-white" />
+                    <Circle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   )}
                 </div>
                 
-                <div className={`text-2xl sm:text-3xl font-bold mb-2 ${
+                <div className={`text-xl sm:text-2xl font-bold mb-1 ${
                   milestone.achieved 
                     ? 'text-gray-700 dark:text-gray-300' 
                     : 'text-gray-600 dark:text-gray-400'
@@ -162,7 +162,7 @@ export const Roadmap: React.FC = () => {
                   {milestone.metric}
                 </div>
                 
-                <div className="text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                   {milestone.label}
                 </div>
               </div>
@@ -170,7 +170,7 @@ export const Roadmap: React.FC = () => {
           </div>
 
           {/* Roadmap Timeline */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {roadmapSteps.map((step, index) => {
               const IconComponent = step.icon;
               const isCompleted = step.status === 'completed';
@@ -180,32 +180,32 @@ export const Roadmap: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className={`relative transition-all duration-1000 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  className={`relative transition-all duration-500 ${
+                    isVisible ? 'opacity-100' : 'opacity-0'
                   }`}
-                  style={{ transitionDelay: `${400 + index * 200}ms` }}
+                  style={{ transitionDelay: `${200 + index * 100}ms` }}
                 >
                   {/* Connection Line */}
                   {index < roadmapSteps.length - 1 && (
-                    <div className="absolute left-8 top-20 w-0.5 h-24 bg-gradient-to-b from-gray-300 to-transparent dark:from-gray-600 z-0">
+                    <div className="absolute left-8 top-20 w-0.5 h-16 sm:h-24 bg-gradient-to-b from-gray-300 to-transparent dark:from-gray-600 z-0">
                       <div 
-                        className={`w-full bg-gradient-to-b transition-all duration-1000 ${
+                        className={`w-full bg-gradient-to-b transition-all duration-500 ${
                           completedSteps > index 
                             ? 'from-gray-600 to-gray-700 h-full' 
                             : 'from-orange-500 to-orange-500 h-0'
                         }`}
-                        style={{ transitionDelay: `${600 + index * 200}ms` }}
+                        style={{ transitionDelay: `${300 + index * 100}ms` }}
                       ></div>
                     </div>
                   )}
 
-                  <div className={`relative bg-gradient-to-br ${step.bgGradient} rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 dark:border-gray-700/30 backdrop-blur-sm ${
+                  <div className={`relative bg-gradient-to-br ${step.bgGradient} rounded-xl p-4 sm:p-6 md:p-8 border border-white/20 dark:border-gray-700/30 backdrop-blur-sm ${
                     isCurrent ? 'ring-2 ring-orange-400 ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-900' : ''
                   } ${isCompleted ? 'shadow-lg shadow-gray-500/10' : ''}`}>
-                    <div className="grid sm:grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 items-start">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 items-start">
                       {/* Phase Info */}
                       <div className="text-center md:text-left">
-                        <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 ${
+                        <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl mb-3 ${
                           isCompleted 
                             ? 'bg-orange-500 shadow-lg shadow-orange-500/30' 
                             : isCurrent 
@@ -213,9 +213,9 @@ export const Roadmap: React.FC = () => {
                               : 'bg-gray-400 dark:bg-gray-600'
                         }`}>
                           {isCompleted ? (
-                            <CheckCircle className="w-8 h-8 text-white" />
+                            <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                           ) : (
-                            <IconComponent className="w-8 h-8 text-white" />
+                            <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                           )}
                         </div>
                         
@@ -237,37 +237,34 @@ export const Roadmap: React.FC = () => {
                       {/* Content */}
                       <div className="md:col-span-3 space-y-4">
                         <div>
-                          <h3 className={`text-xl font-bold mb-2 ${
+                          <h3 className={`text-lg sm:text-xl font-bold mb-2 ${
                             isCurrent 
-                              ? 'text-gray-900 dark:text-white font-bold' 
+                              ? 'text-gray-900 dark:text-white' 
                               : 'text-gray-900 dark:text-white'
                           }`}>
                             {step.title}
                             {isCurrent && (
-                              <span className="ml-2 inline-flex items-center px-2 py-1 text-xs font-medium bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full">
+                              <span className="ml-2 inline-flex items-center px-2 py-0.5 text-xs font-medium bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full">
                                 En cours
                               </span>
                             )}
                             {isCompleted && (
-                              <span className="ml-2 inline-flex items-center px-2 py-1 text-xs font-medium bg-gray-700 dark:bg-gray-600 text-white rounded-full">
+                              <span className="ml-2 inline-flex items-center px-2 py-0.5 text-xs font-medium bg-gray-700 dark:bg-gray-600 text-white rounded-full">
                                 Terminé
                               </span>
                             )}
                           </h3>
                           
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                             {step.description}
                           </p>
                         </div>
 
-                        <div className="grid sm:grid-cols-2 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {step.achievements.map((achievement, achievementIndex) => (
                             <div
                               key={achievementIndex}
-                              className={`flex items-start space-x-3 transition-all duration-300 ${
-                                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-                              }`}
-                              style={{ transitionDelay: `${800 + index * 200 + achievementIndex * 100}ms` }}
+                              className="flex items-start space-x-2 sm:space-x-3"
                             >
                               <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
                                 isCompleted 
@@ -276,7 +273,7 @@ export const Roadmap: React.FC = () => {
                                     ? 'bg-orange-500' 
                                     : 'bg-gray-400 dark:bg-gray-600'
                               }`}></div>
-                              <span className="text-sm text-gray-600 dark:text-gray-400">
+                              <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                                 {achievement}
                               </span>
                             </div>
@@ -291,26 +288,26 @@ export const Roadmap: React.FC = () => {
           </div>
 
           {/* CTA */}
-          <div className={`text-center mt-12 sm:mt-16 transition-all duration-1000 delay-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          <div className={`text-center mt-10 sm:mt-14 transition-all duration-500 ${
+            isVisible ? 'opacity-100' : 'opacity-0'
           }`}>
-            <div className="bg-gray-900 dark:bg-gray-800 p-6 sm:p-8 rounded-xl sm:rounded-2xl text-white border border-gray-700">
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 px-4">
+            <div className="bg-gray-900 dark:bg-gray-800 p-5 sm:p-6 rounded-xl text-white border border-gray-700">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
                 Rejoignez la révolution énergétique dès maintenant
               </h3>
-              <p className="text-sm sm:text-base text-gray-300 mb-6 max-w-2xl mx-auto px-4">
+              <p className="text-xs sm:text-sm text-gray-300 mb-4 sm:mb-5 max-w-2xl mx-auto">
                 Ne manquez pas l'opportunité de faire partie des pionniers qui transforment l'accès à l'énergie en Afrique
               </p>
-              <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button 
                   onClick={() => scrollToSection('#contact')}
-                  className="w-full sm:w-auto bg-orange-600 text-white text-sm sm:text-base font-semibold px-6 sm:px-8 py-3 rounded-xl hover:bg-orange-700 hover:scale-105 transition-all duration-300 shadow-lg"
+                  className="w-full sm:w-auto bg-orange-600 text-white text-sm sm:text-base font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl hover:bg-orange-700 hover:scale-105 transition-all duration-300 shadow-lg"
                 >
                   Rejoindre la communauté
                 </button>
                 <button 
                   onClick={() => scrollToSection('#contact')}
-                  className="w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white text-sm sm:text-base font-semibold px-6 sm:px-8 py-3 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                  className="w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white text-sm sm:text-base font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
                 >
                   Devenir partenaire
                 </button>
