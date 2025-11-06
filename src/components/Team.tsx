@@ -79,10 +79,10 @@ export const Team: React.FC = () => {
       name: 'Sekou Doumbouya',
       role: 'Développeur IA',
       bio: 'Développeur spécialisé en intelligence artificielle appliquée aux énergies renouvelables',
-      image: null,
-      linkedin: '#',
-      github: '#',
-      email: 'membre5@solibox.com'
+      image: "assets/equipe/sekou.jpg",
+      linkedin: 'https://www.linkedin.com/in/sekou-doumbouya-a51143254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+      github: 'https://huggingface.co/doumbouyasekou',
+      email: 'doumbouyasekou967@gmail.com'
     }
   ];
 
