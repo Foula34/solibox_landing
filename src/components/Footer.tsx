@@ -20,6 +20,7 @@ export const Footer: React.FC = () => {
       setNewsletterStatus('success');
       setNewsletterEmail('');
       setTimeout(() => setNewsletterStatus('idle'), 3000);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setNewsletterStatus('error');
       setTimeout(() => setNewsletterStatus('idle'), 2000);
@@ -54,7 +55,7 @@ export const Footer: React.FC = () => {
   };
 
   const socialLinks = [
-    { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/solibox', color: 'hover:text-gray-400' },
+    { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/share/18yf69myKQ', color: 'hover:text-gray-400' },
     { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/solibox', color: 'hover:text-gray-400' },
     { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/solibox', color: 'hover:text-gray-400' },
     { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/solibox', color: 'hover:text-gray-400' }
