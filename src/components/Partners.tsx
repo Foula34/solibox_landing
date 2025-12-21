@@ -41,25 +41,25 @@ export const Partners: React.FC = () => {
   const partners = [
     {
       name: 'Orange',
-      logo: "assets/partenaires/orange.png", 
+      logo: "assets/partenaires/orange.png",
       description: 'Partenaire télécommunications et connectivité',
       website: 'https://www.orange.com'
     },
     {
       name: 'PNUD',
-      logo: "assets/partenaires/pnud.png", 
+      logo: "assets/partenaires/pnud.png",
       description: 'Programme des Nations Unies pour le Développement',
       website: 'https://www.undp.org'
     },
     {
       name: 'AWS',
-      logo: "assets/partenaires/aws.png", 
+      logo: "assets/partenaires/aws.png",
       description: 'Amazon Web Services - Infrastructure cloud',
       website: 'https://aws.amazon.com'
     },
     {
       name: 'Orange Energies',
-      logo: "assets/partenaires/orange-energie.jpeg", 
+      logo: "assets/partenaires/orange-energie.png",
       description: 'Solutions énergétiques innovantes',
       website: 'https://www.orange.com'
     }
@@ -88,11 +88,10 @@ export const Partners: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
-              Nos 
+              Nos
               <span className="text-gray-900 dark:text-white"> Partenaires</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
@@ -105,9 +104,8 @@ export const Partners: React.FC = () => {
             {partners.map((partner, index) => (
               <div
                 key={index}
-                className={`bg-gray-50 dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
+                className={`bg-gray-50 dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  }`}
                 style={{ transitionDelay: `${200 + index * 100}ms` }}
               >
                 <a
@@ -119,8 +117,8 @@ export const Partners: React.FC = () => {
                   {/* Partner Logo */}
                   <div className="mb-6 h-24 sm:h-32 flex items-center justify-center">
                     {partner.logo ? (
-                      <img 
-                        src={partner.logo} 
+                      <img
+                        src={partner.logo}
                         alt={`Logo ${partner.name}`}
                         className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                       />
@@ -144,9 +142,8 @@ export const Partners: React.FC = () => {
           </div>
 
           {/* Call to Action */}
-          <div className={`text-center mt-12 sm:mt-16 transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <div className={`text-center mt-12 sm:mt-16 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
             <div className="bg-gray-900 dark:bg-gray-800 p-6 sm:p-8 rounded-xl sm:rounded-2xl text-white border border-gray-700 inline-block">
               <div className="flex items-center justify-center mb-4">
                 <Globe className="w-8 h-8 text-orange-600 mr-3" />

@@ -88,11 +88,10 @@ export const Solution: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
-              Notre 
+              Notre
               <span className="text-gray-900 dark:text-white"> Solution</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
@@ -107,9 +106,8 @@ export const Solution: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className={`relative p-6 sm:p-8 bg-gradient-to-br ${solution.bgGradient} rounded-xl sm:rounded-2xl border border-white/20 dark:border-gray-700/30 backdrop-blur-sm hover:scale-105 transition-all duration-500 group ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
+                  className={`relative p-6 sm:p-8 bg-gradient-to-br ${solution.bgGradient} rounded-xl sm:rounded-2xl border border-white/20 dark:border-gray-700/30 backdrop-blur-sm hover:scale-105 transition-all duration-500 group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                    }`}
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
                   {/* Background decoration */}
@@ -145,9 +143,8 @@ export const Solution: React.FC = () => {
           </div>
 
           {/* Process Flow */}
-          <div className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 dark:border-gray-700/30 transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <div className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 dark:border-gray-700/30 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
             <div className="text-center mb-8 sm:mb-12">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Comment ça fonctionne
@@ -165,14 +162,13 @@ export const Solution: React.FC = () => {
                 return (
                   <div
                     key={index}
-                    className={`relative text-center transition-all duration-500 ${
-                      isActive ? 'scale-110' : 'scale-100'
-                    }`}
+                    className={`relative text-center transition-all duration-500 ${isActive ? 'scale-110' : 'scale-100'
+                      }`}
                   >
                     {/* Connection line */}
                     {index < processSteps.length - 1 && (
                       <div className="hidden md:block absolute top-12 left-full w-full h-0.5 bg-gray-300 dark:bg-gray-600 z-0">
-                        <div 
+                        <div
                           className="h-full bg-gray-600 dark:bg-gray-400 transition-all duration-1000"
                           style={{ width: isActive ? '100%' : '0%' }}
                         ></div>
@@ -180,16 +176,14 @@ export const Solution: React.FC = () => {
                     )}
 
                     <div className="relative z-10 space-y-3 sm:space-y-4">
-                      <div className={`mx-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 ${
-                        isActive 
-                          ? 'border-gray-700 dark:border-gray-400 bg-gray-700 dark:bg-gray-400 shadow-lg shadow-gray-500/30' 
+                      <div className={`mx-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 ${isActive
+                          ? 'border-gray-700 dark:border-gray-400 bg-gray-700 dark:bg-gray-400 shadow-lg shadow-gray-500/30'
                           : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800'
-                      } flex items-center justify-center transition-all duration-500`}>
-                        <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${
-                          isActive 
-                            ? 'bg-white text-orange-600' 
+                        } flex items-center justify-center transition-all duration-500`}>
+                        <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${isActive
+                            ? 'bg-white text-orange-600'
                             : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-                        } flex items-center justify-center font-bold text-base sm:text-lg transition-all duration-300`}>
+                          } flex items-center justify-center font-bold text-base sm:text-lg transition-all duration-300`}>
                           {isActive ? (
                             <IconComponent className={`w-5 h-5 sm:w-6 sm:h-6 ${step.color}`} />
                           ) : (
@@ -199,11 +193,10 @@ export const Solution: React.FC = () => {
                       </div>
 
                       <div>
-                        <h4 className={`text-base sm:text-lg font-semibold mb-2 transition-colors duration-300 ${
-                          isActive 
-                            ? 'text-gray-900 dark:text-white font-bold' 
+                        <h4 className={`text-base sm:text-lg font-semibold mb-2 transition-colors duration-300 ${isActive
+                            ? 'text-gray-900 dark:text-white font-bold'
                             : 'text-gray-900 dark:text-white'
-                        }`}>
+                          }`}>
                           {step.title}
                         </h4>
                         <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
@@ -214,6 +207,35 @@ export const Solution: React.FC = () => {
                   </div>
                 );
               })}
+            </div>
+
+            {/* Demo Video Section */}
+            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+              <div className="text-center mb-8">
+                <h4 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                  Découvrez notre prototype en action
+                </h4>
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+                  Vidéo de démonstration de SoliBox
+                </p>
+              </div>
+
+              <div className="max-w-4xl mx-auto">
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl bg-gray-900">
+                  <div className="aspect-video">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/wd5hOg3iOJc"
+                      title="Démonstration SoliBox"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+
+                  {/* Video overlay decoration */}
+                  <div className="absolute inset-0 pointer-events-none border-2 border-white/10 rounded-xl sm:rounded-2xl"></div>
+                </div>
+              </div>
             </div>
 
             {/* Tech Stack */}
