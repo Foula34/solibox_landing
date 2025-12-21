@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
       setNewsletterStatus('success');
       setNewsletterEmail('');
       setTimeout(() => setNewsletterStatus('idle'), 3000);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setNewsletterStatus('error');
       setTimeout(() => setNewsletterStatus('idle'), 2000);
@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
   const socialLinks = [
     { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/share/18yf69myKQ', color: 'hover:text-gray-400' },
     { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/solibox', color: 'hover:text-gray-400' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/solibox', color: 'hover:text-gray-400' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/solibox-gn/', color: 'hover:text-gray-400' },
     { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/solibox', color: 'hover:text-gray-400' }
   ];
 
@@ -77,20 +77,20 @@ export const Footer: React.FC = () => {
                 SoliBox
               </span>
             </div>
-            
+
             <p className="text-gray-300 leading-relaxed max-w-sm">
               Révolutionnons l'accès à l'énergie en Afrique en transformant le surplus solaire en revenus et en énergie partagée pour tous.
             </p>
 
             <div className="space-y-3">
-              <a 
+              <a
                 href="mailto:solidboxosc@gmail.com"
                 className="flex items-center space-x-3 text-gray-300 hover:text-gray-100 transition-colors duration-300 cursor-pointer"
               >
                 <Mail className="w-4 h-4 text-gray-400" />
                 <span className="text-sm">solidboxosc@gmail.com</span>
               </a>
-              <a 
+              <a
                 href="tel:+224624366897"
                 className="flex items-center space-x-3 text-gray-300 hover:text-gray-100 transition-colors duration-300 cursor-pointer"
               >
@@ -244,7 +244,7 @@ export const Footer: React.FC = () => {
                 placeholder="Votre adresse email"
                 className="w-full sm:flex-1 md:w-64 px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-gray-600 focus:border-gray-600 outline-none transition-colors duration-300 text-sm sm:text-base"
               />
-              <button 
+              <button
                 type="submit"
                 disabled={newsletterStatus !== 'idle'}
                 className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm sm:text-base font-semibold rounded-xl hover:shadow-lg transition-all duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
@@ -261,7 +261,7 @@ export const Footer: React.FC = () => {
             <div className="text-gray-400 text-sm">
               © {currentYear} SoliBox. Tous droits réservés.
             </div>
-            
+
             <div className="flex items-center space-x-6 text-sm">
               <span className="text-gray-400">Alimenté par l'énergie solaire</span>
               <div className="flex items-center space-x-2">
