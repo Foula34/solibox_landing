@@ -1,335 +1,134 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Users, Zap, Leaf, TrendingUp } from 'lucide-react';
 
 export const Impact: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [counts, setCounts] = useState({ families: 0, kwh: 0, savings: 0 });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
+    const duration = 2000;
+    const targets = { families: 500, kwh: 2500, savings: 1800 };
+    const steps = 50;
+    const interval = duration / steps;
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      setCounts({
+        families: Math.floor((targets.families / steps) * step),
+        kwh: Math.floor((targets.kwh / steps) * step),
+        savings: Math.floor((targets.savings / steps) * step),
+      });
 
-    return () => observer.disconnect();
+      if (step >= steps) clearInterval(timer);
+    }, interval);
+
+    return () => clearInterval(timer);
   }, []);
 
-  const testimonials = [
+  const stats = [
     {
-      name: 'Foula Fofana',
-      role: 'Propriétaire de panneaux solaires',
-      location: 'Conakry, Guinée',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      rating: 5,
-      text: 'Grâce à SoliBox, je génère 3,500 GNF par mois avec mon surplus solaire. Cela couvre mes frais d\'électricité et me laisse même un bénéfice pour ma famille.',
-      impact: '+3,500 GNF/mois',
-      before: 'Surplus gaspillé',
-      after: 'Revenus réguliers'
+      icon: Users,
+      value: `${counts.families}+`,
+      label: 'Familles connectées',
+      color: 'text-accent-500'
     },
     {
-      name: 'Alseny Bangoura',
-      role: 'Commerçant',
-      location: 'Labé, Guinée',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      rating: 5,
-      text: 'Mon petit commerce bénéficie maintenant d\'une électricité stable grâce aux panneaux solaires de mes voisins. Je peux enfin travailler le soir et mes clients sont contents.',
-      impact: 'Électricité stable 24/7',
-      before: 'Coupures fréquentes',
-      after: 'Commerce prospère'
+      icon: Zap,
+      value: `${counts.kwh}M`,
+      label: 'kWh partagés',
+      color: 'text-accent-500'
     },
     {
-      name: 'Boubacar Diallo',
-      role: 'Responsable communautaire',
-      location: 'Kankan, Guinée',
-      image: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      rating: 5,
-      text: 'SoliBox a transformé notre quartier. 15 familles partagent maintenant leur énergie solaire, créant une véritable solidarité énergétique. C\'est l\'avenir!',
-      impact: '15 familles connectées',
-      before: 'Foyers isolés',
-      after: 'Micro-réseau communautaire'
+      icon: TrendingUp,
+      value: `${counts.savings}M`,
+      label: 'GNF économisés',
+      color: 'text-accent-500'
     },
     {
-      name: 'Hawa Barry',
-      role: 'Enseignante',
-      location: 'Boké, Guinée',
-      image: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=2',
-      rating: 5,
-      text: 'Mes enfants peuvent maintenant étudier le soir avec un éclairage stable. L\'énergie partagée de nos voisins nous aide énormément, et c\'est moins cher que le générateur.',
-      impact: '50% d\'économies',
-      before: 'Générateur bruyant et cher',
-      after: 'Énergie propre et abordable'
+      icon: Leaf,
+      value: '85%',
+      label: 'Satisfaction utilisateurs',
+      color: 'text-accent-500'
     }
   ];
-
-  const impactStats = [
-    { value: '500+', label: 'Familles connectées', unit: '' },
-    { value: '2.5M', label: 'kWh partagés', unit: '' },
-    { value: '1.8M', label: 'GNF économisés', unit: '' },
-    { value: '85%', label: 'Satisfaction utilisateurs', unit: '' }
-  ];
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  useEffect(() => {
-    if (isVisible) {
-      const interval = setInterval(() => {
-        nextTestimonial();
-      }, 5000);
-      return () => clearInterval(interval);
-    }
-  }, [isVisible, currentTestimonial]);
 
   return (
-    <section id="impact" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
-              Histoires d'
-              <span className="text-gray-900 dark:text-white">Impact</span>
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-              Découvrez comment SoliBox transforme la vie des communautés en Guinée
-            </p>
-          </div>
+    <section id="impact" className="section-padding bg-primary-50 dark:bg-primary-900/50">
+      <div className="container-custom">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-900 dark:text-white mb-6">
+            Notre impact
+            <span className="text-accent-500">.</span>
+          </h2>
+          <p className="text-xl text-primary-600 dark:text-primary-400 leading-relaxed">
+            Des résultats concrets qui transforment des communautés entières.
+          </p>
+        </div>
 
-          {/* Impact Stats */}
-          <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 transition-all duration-1000 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            {impactStats.map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-4 sm:p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-white/20 dark:border-gray-700/30 shadow-lg hover:scale-105 transition-all duration-300"
-              >
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-1 sm:mb-2">
-                  {stat.value}<span className="text-base sm:text-lg">{stat.unit}</span>
-                </div>
-                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 px-1">
-                  {stat.label}
-                </div>
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="card p-8 text-center hover-lift animate-fade-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="w-16 h-16 bg-accent-100 dark:bg-accent-950/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <stat.icon className={`w-8 h-8 ${stat.color}`} />
               </div>
-            ))}
-          </div>
-
-          {/* Before/After Visual */}
-          <div className={`mb-12 sm:mb-16 transition-all duration-1000 delay-400 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6 sm:mb-8">
-                Transformation d'un quartier avec SoliBox
-              </h3>
-              
-              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                {/* Before */}
-                <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-orange-600 dark:text-orange-400 flex items-center">
-                     Avant SoliBox
-                  </h4>
-                  <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 p-6 rounded-xl border border-red-200 dark:border-red-800/30">
-                    <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                      <li className="flex items-start space-x-3">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>Surplus solaire gaspillé (40% de l'énergie produite)</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>Voisins dépendants de générateurs coûteux et polluants</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>Coupures d'électricité fréquentes</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>Pas de revenus additionnels pour les propriétaires</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* After */}
-                <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-orange-600 dark:text-orange-400 flex items-center">
-                     Avec SoliBox
-                  </h4>
-                  <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orane-800/20 p-6 rounded-xl border border-orange-200 dark:border-orange-800/30">
-                    <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                      <li className="flex items-start space-x-3">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>100% du surplus solaire valorisé et partagé</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>Énergie propre et abordable pour tous les voisins</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>Alimentation électrique stable 24/7</span>
-                      </li>
-                      <li className="flex items-start space-x-3">
-                        <span className="text-orange-500 mt-1">•</span>
-                        <span>Revenus passifs de 200,000-500,000 GNF/mois</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+              <div className={`text-5xl font-bold ${stat.color} mb-3`}>
+                {stat.value}
+              </div>
+              <div className="text-sm text-primary-600 dark:text-primary-400">
+                {stat.label}
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Before/After Comparison */}
+        <div className="grid md:grid-cols-2 gap-8 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          {/* Before */}
+          <div className="card p-8">
+            <h3 className="text-2xl font-bold text-primary-900 dark:text-white mb-6">
+              Avant SoliBox
+            </h3>
+            <ul className="space-y-4">
+              {[
+                'Surplus solaire gaspillé (40%)',
+                'Générateurs coûteux et polluants',
+                'Coupures d\'électricité fréquentes',
+                'Pas de revenus additionnels'
+              ].map((item, i) => (
+                <li key={i} className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-primary-400 rounded-full mt-2"></div>
+                  <span className="text-primary-600 dark:text-primary-400">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Testimonials Carousel */}
-          <div className={`transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Témoignages de notre communauté
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Les vraies histoires de transformation grâce à SoliBox
-              </p>
-            </div>
-
-            <div className="relative bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl overflow-hidden">
-              {/* Background Quote */}
-              <div className="absolute top-4 right-4 opacity-5">
-                <Quote className="w-24 h-24 sm:w-32 sm:h-32 text-gray-600" />
-              </div>
-
-              <div className="relative z-10">
-                {testimonials.map((testimonial, index) => (
-                  <div
-                    key={index}
-                    className={`transition-all duration-500 ${
-                      index === currentTestimonial 
-                        ? 'opacity-100 translate-x-0' 
-                        : index < currentTestimonial 
-                          ? 'opacity-0 -translate-x-full absolute inset-0' 
-                          : 'opacity-0 translate-x-full absolute inset-0'
-                    }`}
-                  >
-                    <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center">
-                      {/* User Info */}
-                      <div className="text-center md:text-left">
-                        <div className="inline-block relative mb-4">
-                          <img
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            className="w-24 h-24 rounded-full object-cover border-4 border-orange-200 dark:border-orange-800"
-                          />
-                          <div className="absolute -bottom-2 -right-2 bg-orange-500 rounded-full p-2">
-                            <div className="w-4 h-4 bg-white rounded-full"></div>
-                          </div>
-                        </div>
-                        
-                        <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
-                          {testimonial.role}
-                        </p>
-                        <p className="text-gray-500 dark:text-gray-500 text-xs mb-3">
-                          {testimonial.location}
-                        </p>
-                        
-                        <div className="flex justify-center md:justify-start mb-4">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Testimonial */}
-                      <div className="md:col-span-2 space-y-6">
-                        <blockquote className="text-lg text-gray-700 dark:text-gray-300 italic leading-relaxed">
-                          "{testimonial.text}"
-                        </blockquote>
-                        
-                        <div className="grid grid-cols-3 gap-4">
-                          <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-xl">
-                            <div className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-1">
-                              Impact
-                            </div>
-                            <div className="text-sm text-gray-700 dark:text-gray-300">
-                              {testimonial.impact}
-                            </div>
-                          </div>
-                          
-                          <div className="text-center p-4 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-xl">
-                            <div className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-1">
-                              Avant
-                            </div>
-                            <div className="text-sm text-gray-700 dark:text-gray-300">
-                              {testimonial.before}
-                            </div>
-                          </div>
-                          
-                          <div className="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-xl">
-                            <div className="text-lg font-bold text-orange-600 dark:text-orange-400 mb-1">
-                              Après
-                            </div>
-                            <div className="text-sm text-gray-700 dark:text-gray-300">
-                              {testimonial.after}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Navigation */}
-              <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                <button
-                  onClick={prevTestimonial}
-                  className="p-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-xl transition-colors duration-300 group"
-                >
-                  <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" />
-                </button>
-
-                <div className="flex space-x-2">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentTestimonial(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentTestimonial 
-                          ? 'bg-orange-500 w-8' 
-                          : 'bg-gray-300 dark:bg-gray-600 hover:bg-orange-300'
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                <button
-                  onClick={nextTestimonial}
-                  className="p-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-xl transition-colors duration-300 group"
-                >
-                  <ChevronRight className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" />
-                </button>
-              </div>
-            </div>
+          {/* After */}
+          <div className="card p-8 ring-2 ring-accent-500">
+            <h3 className="text-2xl font-bold text-primary-900 dark:text-white mb-6">
+              Avec SoliBox
+            </h3>
+            <ul className="space-y-4">
+              {[
+                '100% du surplus valorisé',
+                'Énergie propre et abordable',
+                'Alimentation stable 24/7',
+                'Revenus passifs réguliers'
+              ].map((item, i) => (
+                <li key={i} className="flex items-start space-x-3">
+                  <svg className="w-5 h-5 text-accent-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-primary-700 dark:text-primary-300 font-medium">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

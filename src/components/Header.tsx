@@ -19,71 +19,75 @@ export const Header: React.FC = () => {
     { label: 'Accueil', href: '#hero' },
     { label: 'Solution', href: '#solution' },
     { label: 'Avantages', href: '#benefits' },
-    { label: 'Revenus', href: '#earnings' },
     { label: 'Impact', href: '#impact' },
-    { label: 'Équipe', href: '#team' },
     { label: 'Contact', href: '#contact' }
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-500 overflow-hidden ${
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700' 
+        ? 'glass shadow-soft' 
         : 'bg-transparent'
     }`}>
-      <nav className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-full">
-        <div className="flex items-center justify-between h-14 sm:h-16 w-full">
+      <nav className="container-custom px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-1 sm:space-x-2 group cursor-pointer flex-shrink-0 min-w-0 max-w-[140px] sm:max-w-none">
-            <div className="relative flex-shrink-0">
-             {/*<Zap className="h-8 w-8 text-orange-500 group-hover:text-orange-600 transition-colors duration-300" />*/} 
-             <img 
+          <div 
+            onClick={() => scrollToSection('#hero')}
+            className="flex items-center space-x-3 group cursor-pointer"
+          >
+            <div className="relative">
+              <img 
                 src="/assets/logo/soliboxlogo-removebg-preview.png" 
-                alt="SoliBox Logo" 
-                className="h-5 w-5 sm:h-8 sm:w-8 md:h-10 md:w-10 object-contain transition-transform duration-300 group-hover:scale-110"
+                alt="SoliBox" 
+                className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gray-400 dark:bg-gray-600 rounded-full blur-lg opacity-10 group-hover:opacity-20 transition-opacity duration-300"></div>
             </div>
-            <span className="text-sm sm:text-base md:text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent whitespace-nowrap truncate">
+            <span className="text-2xl font-bold text-primary-900 dark:text-white">
               SoliBox
+              <span className="text-accent-500">.</span>
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center">
-            <div className="flex items-center space-x-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.href);
-                  }}
-                  className="px-3 xl:px-4 py-2 text-sm xl:text-base text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap cursor-pointer"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
+          <div className="hidden lg:flex items-center space-x-1">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.href);
+                }}
+                className="relative px-4 py-2 text-sm font-medium text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-white transition-colors duration-300 group cursor-pointer"
+              >
+                {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-500 group-hover:w-full transition-all duration-300"></span>
+              </a>
+            ))}
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4 flex-shrink-0">
-            <div className="flex-shrink-0">
-              <ThemeToggle />
-            </div>
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            
+            <button
+              onClick={() => scrollToSection('#contact')}
+              className="hidden lg:block btn-primary text-sm px-6 py-3"
+            >
+              Commencer
+            </button>
             
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Ouvrir le menu"
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300 flex-shrink-0"
+              aria-label="Menu"
+              className="lg:hidden p-2 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors duration-300"
             >
               {isMobileMenuOpen ? (
-                <X className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                <X className="h-6 w-6 text-primary-900 dark:text-white" />
               ) : (
-                <Menu className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                <Menu className="h-6 w-6 text-primary-900 dark:text-white" />
               )}
             </button>
           </div>
@@ -91,9 +95,9 @@ export const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+          isMobileMenuOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'
         }`}>
-          <div className="py-4 space-y-2">
+          <div className="space-y-2 pt-4">
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -103,11 +107,20 @@ export const Header: React.FC = () => {
                   setIsMobileMenuOpen(false);
                   scrollToSection(item.href);
                 }}
-                className="block px-4 py-3 text-base text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 cursor-pointer"
+                className="block px-4 py-3 text-base font-medium text-primary-700 dark:text-primary-300 hover:text-accent-500 hover:bg-primary-50 dark:hover:bg-primary-800 rounded-xl transition-all duration-300 cursor-pointer"
               >
                 {item.label}
               </a>
             ))}
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                scrollToSection('#contact');
+              }}
+              className="w-full btn-primary text-base mt-4"
+            >
+              Commencer
+            </button>
           </div>
         </div>
       </nav>

@@ -6,12 +6,16 @@ import { Problem } from './components/Problem';
 import { Solution } from './components/Solution';
 import { Benefits } from './components/Benefits';
 import { Earnings } from './components/Earnings';
+import { Calculator } from './components/Calculator';
 import { Impact } from './components/Impact';
 import { Team } from './components/Team';
 import { Roadmap } from './components/Roadmap';
 import { Partners } from './components/Partners';
+import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { FloatingCTA } from './components/FloatingCTA';
+import { SocialProof } from './components/SocialProof';
 
 function App() {
   useEffect(() => {
@@ -27,72 +31,6 @@ function App() {
         }
       });
     });
-
-    // Add custom CSS for animations
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes fade-in {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      
-      @keyframes gradient {
-        0%, 100% {
-          background-size: 200% 200%;
-          background-position: left center;
-        }
-        50% {
-          background-size: 200% 200%;
-          background-position: right center;
-        }
-      }
-      
-      .animate-fade-in {
-        animation: fade-in 1s ease-out;
-      }
-      
-      .animate-gradient {
-        background-size: 200% 200%;
-        animation: gradient 3s ease infinite;
-      }
-      
-      html {
-        scroll-behavior: smooth;
-      }
-      
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      
-      ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-      }
-      
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(to bottom, #fb923c, #3b82f6);
-        border-radius: 4px;
-      }
-      
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(to bottom, #f97316, #2563eb);
-      }
-      
-      .dark ::-webkit-scrollbar-track {
-        background: #1e293b;
-      }
-    `;
-    document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style);
-    };
   }, []);
 
   return (
@@ -105,13 +43,19 @@ function App() {
           <Solution />
           <Benefits />
           <Earnings />
+          <Calculator />
           <Impact />
           <Team />
           <Roadmap />
           <Partners />
+          <FAQ />
           <Contact />
         </main>
         <Footer />
+        
+        {/* Floating Elements */}
+        <FloatingCTA />
+        <SocialProof />
       </div>
     </ThemeProvider>
   );
