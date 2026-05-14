@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
     >
       <div className="container-custom px-6 sm:px-8 lg:px-12">
         {/* Eyebrow with live indicator */}
-        <p className="eyebrow mb-10 sm:mb-14">
+        <p data-reveal className="eyebrow mb-10 sm:mb-14">
           <span className="relative inline-flex items-center mr-1.5">
             <span className="absolute inline-block w-2 h-2 rounded-full bg-solar-500 opacity-60 animate-ping" />
             <span className="relative inline-block w-2 h-2 rounded-full bg-solar-500" />

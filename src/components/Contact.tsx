@@ -43,7 +43,7 @@ export const Contact: React.FC = () => {
       <div className="container-custom">
         <div className="grid grid-cols-12 gap-y-16 lg:gap-x-16">
           {/* Left: editorial column with direct details */}
-          <div className="col-span-12 lg:col-span-5">
+          <div data-reveal className="col-span-12 lg:col-span-5">
             <p className="eyebrow mb-6">Contact</p>
             <h2 className="headline-section mb-8">
               Parlons{' '}

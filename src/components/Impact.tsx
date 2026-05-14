@@ -63,7 +63,7 @@ export const Impact: React.FC = () => {
     >
       <div className="container-custom">
         {/* Header */}
-        <header className="max-w-3xl mb-20 lg:mb-24">
+        <header data-reveal className="max-w-3xl mb-20 lg:mb-24">
           <p className="eyebrow mb-6">Impact mesurable</p>
           <h2 className="headline-section mb-8">
             L&rsquo;impact se{' '}

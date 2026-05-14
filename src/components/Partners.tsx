@@ -43,7 +43,7 @@ export const Partners: React.FC = () => {
     >
       <div className="container-custom">
         {/* Header — 2-col asymmetric */}
-        <div className="grid grid-cols-12 gap-y-12 lg:gap-x-16 mb-16 lg:mb-20">
+        <div data-reveal className="grid grid-cols-12 gap-y-12 lg:gap-x-16 mb-16 lg:mb-20">
           <header className="col-span-12 lg:col-span-5">
             <p className="eyebrow mb-6">Écosystème</p>
             <h2 className="headline-section">

@@ -43,7 +43,7 @@ export const Solution: React.FC = () => {
     >
       <div className="container-custom">
         {/* Header */}
-        <header className="max-w-3xl mb-20 lg:mb-24">
+        <header data-reveal className="max-w-3xl mb-20 lg:mb-24">
           <p className="eyebrow mb-6">Comment ça marche</p>
           <h2 className="headline-section mb-8">
             Trois étapes. Une installation.{' '}
@@ -59,7 +59,7 @@ export const Solution: React.FC = () => {
         </header>
 
         {/* Energy + revenue flow diagram */}
-        <div className="mb-20 lg:mb-24">
+        <div data-reveal className="mb-20 lg:mb-24">
           <EnergyFlow />
         </div>
 

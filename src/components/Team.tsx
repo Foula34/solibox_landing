@@ -57,7 +57,7 @@ export const Team: React.FC = () => {
     >
       <div className="container-custom">
         {/* Header */}
-        <header className="max-w-3xl mb-20 lg:mb-24">
+        <header data-reveal className="max-w-3xl mb-16 lg:mb-20">
           <p className="eyebrow mb-6">L’équipe</p>
           <h2 className="headline-section mb-8">
             Cinq personnes,{' '}
@@ -71,6 +71,66 @@ export const Team: React.FC = () => {
             prise par celui ou celle qui l&rsquo;implémente.
           </p>
         </header>
+
+        {/* Atelier block — portrait photo (5 cols) + transition copy (7 cols).
+            Exploits the natural verticality of a portrait shot instead of cropping it. */}
+        <div data-reveal className="grid grid-cols-12 gap-y-10 lg:gap-x-16 mb-24 lg:mb-32">
+          <figure className="col-span-12 sm:col-span-6 lg:col-span-5">
+            <div className="relative aspect-[3/4] bg-mist dark:bg-ink-800 overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <p className="text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-600 mb-2">
+                    Photo équipe en atelier
+                  </p>
+                  <p className="text-xs text-ink-400 dark:text-ink-600">
+                    /public/assets/equipe/atelier.jpeg
+                  </p>
+                </div>
+              </div>
+              <img
+                src="/assets/equipe/atelier.jpeg"
+                alt="L'équipe SoliBox au travail, Conakry"
+                className="relative w-full h-full object-cover object-center"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            </div>
+            <figcaption className="mt-4 text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-400">
+              Fab Lab · Orange Digital Center · Conakry
+            </figcaption>
+          </figure>
+
+          <div className="col-span-12 sm:col-span-6 lg:col-span-7 lg:pt-10 flex flex-col">
+            <p className="eyebrow mb-6">En atelier</p>
+            <h3 className="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] mb-8">
+              C&rsquo;est ici que{' '}
+              <span className="text-solar-600 dark:text-solar-400">SoliBox s&rsquo;écrit.</span>
+            </h3>
+            <p className="text-base leading-relaxed text-ink-600 dark:text-ink-300 max-w-md">
+              L&rsquo;atelier SoliBox prend forme au sein du Fab Lab d&rsquo;
+              <span className="text-solar-600 dark:text-solar-400 font-medium">
+                Orange Digital Center
+              </span>
+              {' '}à Conakry. Pas d&rsquo;open-space industriel, pas de salles
+              vitrées — juste cinq personnes, chacune en train de construire
+              la pièce qu&rsquo;elle comprend mieux que tout le monde.
+            </p>
+          </div>
+        </div>
+
+        {/* Subsection separator — bridges the atelier block and the individual roster */}
+        <div data-reveal className="pt-10 border-t border-mist dark:border-ink-800 mb-16 lg:mb-20 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <p className="eyebrow mb-3">Profils</p>
+            <h3 className="font-display font-medium text-2xl sm:text-3xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em]">
+              Qui fait quoi.
+            </h3>
+          </div>
+          <p className="text-sm text-ink-500 dark:text-ink-400 max-w-xs">
+            Cinq parcours distincts, un point commun : construire à Conakry.
+          </p>
+        </div>
 
         {/* Roster — square portraits, no ring, no circle, no fake animations */}
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">

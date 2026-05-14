@@ -83,7 +83,7 @@ export const Benefits: React.FC = () => {
 
       <div className="relative container-custom">
         {/* Header — inline eyebrow (cannot use .eyebrow class on inverted bg) */}
-        <header className="max-w-3xl mb-20 lg:mb-24">
+        <header data-reveal className="max-w-3xl mb-20 lg:mb-24">
           <p className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-eyebrow text-ink-400 dark:text-ink-500 mb-6">
             <span className="inline-block h-px w-8 bg-ink-600 dark:bg-ink-400" />
             Trois bénéfices mesurables

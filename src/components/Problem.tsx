@@ -37,7 +37,7 @@ export const Problem: React.FC = () => {
     >
       <div className="container-custom">
         {/* Editorial header */}
-        <header className="max-w-3xl">
+        <header data-reveal className="max-w-3xl">
           <p className="eyebrow mb-6">Le contexte</p>
           <h2 className="headline-section mb-8">
             Un toit qui produit.{' '}

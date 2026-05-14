@@ -61,7 +61,7 @@ export const FAQ: React.FC = () => {
       <div className="container-custom">
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-16">
           {/* Left: header + secondary CTA */}
-          <header className="col-span-12 lg:col-span-4">
+          <header data-reveal className="col-span-12 lg:col-span-4">
             <p className="eyebrow mb-6">FAQ</p>
             <h2 className="headline-section mb-8">
               Questions{' '}

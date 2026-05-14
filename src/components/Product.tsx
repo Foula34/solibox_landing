@@ -42,7 +42,7 @@ export const Product: React.FC = () => {
     >
       <div className="container-custom">
         {/* Header */}
-        <header className="max-w-3xl mb-20 lg:mb-24">
+        <header data-reveal className="max-w-3xl mb-20 lg:mb-24">
           <p className="eyebrow mb-6">Le produit</p>
           <h2 className="headline-section mb-8">
             Du matériel à l&rsquo;app,{' '}
