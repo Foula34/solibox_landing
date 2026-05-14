@@ -1,135 +1,139 @@
-import React, { useState, useEffect } from 'react';
-import { Users, Zap, Leaf, TrendingUp } from 'lucide-react';
+import React from 'react';
+
+type Goal = {
+  metric: string;
+  unit: string;
+  description: string;
+  status: 'en cours' | 'objectif';
+  horizon: string;
+};
+
+const goals: Goal[] = [
+  {
+    metric: '100',
+    unit: 'foyers',
+    description:
+      'connectés sur le pilote de Conakry — producteurs et bénéficiaires confondus.',
+    status: 'objectif',
+    horizon: 'Q4 2026',
+  },
+  {
+    metric: '120',
+    unit: 'MWh / an',
+    description:
+      'd’électricité solaire redistribuée, traçable au compteur SoliBox installé chez chaque producteur.',
+    status: 'objectif',
+    horizon: 'Q4 2026',
+  },
+  {
+    metric: '~95 t',
+    unit: 'CO₂ évitées / an',
+    description:
+      'par substitution à des sources thermiques (groupes électrogènes, bois de chauffe).',
+    status: 'objectif',
+    horizon: 'Q4 2026',
+  },
+];
+
+type Method = {
+  what: string;
+  how: string;
+};
+
+const methodology: Method[] = [
+  {
+    what: 'Énergie redistribuée',
+    how: 'Compteur intelligent SoliBox installé en aval de l’onduleur. Mesure par seconde, certifiée constructeur.',
+  },
+  {
+    what: 'Revenu producteur',
+    how: 'kWh × tarif unitaire de la zone (200 GNF/kWh sur le pilote). Versement mensuel, traçable bancairement.',
+  },
+  {
+    what: 'CO₂ évitée',
+    how: 'Substitution × facteur d’émission EDG 2023 (≈ 0,8 kg CO₂ / kWh thermique). Audit annuel indépendant prévu.',
+  },
+];
 
 export const Impact: React.FC = () => {
-  const [counts, setCounts] = useState({ families: 0, kwh: 0, savings: 0 });
-
-  useEffect(() => {
-    const duration = 2000;
-    const targets = { families: 500, kwh: 2500, savings: 1800 };
-    const steps = 50;
-    const interval = duration / steps;
-
-    let step = 0;
-    const timer = setInterval(() => {
-      step++;
-      setCounts({
-        families: Math.floor((targets.families / steps) * step),
-        kwh: Math.floor((targets.kwh / steps) * step),
-        savings: Math.floor((targets.savings / steps) * step),
-      });
-
-      if (step >= steps) clearInterval(timer);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const stats = [
-    {
-      icon: Users,
-      value: `${counts.families}+`,
-      label: 'Familles connectées',
-      color: 'text-accent-500'
-    },
-    {
-      icon: Zap,
-      value: `${counts.kwh}M`,
-      label: 'kWh partagés',
-      color: 'text-accent-500'
-    },
-    {
-      icon: TrendingUp,
-      value: `${counts.savings}M`,
-      label: 'GNF économisés',
-      color: 'text-accent-500'
-    },
-    {
-      icon: Leaf,
-      value: '85%',
-      label: 'Satisfaction utilisateurs',
-      color: 'text-accent-500'
-    }
-  ];
-
   return (
-    <section id="impact" className="section-padding bg-primary-50 dark:bg-primary-900/50">
+    <section
+      id="impact"
+      className="section-padding bg-paper dark:bg-ink-950"
+    >
       <div className="container-custom">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-900 dark:text-white mb-6">
-            Notre impact
-            <span className="text-accent-500">.</span>
+        {/* Header */}
+        <header className="max-w-3xl mb-20 lg:mb-24">
+          <p className="eyebrow mb-6">Impact mesurable</p>
+          <h2 className="headline-section mb-8">
+            L&rsquo;impact se{' '}
+            <span className="text-sky-700 dark:text-sky-300">
+              mesure
+            </span>
+            <span className="text-ink-400 dark:text-ink-500">,</span>
+            <br />
+            il ne se proclame pas.
           </h2>
-          <p className="text-xl text-primary-600 dark:text-primary-400 leading-relaxed">
-            Des résultats concrets qui transforment des communautés entières.
+          <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
+            Nous publions ici les objectifs vérifiables que nous nous fixons
+            pour le pilote de Conakry. Chaque métrique est rattachée à un
+            instrument de mesure, pas à une projection marketing.
           </p>
-        </div>
+        </header>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="card p-8 text-center hover-lift animate-fade-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="w-16 h-16 bg-accent-100 dark:bg-accent-950/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <stat.icon className={`w-8 h-8 ${stat.color}`} />
+        {/* Goals — 3 columns with status badge */}
+        <ul className="grid grid-cols-1 md:grid-cols-3 grid-divide mb-24 lg:mb-28">
+          {goals.map((g) => (
+            <li key={g.metric} className="card-stat">
+              <div className="flex items-center justify-between mb-8">
+                <span className="text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-500">
+                  {g.status}
+                </span>
+                <span className="text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
+                  {g.horizon}
+                </span>
               </div>
-              <div className={`text-5xl font-bold ${stat.color} mb-3`}>
-                {stat.value}
-              </div>
-              <div className="text-sm text-primary-600 dark:text-primary-400">
-                {stat.label}
-              </div>
-            </div>
+              <p className="font-display font-bold text-6xl lg:text-7xl text-ink-900 dark:text-paper leading-[0.95] tracking-[-0.025em] tabular-nums">
+                {g.metric}
+              </p>
+              <p className="mt-3 text-sm uppercase tracking-eyebrow text-ink-500 dark:text-ink-400">
+                {g.unit}
+              </p>
+              <p className="mt-6 text-sm leading-relaxed text-ink-700 dark:text-ink-300 max-w-xs">
+                {g.description}
+              </p>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Before/After Comparison */}
-        <div className="grid md:grid-cols-2 gap-8 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-          {/* Before */}
-          <div className="card p-8">
-            <h3 className="text-2xl font-bold text-primary-900 dark:text-white mb-6">
-              Avant SoliBox
+        {/* Methodology */}
+        <div className="grid grid-cols-12 gap-y-10 lg:gap-x-16">
+          <div className="col-span-12 lg:col-span-4">
+            <p className="eyebrow mb-6">Méthodologie</p>
+            <h3 className="font-display font-medium text-3xl sm:text-4xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] mb-6">
+              Comment on compte.
             </h3>
-            <ul className="space-y-4">
-              {[
-                'Surplus solaire gaspillé (40%)',
-                'Générateurs coûteux et polluants',
-                'Coupures d\'électricité fréquentes',
-                'Pas de revenus additionnels'
-              ].map((item, i) => (
-                <li key={i} className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-primary-400 rounded-full mt-2"></div>
-                  <span className="text-primary-600 dark:text-primary-400">{item}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="text-base leading-relaxed text-ink-600 dark:text-ink-300 max-w-sm">
+              Chaque chiffre annoncé sur cette page est dérivé d&rsquo;une mesure
+              physique ou d&rsquo;un facteur de conversion documenté.
+            </p>
           </div>
 
-          {/* After */}
-          <div className="card p-8 ring-2 ring-accent-500">
-            <h3 className="text-2xl font-bold text-primary-900 dark:text-white mb-6">
-              Avec SoliBox
-            </h3>
-            <ul className="space-y-4">
-              {[
-                '100% du surplus valorisé',
-                'Énergie propre et abordable',
-                'Alimentation stable 24/7',
-                'Revenus passifs réguliers'
-              ].map((item, i) => (
-                <li key={i} className="flex items-start space-x-3">
-                  <svg className="w-5 h-5 text-accent-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-primary-700 dark:text-primary-300 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <dl className="col-span-12 lg:col-span-8 border-t border-mist dark:border-ink-800">
+            {methodology.map((m) => (
+              <div
+                key={m.what}
+                className="grid grid-cols-12 gap-x-6 py-8 border-b border-mist dark:border-ink-800"
+              >
+                <dt className="col-span-12 md:col-span-4 text-sm font-medium text-ink-900 dark:text-paper">
+                  {m.what}
+                </dt>
+                <dd className="col-span-12 md:col-span-8 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                  {m.how}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

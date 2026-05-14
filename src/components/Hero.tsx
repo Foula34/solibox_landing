@@ -1,120 +1,119 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { scrollToSection } from '../utils/scrollUtils';
-import { useCountUp } from '../hooks/useCountUp';
+
+type Stat = {
+  kpi: string;
+  label: string;
+  source: string;
+};
+
+const stats: Stat[] = [
+  {
+    kpi: '60 %',
+    label: 'des zones rurales en Guinée n’ont pas d’accès fiable à l’électricité.',
+    source: 'Banque Mondiale, 2023',
+  },
+  {
+    kpi: '~40 %',
+    label: 'du surplus solaire résidentiel est perdu chaque jour, faute de stockage ou de redistribution.',
+    source: 'Estimation IRENA, 2023',
+  },
+  {
+    kpi: '100+',
+    label: 'foyers déjà pré-inscrits sur le pilote de Conakry, opéré par SoliBox.',
+    source: 'Programme SoliBox, Q1 2026',
+  },
+];
 
 export const Hero: React.FC = () => {
-  const [startCounting, setStartCounting] = useState(false);
-
-  useEffect(() => {
-    // Start counting after component mounts
-    const timer = setTimeout(() => setStartCounting(true), 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Animated counters
-  const count1 = useCountUp({ end: 60, duration: 2000, start: startCounting ? 0 : 60 });
-  const count2 = useCountUp({ end: 40, duration: 2000, start: startCounting ? 0 : 40 });
-  const count3 = useCountUp({ end: 100, duration: 2000, start: startCounting ? 0 : 100 });
-
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-primary-950">
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-accent-500/30 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          />
-        ))}
-      </div>
+    <section
+      id="hero"
+      className="relative bg-paper dark:bg-ink-950 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32"
+    >
+      <div className="container-custom px-6 sm:px-8 lg:px-12">
+        {/* Eyebrow */}
+        <p className="eyebrow mb-10 sm:mb-14">
+          Énergie · Guinée · Pilote 2026
+        </p>
 
-      {/* Minimal Background Elements */}
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-accent-500/5 dark:bg-accent-500/10 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-primary-500/5 dark:bg-primary-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        {/* Editorial layout: headline left, demo panel right */}
+        <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12">
+          {/* Headline column */}
+          <div className="col-span-12 lg:col-span-8">
+            <h1 className="headline-display max-w-4xl">
+              L&rsquo;électricité que vous ne consommez pas{' '}
+              <span className="text-solar-600 dark:text-solar-400">
+                devient un revenu
+              </span>
+              <span className="text-ink-400 dark:text-ink-500"> — </span>
+              et l&rsquo;énergie de vos voisins.
+            </h1>
 
-      <div className="container-custom section-padding relative z-10">
-        <div className="max-w-5xl">
-          {/* Badge */}
-          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-accent-50 dark:bg-accent-950/30 border border-accent-200 dark:border-accent-800 rounded-full mb-8 animate-fade-up">
-            <Sparkles className="w-4 h-4 text-accent-500" />
-            <span className="text-sm font-medium text-accent-700 dark:text-accent-300">
-              Révolutionnez votre énergie solaire
-            </span>
-          </div>
+            {/* Editorial rule */}
+            <div className="mt-12 mb-8 h-px w-16 bg-ink-300 dark:bg-ink-700" />
 
-          {/* Main Headline */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-primary-900 dark:text-white leading-tight mb-8 animate-fade-up" style={{ animationDelay: '0.1s' }}>
-            Transformez votre
-            <br />
-            <span className="text-gradient">surplus solaire</span>
-            <br />
-            en revenus
-          </h1>
+            <p className="max-w-xl text-lg sm:text-xl leading-relaxed text-ink-600 dark:text-ink-300">
+              SoliBox redistribue automatiquement le surplus de votre installation
+              solaire aux foyers voisins non raccordés, et le convertit en revenu
+              mensuel mesurable, payé en GNF.
+            </p>
 
-          {/* Subtitle */}
-          <p className="text-xl sm:text-2xl text-primary-600 dark:text-primary-400 max-w-3xl leading-relaxed mb-12 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            Avec <span className="font-semibold text-accent-500">SoliBox</span>, l'électricité que vous n'utilisez pas alimente vos voisins et vous génère un revenu passif.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-            <button 
-              onClick={() => scrollToSection('#solution')}
-              className="group btn-primary flex items-center justify-center space-x-2 animate-glow"
-            >
-              <span>Découvrir SoliBox</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </button>
-            
-            <button 
-              onClick={() => scrollToSection('#contact')}
-              className="btn-secondary flex items-center justify-center"
-            >
-              Commencer maintenant
-            </button>
-          </div>
-
-          {/* Animated Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 pt-8 border-t border-primary-200 dark:border-primary-800 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            <div className="text-center sm:text-left group">
-              <div className="text-4xl sm:text-5xl font-bold text-primary-900 dark:text-white mb-2 group-hover:text-accent-500 transition-colors duration-300">
-                {count1}%
-              </div>
-              <div className="text-sm text-primary-600 dark:text-primary-400">
-                Zones rurales sans électricité fiable
-              </div>
-            </div>
-            <div className="text-center sm:text-left group">
-              <div className="text-4xl sm:text-5xl font-bold text-primary-900 dark:text-white mb-2 group-hover:text-accent-500 transition-colors duration-300">
-                {count2}%
-              </div>
-              <div className="text-sm text-primary-600 dark:text-primary-400">
-                Surplus solaire gaspillé
-              </div>
-            </div>
-            <div className="text-center sm:text-left group">
-              <div className="text-4xl sm:text-5xl font-bold text-primary-900 dark:text-white mb-2 group-hover:text-accent-500 transition-colors duration-300">
-                {count3}+
-              </div>
-              <div className="text-sm text-primary-600 dark:text-primary-400">
-                Familles connectées
-              </div>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <button
+                onClick={() => scrollToSection('#solution')}
+                className="btn-primary group"
+              >
+                <span>Voir comment ça marche</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+              <button
+                onClick={() => scrollToSection('#contact')}
+                className="btn-secondary"
+              >
+                Devenir partenaire
+              </button>
             </div>
           </div>
+
+          {/* Side panel — single editorial figure */}
+          <aside className="col-span-12 lg:col-span-4 pt-10 lg:pt-0 lg:pl-10 border-t lg:border-t-0 lg:border-l border-mist dark:border-ink-800 flex">
+            <figure className="flex flex-col justify-end w-full">
+              <p className="eyebrow mb-6">Cas type</p>
+              <p className="font-display font-bold text-6xl sm:text-7xl leading-[0.95] tracking-[-0.02em] text-ink-900 dark:text-paper">
+                ~30 000
+                <span className="text-ink-400 dark:text-ink-500 font-semibold"> GNF</span>
+              </p>
+              <p className="mt-2 text-sm uppercase tracking-eyebrow text-ink-500 dark:text-ink-400">
+                par mois
+              </p>
+              <figcaption className="mt-6 text-sm leading-relaxed text-ink-600 dark:text-ink-300 max-w-xs">
+                Revenu médian estimé pour une installation solaire résidentielle
+                de 3&nbsp;kW connectée à SoliBox, en mode partage de revenus.
+              </figcaption>
+              <p className="mt-4 text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
+                Estimation pilote · sujette à variation
+              </p>
+            </figure>
+          </aside>
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-300 dark:border-primary-700 rounded-full flex justify-center p-2">
-          <div className="w-1 h-3 bg-accent-500 rounded-full animate-pulse"></div>
+        {/* Editorial stat bar — sourced, no animations, no glow */}
+        <div className="mt-24 sm:mt-28 lg:mt-32 grid grid-cols-1 md:grid-cols-3 grid-divide">
+          {stats.map((stat) => (
+            <div key={stat.kpi} className="card-stat">
+              <p className="font-display font-bold text-5xl sm:text-6xl leading-[0.95] tracking-[-0.02em] text-ink-900 dark:text-paper">
+                {stat.kpi}
+              </p>
+              <p className="mt-5 text-sm leading-relaxed text-ink-700 dark:text-ink-300 max-w-xs">
+                {stat.label}
+              </p>
+              <p className="mt-5 text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
+                Source · {stat.source}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

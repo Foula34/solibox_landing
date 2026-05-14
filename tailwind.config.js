@@ -5,78 +5,103 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Editorial surface tokens
+        paper: '#FAFAF7',
+        sand: '#F3EDE2',
+        mist: '#E8E4DC',
+
+        // Ink — warm near-black neutral scale
+        ink: {
+          50:  '#F7F5F2',
+          100: '#EBE7E0',
+          200: '#D6D0C5',
+          300: '#B8B0A2',
+          400: '#8A8275',
+          500: '#5E574C',
+          600: '#423D34',
+          700: '#2B2823',
+          800: '#1A1816',
+          900: '#0F0E0D',
+          950: '#080706',
+        },
+
+        // Solar — brand vivid orange centered on #FF9900
+        solar: {
+          50:  '#FFF5E6',
+          100: '#FFE5BD',
+          200: '#FFCC85',
+          300: '#FFB347',
+          400: '#FFA21E',
+          500: '#FF9900', // BRAND
+          600: '#E08400',
+          700: '#B36800',
+          800: '#8A4F00',
+          900: '#6B3D00',
+          950: '#3D2200',
+        },
+
+        // Sky — institutional deep blue centered on #0F477C
+        sky: {
+          50:  '#EEF3F8',
+          100: '#D6E0EC',
+          200: '#ADC2D9',
+          300: '#819FC0',
+          400: '#5479A3',
+          500: '#2F5A89',
+          600: '#1B4F7E',
+          700: '#0F477C', // BRAND
+          800: '#0B3A66',
+          900: '#082E50',
+          950: '#051F38',
+        },
+
+        // Legacy aliases — kept so older references keep rendering
         primary: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a', // Main primary color
-          950: '#020617',
+          50:  '#F7F5F2',
+          100: '#EBE7E0',
+          200: '#D6D0C5',
+          300: '#B8B0A2',
+          400: '#8A8275',
+          500: '#5E574C',
+          600: '#423D34',
+          700: '#2B2823',
+          800: '#1A1816',
+          900: '#0F0E0D',
+          950: '#080706',
         },
         accent: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316', // Main accent color (Orange-500)
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
-          950: '#431407',
+          50:  '#FFF5E6',
+          100: '#FFE5BD',
+          200: '#FFCC85',
+          300: '#FFB347',
+          400: '#FFA21E',
+          500: '#FF9900',
+          600: '#E08400',
+          700: '#B36800',
+          800: '#8A4F00',
+          900: '#6B3D00',
+          950: '#3D2200',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Montserrat', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Glacial Indifference"', 'Montserrat', 'system-ui', 'sans-serif'],
+      },
+      letterSpacing: {
+        eyebrow: '0.18em',
       },
       animation: {
-        'fade-up': 'fadeUp 0.6s ease-out',
-        'fade-in': 'fadeIn 0.8s ease-out',
-        'slide-in-left': 'slideInLeft 0.6s ease-out',
-        'slide-in-right': 'slideInRight 0.6s ease-out',
-        'scale-in': 'scaleIn 0.5s ease-out',
-        'glow': 'glow 2s ease-in-out infinite',
-        'float': 'float 3s ease-in-out infinite',
-        'gradient-shift': 'gradientShift 3s ease infinite',
+        'fade-up': 'fadeUp 0.5s ease-out forwards',
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
       },
       keyframes: {
         fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
-        },
-        slideInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(-50px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        slideInRight: {
-          '0%': { opacity: '0', transform: 'translateX(50px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        scaleIn: {
-          '0%': { opacity: '0', transform: 'scale(0.9)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
-        },
-        glow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(249, 115, 22, 0.6)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        gradientShift: {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
         },
       },
       spacing: {
@@ -86,10 +111,7 @@ export default {
         '128': '32rem',
       },
       boxShadow: {
-        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
-        'glow-sm': '0 0 15px rgba(249, 115, 22, 0.3)',
-        'glow-md': '0 0 30px rgba(249, 115, 22, 0.4)',
-        'glow-lg': '0 0 45px rgba(249, 115, 22, 0.5)',
+        soft: '0 1px 2px rgba(15,14,13,0.04), 0 8px 24px -12px rgba(15,14,13,0.08)',
       },
     },
   },

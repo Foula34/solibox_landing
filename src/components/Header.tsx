@@ -1,56 +1,52 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
 import { scrollToSection } from '../utils/scrollUtils';
+
+const navItems = [
+  { label: 'Solution', href: '#solution' },
+  { label: 'Tarification', href: '#earnings' },
+  { label: 'Impact', href: '#impact' },
+  { label: 'Équipe', href: '#team' },
+];
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navItems = [
-    { label: 'Accueil', href: '#hero' },
-    { label: 'Solution', href: '#solution' },
-    { label: 'Avantages', href: '#benefits' },
-    { label: 'Impact', href: '#impact' },
-    { label: 'Contact', href: '#contact' }
-  ];
-
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'glass shadow-soft' 
-        : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 bg-paper/95 dark:bg-ink-950/95 backdrop-blur-sm transition-[border-color] duration-300 ${
+        isScrolled
+          ? 'border-b border-mist dark:border-ink-800'
+          : 'border-b border-transparent'
+      }`}
+    >
       <nav className="container-custom px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <div 
+          <button
             onClick={() => scrollToSection('#hero')}
-            className="flex items-center space-x-3 group cursor-pointer"
+            className="flex items-center gap-3 group"
+            aria-label="Accueil SoliBox"
           >
-            <div className="relative">
-              <img 
-                src="/assets/logo/soliboxlogo-removebg-preview.png" 
-                alt="SoliBox" 
-                className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
-              />
-            </div>
-            <span className="text-2xl font-bold text-primary-900 dark:text-white">
+            <img
+              src="/assets/logo/soliboxlogo-removebg-preview.png"
+              alt=""
+              className="h-8 w-8 object-contain"
+            />
+            <span className="font-display font-semibold text-xl tracking-[-0.01em] text-ink-900 dark:text-paper">
               SoliBox
-              <span className="text-accent-500">.</span>
             </span>
-          </div>
+          </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          {/* Desktop nav */}
+          <div className="hidden lg:flex items-center gap-10">
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -59,67 +55,65 @@ export const Header: React.FC = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="relative px-4 py-2 text-sm font-medium text-primary-600 dark:text-primary-300 hover:text-primary-900 dark:hover:text-white transition-colors duration-300 group cursor-pointer"
+                className="text-sm text-ink-600 dark:text-ink-300 hover:text-ink-900 dark:hover:text-paper transition-colors"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-500 group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
 
-          {/* Right Side */}
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            
+          {/* CTA + mobile burger */}
+          <div className="flex items-center gap-3">
             <button
               onClick={() => scrollToSection('#contact')}
-              className="hidden lg:block btn-primary text-sm px-6 py-3"
+              className="hidden lg:inline-flex btn-primary text-sm px-5 py-2.5"
             >
-              Commencer
+              Nous contacter
             </button>
-            
-            {/* Mobile menu button */}
+
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Menu"
-              className="lg:hidden p-2 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors duration-300"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isOpen}
+              className="lg:hidden p-2 -mr-2 text-ink-900 dark:text-paper"
             >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-primary-900 dark:text-white" />
-              ) : (
-                <Menu className="h-6 w-6 text-primary-900 dark:text-white" />
-              )}
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'
-        }`}>
-          <div className="space-y-2 pt-4">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMobileMenuOpen(false);
-                  scrollToSection(item.href);
-                }}
-                className="block px-4 py-3 text-base font-medium text-primary-700 dark:text-primary-300 hover:text-accent-500 hover:bg-primary-50 dark:hover:bg-primary-800 rounded-xl transition-all duration-300 cursor-pointer"
-              >
-                {item.label}
-              </a>
-            ))}
+        {/* Mobile menu */}
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ${
+            isOpen ? 'max-h-96 pb-6' : 'max-h-0'
+          }`}
+        >
+          <div className="border-t border-mist dark:border-ink-800 pt-4">
+            <ul className="space-y-1">
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsOpen(false);
+                      scrollToSection(item.href);
+                    }}
+                    className="block py-3 text-base text-ink-700 dark:text-ink-300 hover:text-ink-900 dark:hover:text-paper transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
             <button
               onClick={() => {
-                setIsMobileMenuOpen(false);
+                setIsOpen(false);
                 scrollToSection('#contact');
               }}
-              className="w-full btn-primary text-base mt-4"
+              className="btn-primary w-full mt-4"
             >
-              Commencer
+              Nous contacter
             </button>
           </div>
         </div>

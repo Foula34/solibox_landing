@@ -8,21 +8,24 @@ export const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 group"
-      aria-label="Toggle theme"
+      aria-label={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
+      className="inline-flex items-center gap-2.5 text-[10px] uppercase tracking-eyebrow text-ink-500 hover:text-paper transition-colors"
     >
-      <div className="relative w-6 h-6">
-        <Sun 
-          className={`absolute inset-0 w-6 h-6 text-amber-400 transition-all duration-500 ${
-            isDark ? 'scale-0 rotate-90 opacity-0' : 'scale-100 rotate-0 opacity-100'
+      <span className="relative inline-block w-4 h-4">
+        <Sun
+          aria-hidden
+          className={`absolute inset-0 w-4 h-4 transition-all duration-300 ${
+            isDark ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
           }`}
         />
-        <Moon 
-          className={`absolute inset-0 w-6 h-6 text-gray-300 transition-all duration-500 ${
-            isDark ? 'scale-100 rotate-0 opacity-100' : 'scale-0 -rotate-90 opacity-0'
+        <Moon
+          aria-hidden
+          className={`absolute inset-0 w-4 h-4 transition-all duration-300 ${
+            isDark ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
           }`}
         />
-      </div>
+      </span>
+      <span>{isDark ? 'Mode clair' : 'Mode sombre'}</span>
     </button>
   );
 };

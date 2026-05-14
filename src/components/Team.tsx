@@ -1,119 +1,135 @@
 import React from 'react';
-import { Linkedin, Github, Mail } from 'lucide-react';
+
+type Member = {
+  name: string;
+  role: string;
+  image: string;
+  linkedin?: string;
+  github?: string;
+  email: string;
+};
+
+const team: Member[] = [
+  {
+    name: 'Foula Fofana',
+    role: 'Développeur · Co-fondateur',
+    image: 'assets/equipe/foula.jpg',
+    linkedin: 'https://www.linkedin.com/in/foula-fofana-1769782a5/',
+    github: 'https://github.com/Foula34',
+    email: 'fofanafoula70@gmail.com',
+  },
+  {
+    name: 'Hawa Barry',
+    role: 'Designer produit',
+    image: 'assets/equipe/hawa.jpg',
+    linkedin: 'https://www.linkedin.com/in/hawa-barry-7b92b6336',
+    email: 'hawab5139@gmail.com',
+  },
+  {
+    name: 'Boubacar Diallo',
+    role: 'Ingénieur IoT',
+    image: 'assets/equipe/boubacar.jpg',
+    linkedin: 'https://www.linkedin.com/in/thierno-boubacar-diallo-711b41349',
+    email: 'siddiguediallo2000@gmail.com',
+  },
+  {
+    name: 'Alseny Bangoura',
+    role: 'Finance & opérations',
+    image: 'assets/equipe/alseny.jpg',
+    linkedin: 'http://www.linkedin.com/in/alseny-gn',
+    email: 'bangoura33072@gmail.com',
+  },
+  {
+    name: 'Sékou Doumbouya',
+    role: 'IA & optimisation',
+    image: 'assets/equipe/sekou.jpg',
+    linkedin: 'https://www.linkedin.com/in/sekou-doumbouya-a51143254',
+    github: 'https://huggingface.co/doumbouyasekou',
+    email: 'doumbouyasekou967@gmail.com',
+  },
+];
 
 export const Team: React.FC = () => {
-  const teamMembers = [
-    {
-      name: 'Foula Fofana',
-      role: 'Développeur',
-      image: "assets/equipe/foula.jpg",
-      linkedin: 'https://www.linkedin.com/in/foula-fofana-1769782a5/',
-      github: 'https://github.com/Foula34',
-      email: 'fofanafoula70@gmail.com'
-    },
-    {
-      name: 'Hawa Barry',
-      role: 'Designer',
-      image: "assets/equipe/hawa.jpg",
-      linkedin: 'https://www.linkedin.com/in/hawa-barry-7b92b6336',
-      github: '#',
-      email: 'hawab5139@gmail.com'
-    },
-    {
-      name: 'Boubacar Diallo',
-      role: 'Ingénieur IOT',
-      image: "assets/equipe/boubacar.jpg",
-      linkedin: 'https://www.linkedin.com/in/thierno-boubacar-diallo-711b41349',
-      github: '#',
-      email: 'siddiguediallo2000@gmail.com'
-    },
-    {
-      name: 'Alseny Bangoura',
-      role: 'Financier',
-      image: "assets/equipe/alseny.jpg",
-      linkedin: 'http://www.linkedin.com/in/alseny-gn',
-      github: '#',
-      email: 'bangoura33072@gmail.com'
-    },
-    {
-      name: 'Sekou Doumbouya',
-      role: 'Développeur IA',
-      image: "assets/equipe/sekou.jpg",
-      linkedin: 'https://www.linkedin.com/in/sekou-doumbouya-a51143254',
-      github: 'https://huggingface.co/doumbouyasekou',
-      email: 'doumbouyasekou967@gmail.com'
-    }
-  ];
-
   return (
-    <section id="team" className="section-padding bg-white dark:bg-primary-950">
+    <section
+      id="team"
+      className="section-padding bg-paper dark:bg-ink-950"
+    >
       <div className="container-custom">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-900 dark:text-white mb-6">
-            Notre équipe
-            <span className="text-accent-500">.</span>
+        {/* Header */}
+        <header className="max-w-3xl mb-20 lg:mb-24">
+          <p className="eyebrow mb-6">L’équipe</p>
+          <h2 className="headline-section mb-8">
+            Cinq personnes,{' '}
+            <span className="text-ink-500 dark:text-ink-400 font-normal">
+              une seule mission.
+            </span>
           </h2>
-          <p className="text-xl text-primary-600 dark:text-primary-400 leading-relaxed">
-            Une équipe passionnée qui révolutionne l'accès à l'énergie en Afrique.
+          <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
+            SoliBox est construit à Conakry par une équipe pluridisciplinaire
+            — ingénierie, design, finance, IA. Chaque décision technique est
+            prise par celui ou celle qui l&rsquo;implémente.
           </p>
-        </div>
+        </header>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="card p-8 text-center hover-lift animate-fade-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Photo */}
-              <div className="relative w-32 h-32 mx-auto mb-6">
+        {/* Roster — square portraits, no ring, no circle, no fake animations */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+          {team.map((m) => (
+            <li key={m.email} className="flex flex-col">
+              <div className="aspect-square overflow-hidden bg-mist dark:bg-ink-800 mb-6">
                 <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full rounded-full object-cover ring-4 ring-accent-100 dark:ring-accent-950/30"
+                  src={m.image}
+                  alt={m.name}
+                  className="w-full h-full object-cover grayscale-[0.15] hover:grayscale-0 transition-[filter] duration-500"
+                  loading="lazy"
                 />
               </div>
 
-              {/* Info */}
-              <h3 className="text-xl font-bold text-primary-900 dark:text-white mb-2">
-                {member.name}
-              </h3>
-              <p className="text-accent-500 font-medium mb-6">
-                {member.role}
+              <p className="text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-400 mb-2">
+                {m.role}
               </p>
+              <h3 className="font-display font-medium text-2xl sm:text-3xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] mb-5">
+                {m.name}
+              </h3>
 
-              {/* Social Links */}
-              <div className="flex justify-center space-x-3">
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-primary-100 dark:bg-primary-800 rounded-lg flex items-center justify-center hover:bg-accent-500 hover:text-white transition-all duration-300"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                {member.github !== '#' && (
-                  <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-primary-100 dark:bg-primary-800 rounded-lg flex items-center justify-center hover:bg-accent-500 hover:text-white transition-all duration-300"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
+              {/* Social as plain text links, inline */}
+              <p className="text-sm text-ink-500 dark:text-ink-400 flex flex-wrap items-center gap-x-1">
+                {m.linkedin && (
+                  <>
+                    <a
+                      href={m.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border-b border-mist dark:border-ink-800 hover:text-ink-900 hover:border-ink-900 dark:hover:text-paper dark:hover:border-paper transition-colors pb-px"
+                    >
+                      LinkedIn
+                    </a>
+                    <span className="text-ink-300 dark:text-ink-700 mx-1.5">·</span>
+                  </>
+                )}
+                {m.github && (
+                  <>
+                    <a
+                      href={m.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border-b border-mist dark:border-ink-800 hover:text-ink-900 hover:border-ink-900 dark:hover:text-paper dark:hover:border-paper transition-colors pb-px"
+                    >
+                      {m.github.includes('huggingface') ? 'Hugging Face' : 'GitHub'}
+                    </a>
+                    <span className="text-ink-300 dark:text-ink-700 mx-1.5">·</span>
+                  </>
                 )}
                 <a
-                  href={`mailto:${member.email}`}
-                  className="w-10 h-10 bg-primary-100 dark:bg-primary-800 rounded-lg flex items-center justify-center hover:bg-accent-500 hover:text-white transition-all duration-300"
+                  href={`mailto:${m.email}`}
+                  className="border-b border-mist dark:border-ink-800 hover:text-ink-900 hover:border-ink-900 dark:hover:text-paper dark:hover:border-paper transition-colors pb-px"
                 >
-                  <Mail className="w-5 h-5" />
+                  Email
                 </a>
-              </div>
-            </div>
+              </p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

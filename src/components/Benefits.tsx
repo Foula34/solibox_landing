@@ -1,78 +1,95 @@
 import React from 'react';
-import { Leaf, TrendingUp, Shield, Clock } from 'lucide-react';
+
+type Benefit = {
+  metric: string;
+  unit: string;
+  title: string;
+  body: string;
+  source: string;
+};
+
+const benefits: Benefit[] = [
+  {
+    metric: '~30 000',
+    unit: 'GNF / mois',
+    title: 'Un revenu mensuel régulier',
+    body:
+      'Pour une installation domestique de 3 kW connectée au pilote, le surplus partagé génère un revenu net moyen estimé. Les versements sont mensuels, en GNF, sans seuil minimum.',
+    source: 'Estimation pilote · 200 GNF/kWh × surplus médian',
+  },
+  {
+    metric: '~1,2 t',
+    unit: 'CO₂ évitée / an',
+    title: 'Une réduction d’émissions traçable',
+    body:
+      'Chaque kWh solaire redistribué remplace une consommation issue de groupes électrogènes diesel ou de bois de chauffe. La compensation est mesurée au compteur, pas estimée a posteriori.',
+    source: 'Facteur d’émission EDG, 2023',
+  },
+  {
+    metric: '48 h',
+    unit: 'pour être opérationnel',
+    title: 'Une installation sans modification',
+    body:
+      'L’équipe SoliBox installe le boîtier en aval de votre onduleur existant. Aucune intervention sur le câblage solaire, aucune remise en cause de votre garantie constructeur.',
+    source: 'Engagement service · pilote Conakry',
+  },
+];
 
 export const Benefits: React.FC = () => {
-  const benefits = [
-    {
-      icon: TrendingUp,
-      title: 'Revenus garantis',
-      description: 'Générez jusqu\'à 30% de revenus supplémentaires en vendant votre surplus d\'énergie.',
-      stat: '+30%',
-    },
-    {
-      icon: Leaf,
-      title: 'Impact écologique',
-      description: 'Réduisez les émissions de CO₂ en optimisant l\'utilisation de l\'énergie solaire locale.',
-      stat: '-40%',
-    },
-    {
-      icon: Shield,
-      title: 'Sécurité énergétique',
-      description: 'Accédez à une source d\'énergie fiable et indépendante du réseau national.',
-      stat: '24/7',
-    },
-    {
-      icon: Clock,
-      title: 'Installation rapide',
-      description: 'Mise en service en moins de 48h avec notre équipe d\'experts certifiés.',
-      stat: '48h',
-    },
-  ];
-
   return (
-    <section id="benefits" className="section-padding bg-primary-50 dark:bg-primary-900/50">
+    <section
+      id="benefits"
+      className="section-padding bg-ink-900 text-paper dark:bg-sand dark:text-ink-900"
+    >
       <div className="container-custom">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-900 dark:text-white mb-6">
-            Pourquoi SoliBox
-            <span className="text-accent-500">?</span>
-          </h2>
-          <p className="text-xl text-primary-600 dark:text-primary-400 leading-relaxed">
-            Des avantages concrets pour vous et votre communauté.
+        {/* Header — inline eyebrow (cannot use .eyebrow class on inverted bg) */}
+        <header className="max-w-3xl mb-20 lg:mb-24">
+          <p className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-eyebrow text-ink-400 dark:text-ink-500 mb-6">
+            <span className="inline-block h-px w-8 bg-ink-600 dark:bg-ink-400" />
+            Trois bénéfices mesurables
           </p>
-        </div>
+          <h2 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.06] tracking-[-0.015em] mb-8">
+            Pas une promesse.{' '}
+            <span className="text-ink-300 dark:text-ink-600 font-normal">
+              Un mécanisme.
+            </span>
+          </h2>
+          <p className="text-lg leading-relaxed text-ink-300 dark:text-ink-700 max-w-2xl">
+            Chaque bénéfice annoncé ici est rattaché à une métrique mesurée
+            côté compteur, et sourcé. Pas de pourcentages génériques, pas de
+            promesses non vérifiables.
+          </p>
+        </header>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="card p-8 text-center hover-lift animate-fade-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+        {/* Benefit rows */}
+        <ul className="border-t border-ink-700 dark:border-ink-300">
+          {benefits.map((b, i) => (
+            <li
+              key={i}
+              className="grid grid-cols-12 gap-y-8 lg:gap-x-12 py-12 lg:py-16 border-b border-ink-700 dark:border-ink-300"
             >
-              {/* Icon */}
-              <div className="w-16 h-16 bg-accent-100 dark:bg-accent-950/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <benefit.icon className="w-8 h-8 text-accent-500" />
+              <div className="col-span-12 lg:col-span-5">
+                <p className="font-display font-bold text-7xl sm:text-8xl leading-[0.92] tracking-[-0.025em]">
+                  {b.metric}
+                </p>
+                <p className="mt-4 text-xs uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
+                  {b.unit}
+                </p>
               </div>
-
-              {/* Stat */}
-              <div className="text-4xl font-bold text-accent-500 mb-4">
-                {benefit.stat}
+              <div className="col-span-12 lg:col-span-7 lg:pt-6">
+                <h3 className="font-display font-medium text-3xl lg:text-4xl mb-4 leading-tight tracking-[-0.01em]">
+                  {b.title}
+                </h3>
+                <p className="text-base leading-relaxed text-ink-300 dark:text-ink-700 mb-5 max-w-2xl">
+                  {b.body}
+                </p>
+                <p className="text-[10px] uppercase tracking-eyebrow text-ink-500">
+                  Source · {b.source}
+                </p>
               </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold text-primary-900 dark:text-white mb-3">
-                {benefit.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-primary-600 dark:text-primary-400 leading-relaxed">
-                {benefit.description}
-              </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

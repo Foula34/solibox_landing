@@ -1,88 +1,124 @@
 import React from 'react';
-import { Battery, Share2, DollarSign, Smartphone } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+
+type Step = {
+  n: string;
+  title: string;
+  body: string;
+};
+
+const steps: Step[] = [
+  {
+    n: '01',
+    title: 'Vous produisez',
+    body: 'Votre installation solaire alimente d’abord votre foyer. Le compteur SoliBox détecte le surplus en temps réel, à la seconde près.',
+  },
+  {
+    n: '02',
+    title: 'SoliBox redistribue',
+    body: 'Le surplus est routé automatiquement vers les foyers voisins sous contrat — sans intervention de votre part, sans batterie.',
+  },
+  {
+    n: '03',
+    title: 'Vous encaissez',
+    body: 'Chaque kWh redistribué est mesuré, certifié, et payé mensuellement en GNF par Orange Money, MTN ou virement.',
+  },
+];
+
+type Spec = { label: string; value: string };
+
+const specs: Spec[] = [
+  { label: 'Couverture', value: 'Conakry · pilote Q1 2026' },
+  { label: 'Capacité', value: '1 à 8 kW résidentiel' },
+  { label: 'Paiement', value: 'Orange Money · MTN · virement' },
+  { label: 'Installation', value: '48 h, sans modification système' },
+];
 
 export const Solution: React.FC = () => {
-  const features = [
-    {
-      icon: Battery,
-      title: 'Stockage intelligent',
-      description: 'SoliBox stocke automatiquement votre surplus d\'énergie solaire et le redistribue de manière optimale.',
-    },
-    {
-      icon: Share2,
-      title: 'Partage communautaire',
-      description: 'Partagez votre énergie avec vos voisins et créez un réseau énergétique local résilient.',
-    },
-    {
-      icon: DollarSign,
-      title: 'Revenus passifs',
-      description: 'Générez des revenus en vendant votre surplus d\'énergie à votre communauté.',
-    },
-    {
-      icon: Smartphone,
-      title: 'Gestion mobile',
-      description: 'Contrôlez et surveillez votre production, consommation et revenus depuis votre smartphone.',
-    },
-  ];
-
   return (
-    <section id="solution" className="section-padding bg-white dark:bg-primary-950">
+    <section
+      id="solution"
+      className="section-padding bg-paper dark:bg-ink-950"
+    >
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Content */}
-          <div className="animate-slide-in-left">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-900 dark:text-white mb-6">
-              La solution SoliBox
-              <span className="text-accent-500">.</span>
-            </h2>
-            <p className="text-xl text-primary-600 dark:text-primary-400 leading-relaxed mb-12">
-              Une plateforme complète qui transforme votre installation solaire en source de revenus tout en renforçant votre communauté.
-            </p>
+        {/* Header */}
+        <header className="max-w-3xl mb-20 lg:mb-24">
+          <p className="eyebrow mb-6">Comment ça marche</p>
+          <h2 className="headline-section mb-8">
+            Trois étapes. Une installation.{' '}
+            <span className="text-solar-600 dark:text-solar-400">
+              Un revenu mensuel.
+            </span>
+          </h2>
+          <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
+            SoliBox s&rsquo;intercale entre votre installation solaire et le
+            compteur. Quand vous ne consommez pas, le surplus part chez les
+            voisins. Chaque kilowattheure est mesuré, certifié, payé.
+          </p>
+        </header>
 
-            <div className="space-y-6">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="flex items-start space-x-4 p-6 rounded-xl hover:bg-primary-50 dark:hover:bg-primary-900/50 transition-all duration-300 animate-fade-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-accent-100 dark:bg-accent-950/30 rounded-xl flex items-center justify-center">
-                      <feature.icon className="w-6 h-6 text-accent-500" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-primary-900 dark:text-white mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-primary-600 dark:text-primary-400">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Visual Element */}
-          <div className="relative animate-slide-in-right">
-            {/* Video Demo */}
-            <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-primary-900">
-                <div className="aspect-video">
-                  <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/wd5hOg3iOJc"
-                    title="Démonstration SoliBox"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                {/* Video overlay decoration */}
-                <div className="absolute inset-0 pointer-events-none border-2 border-white/10 rounded-2xl"></div>
+        {/* 3-step flow */}
+        <ol className="grid grid-cols-1 md:grid-cols-3 grid-divide mb-24 lg:mb-28">
+          {steps.map((step, i) => (
+            <li key={step.n} className="card-stat relative">
+              <div className="flex items-center justify-between mb-10">
+                <span className="font-display font-medium text-2xl text-ink-400 dark:text-ink-500 leading-none tabular-nums">
+                  {step.n}
+                </span>
+                {i < steps.length - 1 && (
+                  <ArrowRight className="hidden md:block w-4 h-4 text-ink-300 dark:text-ink-700" />
+                )}
               </div>
-            </div>
+              <h3 className="font-display font-medium text-3xl text-ink-900 dark:text-paper mb-4 leading-tight tracking-[-0.01em]">
+                {step.title}
+              </h3>
+              <p className="text-base leading-relaxed text-ink-600 dark:text-ink-300">
+                {step.body}
+              </p>
+            </li>
+          ))}
+        </ol>
+
+        {/* Demo video — full-width, sober frame */}
+        <div className="mb-24 lg:mb-28">
+          <div className="flex items-end justify-between mb-6">
+            <p className="eyebrow">Démonstration</p>
+            <p className="hidden sm:block text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
+              SoliBox · prototype Q1 2026
+            </p>
           </div>
+          <div className="relative aspect-video bg-ink-900 dark:bg-ink-800 ring-1 ring-mist dark:ring-ink-800 overflow-hidden">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/wd5hOg3iOJc"
+              title="Démonstration SoliBox"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+
+        {/* Spec sheet — institutional touch */}
+        <div>
+          <p className="eyebrow mb-10">Spécifications du pilote</p>
+          <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-mist dark:border-ink-800">
+            {specs.map((spec, i) => (
+              <div
+                key={spec.label}
+                className={`py-6 lg:py-8 border-b border-mist dark:border-ink-800 ${
+                  i < specs.length - 1 ? 'lg:border-r' : ''
+                } lg:pr-8`}
+              >
+                <dt className="text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-500 mb-3">
+                  {spec.label}
+                </dt>
+                <dd className="text-base text-ink-900 dark:text-paper leading-relaxed">
+                  {spec.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
