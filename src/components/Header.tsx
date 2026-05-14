@@ -64,14 +64,19 @@ export const Header: React.FC = () => {
             ))}
           </div>
 
-          {/* CTA + mobile burger */}
-          <div className="flex items-center gap-3">
+          {/* CTA + mobile actions */}
+          <div className="flex items-center gap-1 lg:gap-3">
             <button
               onClick={() => scrollToSection('#contact')}
               className="hidden lg:inline-flex btn-primary text-sm px-5 py-2.5"
             >
               Nous contacter
             </button>
+
+            {/* Mobile-only theme toggle, sits next to the burger */}
+            <span className="lg:hidden">
+              <ThemeToggle compact />
+            </span>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -117,9 +122,6 @@ export const Header: React.FC = () => {
             >
               Nous contacter
             </button>
-            <div className="mt-6 pt-5 border-t border-mist dark:border-ink-800">
-              <ThemeToggle />
-            </div>
           </div>
         </div>
       </nav>
