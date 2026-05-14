@@ -39,9 +39,49 @@ export const Benefits: React.FC = () => {
   return (
     <section
       id="benefits"
-      className="section-padding bg-ink-900 text-paper dark:bg-sand dark:text-ink-900"
+      className="relative section-padding bg-ink-900 text-paper dark:bg-sand dark:text-ink-900 overflow-hidden"
     >
-      <div className="container-custom">
+      {/* Subtle geometric pattern — inspired by West African textile motifs.
+          Strictly decorative, set to very low opacity. */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute inset-0 w-full h-full text-paper dark:text-ink-900 opacity-[0.04] dark:opacity-[0.06]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="solibox-motif"
+            x="0"
+            y="0"
+            width="64"
+            height="64"
+            patternUnits="userSpaceOnUse"
+          >
+            {/* Concentric diamond (Adinkra-inspired geometric) */}
+            <polygon
+              points="32,8 56,32 32,56 8,32"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.8"
+            />
+            <polygon
+              points="32,20 44,32 32,44 20,32"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.6"
+            />
+            <circle cx="32" cy="32" r="1.5" fill="currentColor" />
+            {/* Corner dots for rhythm */}
+            <circle cx="0" cy="0" r="1" fill="currentColor" />
+            <circle cx="64" cy="0" r="1" fill="currentColor" />
+            <circle cx="0" cy="64" r="1" fill="currentColor" />
+            <circle cx="64" cy="64" r="1" fill="currentColor" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#solibox-motif)" />
+      </svg>
+
+      <div className="relative container-custom">
         {/* Header — inline eyebrow (cannot use .eyebrow class on inverted bg) */}
         <header className="max-w-3xl mb-20 lg:mb-24">
           <p className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-eyebrow text-ink-400 dark:text-ink-500 mb-6">

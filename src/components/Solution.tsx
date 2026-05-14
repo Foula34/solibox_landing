@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { EnergyFlow } from './EnergyFlow';
 
 type Step = {
   n: string;
@@ -56,6 +57,11 @@ export const Solution: React.FC = () => {
             voisins. Chaque kilowattheure est mesuré, certifié, payé.
           </p>
         </header>
+
+        {/* Energy + revenue flow diagram */}
+        <div className="mb-20 lg:mb-24">
+          <EnergyFlow />
+        </div>
 
         {/* 3-step flow */}
         <ol className="grid grid-cols-1 md:grid-cols-3 grid-divide mb-24 lg:mb-28">

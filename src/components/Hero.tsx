@@ -33,9 +33,13 @@ export const Hero: React.FC = () => {
       className="relative bg-paper dark:bg-ink-950 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32"
     >
       <div className="container-custom px-6 sm:px-8 lg:px-12">
-        {/* Eyebrow */}
+        {/* Eyebrow with live indicator */}
         <p className="eyebrow mb-10 sm:mb-14">
-          Énergie · Guinée · Pilote 2026
+          <span className="relative inline-flex items-center mr-1.5">
+            <span className="absolute inline-block w-2 h-2 rounded-full bg-solar-500 opacity-60 animate-ping" />
+            <span className="relative inline-block w-2 h-2 rounded-full bg-solar-500" />
+          </span>
+          Pilote actif · Conakry · 2026
         </p>
 
         {/* Editorial layout: headline left, demo panel right */}
