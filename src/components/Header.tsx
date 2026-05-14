@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 import { scrollToSection } from '../utils/scrollUtils';
 
 const navItems = [
@@ -115,6 +116,9 @@ export const Header: React.FC = () => {
             >
               Nous contacter
             </button>
+            <div className="mt-6 pt-5 border-t border-mist dark:border-ink-800">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </nav>

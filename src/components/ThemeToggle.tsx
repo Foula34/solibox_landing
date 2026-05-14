@@ -9,7 +9,7 @@ export const ThemeToggle: React.FC = () => {
     <button
       onClick={toggleTheme}
       aria-label={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
-      className="inline-flex items-center gap-2.5 text-[10px] uppercase tracking-eyebrow text-ink-500 hover:text-paper transition-colors"
+      className="inline-flex items-center gap-2.5 text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-400 hover:text-ink-900 dark:hover:text-paper transition-colors"
     >
       <span className="relative inline-block w-4 h-4">
         <Sun
