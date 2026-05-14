@@ -13,7 +13,7 @@ const team: Member[] = [
   {
     name: 'Foula Fofana',
     role: 'Développeur · Co-fondateur',
-    image: 'assets/equipe/foula.jpg',
+    image: 'assets/equipe/foula.jpeg',
     linkedin: 'https://www.linkedin.com/in/foula-fofana-1769782a5/',
     github: 'https://github.com/Foula34',
     email: 'fofanafoula70@gmail.com',
