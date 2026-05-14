@@ -1,37 +1,34 @@
 import React from 'react';
 import { scrollToSection } from '../utils/scrollUtils';
 
-type Logo = {
+type Recognition = {
+  status: string;
   name: string;
-  logo: string;
-  website: string;
-  category: string;
+  edition: string;
+  description: string;
 };
 
-const logos: Logo[] = [
+const items: Recognition[] = [
   {
-    name: 'Orange',
-    logo: 'assets/partenaires/orange.png',
-    website: 'https://www.orange.com',
-    category: 'Télécommunications',
+    status: '2ᵉ place',
+    name: 'Orange Summer Challenge',
+    edition: 'Édition 2025',
+    description:
+      'Programme panafricain d’innovation porté par Orange Digital Center — SoliBox récompensé pour son modèle de redistribution énergétique.',
   },
   {
-    name: 'Orange Énergies',
-    logo: 'assets/partenaires/orange-energie.png',
-    website: 'https://www.orange.com',
-    category: 'Énergie',
+    status: 'Participant',
+    name: 'Afrinov',
+    edition: 'Édition 2026',
+    description:
+      'Programme d’accompagnement et de visibilité pour les startups africaines à fort potentiel d’impact.',
   },
   {
-    name: 'PNUD',
-    logo: 'assets/partenaires/pnud.png',
-    website: 'https://www.undp.org',
-    category: 'Programme institutionnel',
-  },
-  {
-    name: 'AWS',
-    logo: 'assets/partenaires/aws.png',
-    website: 'https://aws.amazon.com',
-    category: 'Infrastructure cloud',
+    status: 'En cours',
+    name: 'Salon des Étudiants Entrepreneurs',
+    edition: '2026',
+    description:
+      'Participation active au salon, exposition du prototype et échanges avec investisseurs, institutionnels et programmes énergie.',
   },
 ];
 
@@ -45,42 +42,37 @@ export const Partners: React.FC = () => {
         {/* Header — 2-col asymmetric */}
         <div data-reveal className="grid grid-cols-12 gap-y-12 lg:gap-x-16 mb-16 lg:mb-20">
           <header className="col-span-12 lg:col-span-5">
-            <p className="eyebrow mb-6">Écosystème</p>
+            <p className="eyebrow mb-6">Reconnaissance</p>
             <h2 className="headline-section">
-              Soutiens et{' '}
+              Programmes,{' '}
               <span className="text-ink-500 dark:text-ink-400 font-normal">
-                infrastructure.
+                concours, distinctions.
               </span>
             </h2>
           </header>
 
           <p className="col-span-12 lg:col-span-7 lg:pt-3 text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
-            Programmes institutionnels, opérateurs locaux et fournisseurs
-            d&rsquo;infrastructure cloud qui rendent le pilote SoliBox
-            opérationnel à Conakry. Les relations contractuelles précises sont
-            détaillées sur demande.
+            SoliBox cherche activement les programmes et financements qui
+            permettront de passer du prototype validé en laboratoire au premier
+            pilote terrain en intérieur Guinée. Voici où nous sommes engagés.
           </p>
         </div>
 
-        {/* Logo strip — no card, no shadow, no grayscale hover trick */}
-        <ul className="grid grid-cols-2 lg:grid-cols-4 grid-divide border-t border-mist dark:border-ink-800">
-          {logos.map((l) => (
-            <li key={l.name} className="bg-paper dark:bg-ink-950 px-6 py-10 flex flex-col items-center text-center">
-              <a
-                href={l.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center h-16 mb-6 transition-opacity hover:opacity-70"
-                aria-label={l.name}
-              >
-                <img
-                  src={l.logo}
-                  alt={l.name}
-                  className="max-h-12 max-w-[140px] object-contain dark:brightness-0 dark:invert"
-                />
-              </a>
-              <p className="text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-400">
-                {l.category}
+        {/* Items strip — 3 col grid, no logos, focus on substance */}
+        <ul className="grid grid-cols-1 md:grid-cols-3 grid-divide border-t border-mist dark:border-ink-800">
+          {items.map((item) => (
+            <li key={item.name} className="card-stat">
+              <p className="text-[10px] uppercase tracking-eyebrow text-solar-600 dark:text-solar-400 mb-6">
+                {item.status}
+              </p>
+              <p className="font-display font-semibold text-2xl lg:text-3xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] mb-2">
+                {item.name}
+              </p>
+              <p className="text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500 mb-5">
+                {item.edition}
+              </p>
+              <p className="text-sm leading-relaxed text-ink-600 dark:text-ink-300 max-w-xs">
+                {item.description}
               </p>
             </li>
           ))}
@@ -89,14 +81,14 @@ export const Partners: React.FC = () => {
         {/* Quiet closing line */}
         <div className="mt-20 lg:mt-24 pt-10 border-t border-mist dark:border-ink-800 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <p className="font-display font-medium text-2xl sm:text-3xl text-ink-900 dark:text-paper leading-snug tracking-[-0.01em] max-w-xl">
-            Votre organisation peut accompagner le pilote — financement,
-            distribution, audit, ou expertise terrain.
+            Votre programme, fondation ou agence peut accompagner le pilote
+            village SoliBox.
           </p>
           <button
             onClick={() => scrollToSection('#contact')}
             className="btn-secondary self-start sm:self-end"
           >
-            Proposer un partenariat
+            Proposer un soutien
           </button>
         </div>
       </div>

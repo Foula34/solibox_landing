@@ -15,7 +15,7 @@ const benefits: Benefit[] = [
     title: 'Un revenu mensuel régulier',
     body:
       'Pour une installation domestique de 3 kW connectée au pilote, le surplus partagé génère un revenu net moyen estimé. Les versements sont mensuels, en GNF, sans seuil minimum.',
-    source: 'Estimation pilote · 200 GNF/kWh × surplus médian',
+    source: 'Modèle économique · à valider en pilote terrain',
   },
   {
     metric: '~1,2 t',
@@ -31,7 +31,7 @@ const benefits: Benefit[] = [
     title: 'Une installation sans modification',
     body:
       'L’équipe SoliBox installe le boîtier en aval de votre onduleur existant. Aucune intervention sur le câblage solaire, aucune remise en cause de votre garantie constructeur.',
-    source: 'Engagement service · pilote Conakry',
+    source: 'Engagement service · déploiement pilote village',
   },
 ];
 

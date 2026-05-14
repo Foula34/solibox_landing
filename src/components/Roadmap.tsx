@@ -12,31 +12,31 @@ type Phase = {
 
 const phases: Phase[] = [
   {
-    date: '2024',
-    title: 'Prototype et validation',
+    date: '2024 – 2025',
+    title: 'Prototype et tests laboratoire',
     body:
-      'Premier prototype matériel, validation technique du boîtier de redistribution sur installations résidentielles.',
+      'Validation technique du boîtier de redistribution au Fab Lab d’Orange Digital Center, sur des maisons-test construites en bois par l’équipe.',
     status: 'done',
   },
   {
     date: '2026',
-    title: 'Pilote Conakry',
+    title: 'Concours, financement, série',
     body:
-      'Déploiement sur les premiers foyers producteurs et bénéficiaires. Mise en place de la mesure et de la rémunération.',
+      'Participation à plusieurs concours d’innovation pour financer la production des premiers boîtiers de série destinés au pilote terrain.',
     status: 'current',
   },
   {
     date: '2027',
-    title: 'Extension régionale',
+    title: 'Premier pilote village',
     body:
-      'Couverture étendue à d’autres quartiers de Conakry et premiers déploiements en région — Boké, Kindia.',
+      'Déploiement terrain en intérieur Guinée — premier village pilote, mesure réelle des kWh redistribués et des revenus générés.',
     status: 'planned',
   },
   {
     date: '2028+',
-    title: 'Afrique de l’Ouest',
+    title: 'Commercial et expansion',
     body:
-      'Réplication du modèle au-delà des frontières guinéennes, sur les marchés présentant la même structure énergétique.',
+      'Lancement commercial à plus grande échelle, conditionné aux résultats du pilote village, et extension à d’autres pays d’Afrique de l’Ouest.',
     status: 'future',
   },
 ];
@@ -66,8 +66,9 @@ export const Roadmap: React.FC = () => {
             .
           </h2>
           <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
-            Quatre jalons, des dates publiques. Nous mettons à jour cette page
-            au rythme des livraisons effectives, pas des annonces.
+            Où SoliBox en est, où il va, à quel horizon. Nous mettons à jour
+            cette page au rythme des livraisons effectives, pas des annonces.
+            Le jalon en cours conditionne les suivants.
           </p>
         </header>
 

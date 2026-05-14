@@ -13,9 +13,9 @@ const goals: Goal[] = [
     metric: '100',
     unit: 'foyers',
     description:
-      'connectés sur le pilote de Conakry — producteurs et bénéficiaires confondus.',
+      'connectés à l’issue du premier pilote village — producteurs et bénéficiaires confondus, en intérieur Guinée.',
     status: 'objectif',
-    horizon: 'Q4 2026',
+    horizon: 'Post-pilote · 2028',
   },
   {
     metric: '120',
@@ -23,7 +23,7 @@ const goals: Goal[] = [
     description:
       'd’électricité solaire redistribuée, traçable au compteur SoliBox installé chez chaque producteur.',
     status: 'objectif',
-    horizon: 'Q4 2026',
+    horizon: 'Post-pilote · 2028',
   },
   {
     metric: '~95 t',
@@ -31,7 +31,7 @@ const goals: Goal[] = [
     description:
       'par substitution à des sources thermiques (groupes électrogènes, bois de chauffe).',
     status: 'objectif',
-    horizon: 'Q4 2026',
+    horizon: 'Post-pilote · 2028',
   },
 ];
 
@@ -75,9 +75,10 @@ export const Impact: React.FC = () => {
             il ne se proclame pas.
           </h2>
           <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
-            Nous publions ici les objectifs vérifiables que nous nous fixons
-            pour le pilote de Conakry. Chaque métrique est rattachée à un
-            instrument de mesure, pas à une projection marketing.
+            Voici les objectifs publics que SoliBox se fixe à l&rsquo;issue du
+            premier pilote village. Chaque métrique est rattachée à un
+            instrument de mesure, pas à une projection marketing. Le pilote
+            terrain démarre une fois le financement sécurisé.
           </p>
         </header>
 

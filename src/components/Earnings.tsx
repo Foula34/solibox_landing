@@ -11,49 +11,38 @@ type Plan = {
   terms: string[];
 };
 
-const KWH_PRICE = 200; // GNF / kWh — aligné avec Benefits & Hero
+const KWH_PRICE = 200; // GNF / kWh — modèle pilote
+const BOX_PRICE = 1_500_000; // GNF — prix prototype achat direct
+const LEASE_MONTHLY = 60_000; // GNF / mois indicatif
+const LEASE_MONTHS = 36;
 
 const plans: Plan[] = [
   {
-    key: 'location',
-    label: 'Location simple',
-    price: '120 000',
-    priceUnit: 'GNF / mois',
+    key: 'achat',
+    label: 'Achat direct',
+    price: '1 500 000',
+    priceUnit: 'GNF · prix prototype',
     forWho:
-      'Installation déjà rentable. Vous cherchez un revenu net, fixe, sans variabilité.',
+      'Vous avez la capacité d’investir le boîtier en une fois. Vous conservez 100 % des revenus surplus dès l’installation.',
     terms: [
-      'Aucune part sur les revenus du surplus',
-      'Maintenance et garantie incluses',
-      'Engagement 12 mois',
-      'Support technique standard',
+      'Boîtier propriété immédiate',
+      'Aucun engagement, aucune part sur les revenus',
+      'Maintenance première année incluse',
+      'Garantie constructeur',
     ],
   },
   {
-    key: 'partage',
-    label: 'Partage des revenus',
-    price: '30 %',
-    priceUnit: 'des revenus surplus',
+    key: 'location-vente',
+    label: 'Location-vente',
+    price: '60 000',
+    priceUnit: `GNF / mois × ${LEASE_MONTHS} mois`,
     forWho:
-      'Installation à rentabiliser. Vous préférez aucun coût d’entrée, en échange d’une part variable.',
+      'Vous préférez répartir le coût sur trois ans. Vous gardez 100 % des revenus surplus, le boîtier devient votre propriété à terme.',
     terms: [
-      'Aucun loyer mensuel',
-      'Versements mensuels en GNF, sans seuil',
-      'Aucun engagement de durée',
-      'Tableau de bord temps réel',
-    ],
-  },
-  {
-    key: 'hybride',
-    label: 'Hybride',
-    price: '90 000',
-    priceUnit: 'GNF / mois + 15 %',
-    forWho:
-      'Vous voulez un équilibre entre coût fixe minoré et part variable réduite.',
-    terms: [
-      'Loyer réduit',
-      '15 % sur les revenus surplus',
-      'Maintenance et garantie incluses',
-      'Support prioritaire',
+      `${LEASE_MONTHS} mensualités fixes`,
+      'Transfert de propriété au terme du contrat',
+      'Maintenance et support inclus pendant la location',
+      'Sortie anticipée possible (modalités sur demande)',
     ],
   },
 ];
@@ -69,9 +58,19 @@ export const Earnings: React.FC = () => {
   const sharedEnergy = (monthlyProduction * sharePercent) / 100;
   const monthlyRevenue = sharedEnergy * KWH_PRICE;
   const yearlyRevenue = monthlyRevenue * 12;
+  const amortMonths = monthlyRevenue > 0 ? Math.ceil(BOX_PRICE / monthlyRevenue) : Infinity;
 
   const formatGNF = (n: number) =>
     new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(n);
+
+  const formatAmort = () => {
+    if (!Number.isFinite(amortMonths)) return '—';
+    const years = Math.floor(amortMonths / 12);
+    const months = amortMonths % 12;
+    if (years === 0) return `${amortMonths} mois`;
+    if (months === 0) return `${years} an${years > 1 ? 's' : ''}`;
+    return `${years} an${years > 1 ? 's' : ''} ${months} mois`;
+  };
 
   return (
     <section
@@ -81,30 +80,29 @@ export const Earnings: React.FC = () => {
       <div className="container-custom">
         {/* Header */}
         <header data-reveal className="max-w-3xl mb-20 lg:mb-24">
-          <p className="eyebrow mb-6">Tarification</p>
+          <p className="eyebrow mb-6">Modèle économique</p>
           <h2 className="headline-section mb-8">
-            Trois formules.{' '}
+            Deux formules.{' '}
             <span className="text-ink-500 dark:text-ink-400 font-normal">
-              Lisibles, sans frais cachés.
+              Une seule promesse : aucun frais caché.
             </span>
           </h2>
           <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
-            Le choix dépend de votre tolérance au coût fixe et de l&rsquo;état de
-            rentabilisation de votre installation. Aucune des trois ne comporte
-            de frais d&rsquo;activation, ni de pénalité de sortie sur la formule
-            partage.
+            Le boîtier SoliBox est un prototype actuellement fabriqué à
+            l&rsquo;unité. Le prix reflète ce statut, et baissera mécaniquement
+            avec la production en série une fois le pilote terrain validé.
           </p>
         </header>
 
-        {/* Comparative grid — 3 plans side by side, no "Recommandé" badge */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 grid-divide mb-24 lg:mb-28">
+        {/* Two-formula grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 grid-divide mb-16 lg:mb-20">
           {plans.map((plan) => (
             <article key={plan.key} className="card-stat flex flex-col">
               <p className="text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-500 mb-6">
                 {plan.label}
               </p>
 
-              <p className="font-display font-bold text-5xl lg:text-6xl text-ink-900 dark:text-paper leading-[0.95] tracking-[-0.02em]">
+              <p className="font-display font-bold text-5xl lg:text-6xl text-ink-900 dark:text-paper leading-[0.95] tracking-[-0.02em] tabular-nums">
                 {plan.price}
               </p>
               <p className="mt-2 text-sm text-ink-500 dark:text-ink-400">
@@ -113,7 +111,7 @@ export const Earnings: React.FC = () => {
 
               <hr className="border-mist dark:border-ink-800 my-8" />
 
-              <p className="text-sm leading-relaxed text-ink-700 dark:text-ink-300 mb-8 max-w-xs">
+              <p className="text-sm leading-relaxed text-ink-700 dark:text-ink-300 mb-8 max-w-sm">
                 {plan.forWho}
               </p>
 
@@ -143,13 +141,32 @@ export const Earnings: React.FC = () => {
           ))}
         </div>
 
+        {/* Pilot village line — dedicated funding model */}
+        <div className="mb-24 lg:mb-28 pt-8 border-t border-mist dark:border-ink-800 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+          <p className="text-base sm:text-lg leading-relaxed text-ink-700 dark:text-ink-300 max-w-2xl">
+            Pour les{' '}
+            <span className="text-ink-900 dark:text-paper font-medium">
+              déploiements pilotes en milieu rural
+            </span>
+            {' '}— portés par une ONG, une fondation, une agence ou un programme
+            de financement — les modalités sont calibrées au cas par cas, avec
+            modèle de partage de revenus possible sans apport initial.
+          </p>
+          <button
+            onClick={() => scrollToSection('#contact')}
+            className="btn-secondary self-start"
+          >
+            Discuter d&rsquo;un pilote
+          </button>
+        </div>
+
         {/* Inline calculator */}
         <div>
           <header className="flex items-end justify-between mb-10">
             <div>
-              <p className="eyebrow mb-4">Estimation</p>
+              <p className="eyebrow mb-4">Projection</p>
               <h3 className="font-display font-medium text-3xl sm:text-4xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] max-w-xl">
-                Calculez votre revenu mensuel
+                Estimer revenu et amortissement.
               </h3>
             </div>
             <p className="hidden md:block text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
@@ -193,7 +210,7 @@ export const Earnings: React.FC = () => {
             <div className="card-stat flex flex-col justify-between">
               <div>
                 <p className="text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-500 mb-4">
-                  Revenu mensuel estimé
+                  Revenu mensuel projeté
                 </p>
                 <p className="font-display font-bold text-6xl sm:text-7xl text-ink-900 dark:text-paper leading-[0.95] tracking-[-0.025em] tabular-nums">
                   ~{formatGNF(monthlyRevenue)}
@@ -205,19 +222,27 @@ export const Earnings: React.FC = () => {
               </div>
 
               <dl className="grid grid-cols-2 gap-x-8 gap-y-4 mt-10 pt-8 border-t border-mist dark:border-ink-800">
-                <Stat label="Production / jour" value={`${dailyProduction.toFixed(1)} kWh`} />
                 <Stat label="Production / mois" value={`${formatGNF(monthlyProduction)} kWh`} />
                 <Stat label="Surplus partagé" value={`${formatGNF(sharedEnergy)} kWh / mois`} />
-                <Stat label="Revenu / jour" value={`${formatGNF(monthlyRevenue / 30)} GNF`} />
+                <Stat
+                  label="Amortissement achat"
+                  value={formatAmort()}
+                  highlight
+                />
+                <Stat
+                  label="Coût location-vente"
+                  value={`${formatGNF(LEASE_MONTHLY * LEASE_MONTHS)} GNF total`}
+                />
               </dl>
             </div>
           </div>
 
           <p className="mt-10 text-xs leading-relaxed text-ink-500 dark:text-ink-400 max-w-2xl">
-            Estimation indicative. Les revenus réels dépendent de la demande
-            locale, du profil de consommation des voisins, et des conditions
-            d&rsquo;ensoleillement de votre site. Le prix moyen retenu ({KWH_PRICE}{' '}
-            GNF/kWh) est aligné avec le pilote SoliBox de Conakry.
+            Projection indicative basée sur un tarif de {KWH_PRICE} GNF/kWh et un
+            prix prototype de {formatGNF(BOX_PRICE)} GNF. Les revenus réels
+            dépendront de la demande locale, du profil de consommation des
+            voisins et des conditions d&rsquo;ensoleillement. Les chiffres
+            seront ajustés à l&rsquo;issue du premier pilote terrain.
           </p>
         </div>
       </div>
@@ -261,11 +286,23 @@ const CalcSlider: React.FC<{
   </div>
 );
 
-const Stat: React.FC<{ label: string; value: string }> = ({ label, value }) => (
+const Stat: React.FC<{ label: string; value: string; highlight?: boolean }> = ({
+  label,
+  value,
+  highlight,
+}) => (
   <div>
     <dt className="text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-500 mb-1">
       {label}
     </dt>
-    <dd className="text-sm text-ink-900 dark:text-paper">{value}</dd>
+    <dd
+      className={`text-sm ${
+        highlight
+          ? 'text-solar-600 dark:text-solar-400 font-medium'
+          : 'text-ink-900 dark:text-paper'
+      }`}
+    >
+      {value}
+    </dd>
   </div>
 );

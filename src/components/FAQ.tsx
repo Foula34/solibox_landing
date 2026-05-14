@@ -16,12 +16,12 @@ const faqs: Item[] = [
   {
     question: 'Combien puis-je espérer gagner par mois ?',
     answer:
-      'Pour une installation domestique de 3 kW avec un surplus partagé de 40 %, le revenu mensuel estimé sur le pilote est d’environ 30 000 GNF. Le calculateur de la page Tarification permet de simuler votre cas précis.',
+      'Pour une installation de 3 kW avec un surplus partagé de 40 %, le revenu mensuel projeté est d’environ 30 000 GNF. C’est une estimation issue du modèle économique — elle sera affinée à partir des données réelles du premier pilote village. Le calculateur de la section Modèle économique permet de simuler votre cas.',
   },
   {
     question: 'Ai-je besoin d’une installation solaire existante ?',
     answer:
-      'Oui. SoliBox s’ajoute à une installation déjà en place. Si vous n’en avez pas encore, l’équipe peut vous orienter vers des installateurs certifiés à Conakry.',
+      'Oui. SoliBox s’ajoute à une installation déjà en place. Si vous n’en avez pas encore — c’est souvent le cas dans les villages cibles — l’équipe peut vous orienter vers des installateurs solaires partenaires et intégrer l’ensemble dans un projet pilote.',
   },
   {
     question: 'L’installation modifie-t-elle mon système solaire ?',
@@ -39,14 +39,14 @@ const faqs: Item[] = [
       'Mensuellement, en GNF, par Orange Money, MTN Money, ou virement bancaire selon votre préférence. Aucune retenue minimum, aucun seuil de versement.',
   },
   {
-    question: 'Y a-t-il des frais cachés ?',
+    question: 'Quel est le prix du boîtier ?',
     answer:
-      'Non. Le tarif annoncé pour chaque formule (location simple, partage des revenus, hybride) est complet. SoliBox prélève sa rémunération uniquement sur les modalités prévues au contrat — soit un loyer, soit une part variable.',
+      'Le boîtier prototype est proposé à 1 500 000 GNF en achat direct, ou en location-vente à environ 60 000 GNF/mois pendant 36 mois (vous conservez 100 % des revenus surplus et le boîtier devient votre propriété au terme). Pour les déploiements pilotes en village portés par une ONG, une fondation ou un programme, des modalités spécifiques sont possibles — sans apport initial, via partage de revenus.',
   },
   {
-    question: 'SoliBox fonctionne-t-il en zone rurale ?',
+    question: 'SoliBox est-il fait pour les villages ?',
     answer:
-      'Oui. SoliBox est conçu pour les zones périurbaines et rurales où le réseau est intermittent. Une connexion mobile basique (2G/3G) suffit pour la télémétrie. Le pilote initial est cependant urbain — extension rurale prévue 2027.',
+      'Oui — c’est précisément la cible prioritaire. SoliBox vise les villages d’intérieur Guinée où le réseau est intermittent ou absent. Une connexion mobile basique (2G/3G) suffit pour la télémétrie. Le premier pilote terrain est prévu en intérieur Guinée pour 2027, dès que le financement est sécurisé.',
   },
 ];
 

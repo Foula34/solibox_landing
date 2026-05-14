@@ -20,9 +20,9 @@ const stats: Stat[] = [
     source: 'Estimation IRENA, 2023',
   },
   {
-    kpi: '100+',
-    label: 'foyers déjà pré-inscrits sur le pilote de Conakry, opéré par SoliBox.',
-    source: 'Programme SoliBox, Q1 2026',
+    kpi: '2ᵉ',
+    label: 'place SoliBox à l’Orange Summer Challenge — programme panafricain d’innovation porté par Orange Digital Center.',
+    source: 'Orange Summer Challenge · Édition 2025',
   },
 ];
 
@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
             <span className="absolute inline-block w-2 h-2 rounded-full bg-solar-500 opacity-60 animate-ping" />
             <span className="relative inline-block w-2 h-2 rounded-full bg-solar-500" />
           </span>
-          Pilote actif · Conakry · 2026
+          Prototype validé · Recherche de pilote terrain
         </p>
 
         {/* Editorial layout: headline left, demo panel right */}
@@ -84,7 +84,7 @@ export const Hero: React.FC = () => {
           {/* Side panel — single editorial figure */}
           <aside className="col-span-12 lg:col-span-4 pt-10 lg:pt-0 lg:pl-10 border-t lg:border-t-0 lg:border-l border-mist dark:border-ink-800 flex">
             <figure className="flex flex-col justify-end w-full">
-              <p className="eyebrow mb-6">Cas type</p>
+              <p className="eyebrow mb-6">Projection · cas type</p>
               <p className="font-display font-bold text-6xl sm:text-7xl leading-[0.95] tracking-[-0.02em] text-ink-900 dark:text-paper">
                 ~30 000
                 <span className="text-ink-400 dark:text-ink-500 font-semibold"> GNF</span>
@@ -93,11 +93,12 @@ export const Hero: React.FC = () => {
                 par mois
               </p>
               <figcaption className="mt-6 text-sm leading-relaxed text-ink-600 dark:text-ink-300 max-w-xs">
-                Revenu médian estimé pour une installation solaire résidentielle
-                de 3&nbsp;kW connectée à SoliBox, en mode partage de revenus.
+                Revenu mensuel projeté pour une installation solaire de
+                3&nbsp;kW connectée à SoliBox, en mode partage de revenus —
+                à valider en pilote terrain.
               </figcaption>
               <p className="mt-4 text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
-                Estimation pilote · sujette à variation
+                Modèle économique · non encore mesuré
               </p>
             </figure>
           </aside>

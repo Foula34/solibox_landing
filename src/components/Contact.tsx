@@ -4,10 +4,10 @@ import { ArrowUpRight } from 'lucide-react';
 type FormStatus = 'idle' | 'loading' | 'success';
 
 const interestOptions = [
-  'Je veux installer SoliBox chez moi',
-  'Je souhaite recevoir de l’énergie',
-  'Je représente une organisation ou un programme',
-  'Je suis investisseur',
+  'Pour mon foyer ou ma communauté',
+  'Pour un village pilote',
+  'ONG, fondation, programme énergie',
+  'Investisseur',
   'Presse / autre',
 ];
 
@@ -52,8 +52,8 @@ export const Contact: React.FC = () => {
               </span>
             </h2>
             <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 mb-12 max-w-md">
-              Que vous soyez foyer producteur, futur bénéficiaire, partenaire
-              institutionnel ou investisseur — un seul point d&rsquo;entrée.
+              Foyer intéressé, village candidat, ONG, fondation, programme
+              énergie, investisseur, presse — un seul point d&rsquo;entrée.
             </p>
 
             {/* Plain text contact lines, no icon boxes */}

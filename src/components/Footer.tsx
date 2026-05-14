@@ -6,7 +6,7 @@ import { scrollToSection } from '../utils/scrollUtils';
 const navLinks = [
   { label: 'Solution', href: '#solution' },
   { label: 'Produit', href: '#product' },
-  { label: 'Tarification', href: '#earnings' },
+  { label: 'Modèle économique', href: '#earnings' },
   { label: 'Impact', href: '#impact' },
   { label: 'Équipe', href: '#team' },
   { label: 'Feuille de route', href: '#roadmap' },

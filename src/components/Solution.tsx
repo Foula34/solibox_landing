@@ -29,10 +29,10 @@ const steps: Step[] = [
 type Spec = { label: string; value: string };
 
 const specs: Spec[] = [
-  { label: 'Couverture', value: 'Conakry · pilote Q1 2026' },
+  { label: 'Cible pilote', value: 'Villages · intérieur Guinée' },
   { label: 'Capacité', value: '1 à 8 kW résidentiel' },
-  { label: 'Paiement', value: 'Orange Money · MTN · virement' },
-  { label: 'Installation', value: '48 h, sans modification système' },
+  { label: 'Paiement prévu', value: 'Orange Money · MTN · virement' },
+  { label: 'Installation prévue', value: '48 h, sans modification système' },
 ];
 
 export const Solution: React.FC = () => {
@@ -90,7 +90,7 @@ export const Solution: React.FC = () => {
           <div className="flex items-end justify-between mb-6">
             <p className="eyebrow">Démonstration</p>
             <p className="hidden sm:block text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
-              SoliBox · prototype Q1 2026
+              Prototype validé · Fab Lab ODC Conakry
             </p>
           </div>
           <div className="relative aspect-video bg-ink-900 dark:bg-ink-800 ring-1 ring-mist dark:ring-ink-800 overflow-hidden">
