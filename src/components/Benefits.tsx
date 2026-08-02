@@ -10,12 +10,12 @@ type Benefit = {
 
 const benefits: Benefit[] = [
   {
-    metric: '~30 000',
+    metric: '150k - 500k',
     unit: 'GNF / mois',
     title: 'Un revenu mensuel régulier',
     body:
-      'Pour une installation domestique de 3 kW connectée au pilote, le surplus partagé génère un revenu net moyen estimé. Les versements sont mensuels, en GNF, sans seuil minimum.',
-    source: 'Modèle économique · à valider en pilote terrain',
+      'Pour une installation solaire revendant son surplus à 1 à 3 voisins, le revenu net généré se situe dans cette fourchette. Les versements sont mensuels, en GNF, sans seuil minimum.',
+    source: 'Modèle économique · basé sur 1 à 3 foyers raccordés',
   },
   {
     metric: '~1,2 t',

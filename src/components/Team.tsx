@@ -7,45 +7,54 @@ type Member = {
   linkedin?: string;
   github?: string;
   email: string;
+  imagePosition?: string;
+  description?: string;
 };
 
 const team: Member[] = [
   {
     name: 'Foula Fofana',
-    role: 'Développeur · Co-fondateur',
+    role: 'CEO',
     image: 'assets/equipe/foula.jpeg',
     linkedin: 'https://www.linkedin.com/in/foula-fofana-1769782a5/',
     github: 'https://github.com/Foula34',
     email: 'fofanafoula70@gmail.com',
+    description: 'Stratégie générale, relations partenaires et institutions, pilotage global du programme',
   },
   {
     name: 'Hawa Barry',
-    role: 'Designer produit',
+    role: 'CMO',
     image: 'assets/equipe/hawa.jpg',
     linkedin: 'https://www.linkedin.com/in/hawa-barry-7b92b6336',
     email: 'hawab5139@gmail.com',
+    description: 'Acquisition client, marketing terrain, relation avec les foyers pilotes',
   },
   {
-    name: 'Boubacar Diallo',
-    role: 'Ingénieur IoT',
+    name: 'Boubacar Siddigue Diallo',
+    role: 'CTO Hardware',
     image: 'assets/equipe/boubacar.jpg',
     linkedin: 'https://www.linkedin.com/in/thierno-boubacar-diallo-711b41349',
     email: 'siddiguediallo2000@gmail.com',
+    imagePosition: 'object-top',
+    description: 'Conception PCB, intégration électronique, certification et fiabilité matérielle',
   },
   {
     name: 'Alseny Bangoura',
-    role: 'Finance & opérations',
+    role: 'RAF',
     image: 'assets/equipe/alseny.jpg',
     linkedin: 'http://www.linkedin.com/in/alseny-gn',
     email: 'bangoura33072@gmail.com',
+    description: 'Gestion financière, comptabilité, suivi budgétaire et conformité fiscale',
   },
   {
-    name: 'Sékou Doumbouya',
-    role: 'IA & optimisation',
+    name: 'Sekou Doumbouya',
+    role: 'Lead AI & Data',
     image: 'assets/equipe/sekou.jpg',
     linkedin: 'https://www.linkedin.com/in/sekou-doumbouya-a51143254',
     github: 'https://huggingface.co/doumbouyasekou',
     email: 'doumbouyasekou967@gmail.com',
+    imagePosition: 'object-top',
+    description: 'Infrastructure Cloud, application, intégration API Mobile Money, exploitation des données',
   },
 ];
 
@@ -140,17 +149,23 @@ export const Team: React.FC = () => {
                 <img
                   src={m.image}
                   alt={m.name}
-                  className="w-full h-full object-cover grayscale-[0.15] hover:grayscale-0 transition-[filter] duration-500"
+                  className={`w-full h-full object-cover ${m.imagePosition || 'object-center'} grayscale-[0.15] hover:grayscale-0 transition-[filter] duration-500`}
                   loading="lazy"
                 />
               </div>
 
-              <p className="text-[10px] uppercase tracking-eyebrow text-ink-500 dark:text-ink-400 mb-2">
+              <p className="text-[10px] uppercase tracking-eyebrow text-solar-600 dark:text-solar-400 font-semibold mb-2">
                 {m.role}
               </p>
-              <h3 className="font-display font-medium text-2xl sm:text-3xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] mb-5">
+              <h3 className="font-display font-medium text-2xl sm:text-3xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] mb-3">
                 {m.name}
               </h3>
+              
+              {m.description && (
+                <p className="text-sm leading-relaxed text-ink-600 dark:text-ink-300 mb-6 max-w-sm">
+                  {m.description}
+                </p>
+              )}
 
               {/* Social as plain text links, inline */}
               <p className="text-sm text-ink-500 dark:text-ink-400 flex flex-wrap items-center gap-x-1">

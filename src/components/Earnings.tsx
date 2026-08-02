@@ -11,7 +11,7 @@ type Plan = {
   terms: string[];
 };
 
-const KWH_PRICE = 200; // GNF / kWh — modèle pilote
+const KWH_PRICE = 1500; // GNF / kWh — prix estimé sur le marché
 const BOX_PRICE = 1_500_000; // GNF — prix prototype achat direct
 const LEASE_MONTHLY = 60_000; // GNF / mois indicatif
 const LEASE_MONTHS = 36;
@@ -23,26 +23,26 @@ const plans: Plan[] = [
     price: '1 500 000',
     priceUnit: 'GNF · prix prototype',
     forWho:
-      'Vous avez la capacité d’investir le boîtier en une fois. Vous conservez 100 % des revenus surplus dès l’installation.',
+      'Vous financez le boîtier en une fois et commencez à rentabiliser votre installation solaire dès le premier jour.',
     terms: [
-      'Boîtier propriété immédiate',
-      'Aucun engagement, aucune part sur les revenus',
-      'Maintenance première année incluse',
+      'Propriété immédiate du boîtier SoliBox',
+      'Conservez 90% des revenus générés (10% de frais plateforme & Mobile Money)',
+      'Maintenance & Support inclus la première année',
       'Garantie constructeur',
     ],
   },
   {
     key: 'location-vente',
-    label: 'Location-vente',
+    label: 'Rentabilisation Progressive (Location-vente)',
     price: '60 000',
     priceUnit: `GNF / mois × ${LEASE_MONTHS} mois`,
     forWho:
-      'Vous préférez répartir le coût sur trois ans. Vous gardez 100 % des revenus surplus, le boîtier devient votre propriété à terme.',
+      'Ne déboursez pas une grosse somme au départ. Le boîtier s\'autofinance grâce à l\'énergie que vous revendez à vos voisins.',
     terms: [
-      `${LEASE_MONTHS} mensualités fixes`,
-      'Transfert de propriété au terme du contrat',
-      'Maintenance et support inclus pendant la location',
-      'Sortie anticipée possible (modalités sur demande)',
+      'Investissement initial réduit',
+      'Paiement lissé sur 36 mois (financé par vos gains)',
+      'Transfert de propriété automatique au terme du contrat',
+      'Maintenance & Assistance technique incluses',
     ],
   },
 ];
@@ -84,13 +84,14 @@ export const Earnings: React.FC = () => {
           <h2 className="headline-section mb-8">
             Deux formules.{' '}
             <span className="text-ink-500 dark:text-ink-400 font-normal">
-              Une seule promesse : aucun frais caché.
+              Une seule promesse : amorti en quelques mois.
             </span>
           </h2>
           <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
-            Le boîtier SoliBox est un prototype actuellement fabriqué à
-            l&rsquo;unité. Le prix reflète ce statut, et baissera mécaniquement
-            avec la production en série une fois le pilote terrain validé.
+            Le boîtier SoliBox est un produit de haute précision actuellement
+            assemblé à l&rsquo;unité. Nos prix reflètent ce statut
+            d&rsquo;innovation et diminueront lors de la production
+            industrielle post-pilote.
           </p>
         </header>
 
@@ -144,20 +145,67 @@ export const Earnings: React.FC = () => {
         {/* Pilot village line — dedicated funding model */}
         <div className="mb-24 lg:mb-28 pt-8 border-t border-mist dark:border-ink-800 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <p className="text-base sm:text-lg leading-relaxed text-ink-700 dark:text-ink-300 max-w-2xl">
-            Pour les{' '}
             <span className="text-ink-900 dark:text-paper font-medium">
-              déploiements pilotes en milieu rural
+              Projets Impact & Pilotes Ruraux
             </span>
-            {' '}— portés par une ONG, une fondation, une agence ou un programme
-            de financement — les modalités sont calibrées au cas par cas, avec
-            modèle de partage de revenus possible sans apport initial.
+            <br />
+            Vous êtes une ONG, une fondation ou un bailleur de fonds ? Nous
+            déployons des micro-grids ruraux sur mesure avec un modèle de
+            partage de revenus sans apport initial requis.
           </p>
           <button
             onClick={() => scrollToSection('#contact')}
             className="btn-secondary self-start"
           >
-            Discuter d&rsquo;un pilote
+            Discuter d&rsquo;un pilote institutionnel
           </button>
+        </div>
+
+        {/* Scenarios / Table */}
+        <div className="mb-24 lg:mb-28">
+          <header className="mb-10">
+            <p className="eyebrow mb-4">Potentiel de gains</p>
+            <h3 className="font-display font-medium text-3xl sm:text-4xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] max-w-xl">
+              Des revenus proportionnels à votre installation.
+            </h3>
+          </header>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr className="border-b border-mist dark:border-ink-800">
+                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">Profil Producteur</th>
+                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">Nombre de foyers raccordés</th>
+                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">Estimation Gain Mensuel (Net)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-mist dark:divide-ink-800 text-sm">
+                <tr className="hover:bg-ink-50 dark:hover:bg-ink-900/50 transition-colors">
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">
+                    <span className="font-medium text-ink-900 dark:text-paper block mb-1">Basic</span>
+                    Petite installation
+                  </td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">1 foyer voisin</td>
+                  <td className="py-4 px-4 font-semibold text-solar-600 dark:text-solar-400">100 000 – 150 000 GNF</td>
+                </tr>
+                <tr className="hover:bg-ink-50 dark:hover:bg-ink-900/50 transition-colors">
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">
+                    <span className="font-medium text-ink-900 dark:text-paper block mb-1">Standard</span>
+                    Installation moyenne
+                  </td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">2 à 3 foyers voisins</td>
+                  <td className="py-4 px-4 font-semibold text-solar-600 dark:text-solar-400">250 000 – 450 000 GNF</td>
+                </tr>
+                <tr className="hover:bg-ink-50 dark:hover:bg-ink-900/50 transition-colors">
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">
+                    <span className="font-medium text-ink-900 dark:text-paper block mb-1">Pro</span>
+                    Grande installation
+                  </td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">4+ foyers / Boutiques</td>
+                  <td className="py-4 px-4 font-semibold text-solar-600 dark:text-solar-400">+ 600 000 GNF</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Inline calculator */}

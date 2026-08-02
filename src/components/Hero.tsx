@@ -20,9 +20,9 @@ const stats: Stat[] = [
     source: 'Estimation IRENA, 2023',
   },
   {
-    kpi: '2ᵉ',
-    label: 'place SoliBox à l’Orange Summer Challenge — programme panafricain d’innovation porté par Orange Digital Center.',
-    source: 'Orange Summer Challenge · Édition 2025',
+    kpi: '2',
+    label: 'premiers prix de l’innovation remportés en 2026 (SADEN Fulbright et Salon des Étudiants Entrepreneurs).',
+    source: 'Palmarès SoliBox 2026',
   },
 ];
 
@@ -84,21 +84,19 @@ export const Hero: React.FC = () => {
           {/* Side panel — single editorial figure */}
           <aside className="col-span-12 lg:col-span-4 pt-10 lg:pt-0 lg:pl-10 border-t lg:border-t-0 lg:border-l border-mist dark:border-ink-800 flex">
             <figure className="flex flex-col justify-end w-full">
-              <p className="eyebrow mb-6">Projection · cas type</p>
-              <p className="font-display font-bold text-6xl sm:text-7xl leading-[0.95] tracking-[-0.02em] text-ink-900 dark:text-paper">
-                ~30 000
+              <p className="eyebrow mb-6">Revenus mensuels potentiels</p>
+              <p className="font-display font-bold text-5xl sm:text-6xl leading-[0.95] tracking-[-0.02em] text-ink-900 dark:text-paper">
+                150k - 500k
                 <span className="text-ink-400 dark:text-ink-500 font-semibold"> GNF</span>
               </p>
               <p className="mt-2 text-sm uppercase tracking-eyebrow text-ink-500 dark:text-ink-400">
                 par mois
               </p>
               <figcaption className="mt-6 text-sm leading-relaxed text-ink-600 dark:text-ink-300 max-w-xs">
-                Revenu mensuel projeté pour une installation solaire de
-                3&nbsp;kW connectée à SoliBox, en mode partage de revenus —
-                à valider en pilote terrain.
+                Revenus passifs générés en revendant votre surplus d'énergie solaire à vos voisins via Solibox.
               </figcaption>
               <p className="mt-4 text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
-                Modèle économique · non encore mesuré
+                Basé sur 1 à 3 foyers raccordés
               </p>
             </figure>
           </aside>

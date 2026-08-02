@@ -228,11 +228,11 @@ const Field: React.FC<{
           required={required}
           className={`${baseInputClass} pr-8 appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 20 20%22 fill=%22%238A8275%22><path fill-rule=%22evenodd%22 d=%22M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z%22 clip-rule=%22evenodd%22/></svg>')] bg-no-repeat bg-[right_0.25rem_center]`}
         >
-          <option value="" disabled>
+          <option value="" disabled className="bg-paper dark:bg-ink-950 text-ink-900 dark:text-paper">
             Sélectionner un sujet
           </option>
           {options?.map((o) => (
-            <option key={o} value={o}>
+            <option key={o} value={o} className="bg-paper dark:bg-ink-950 text-ink-900 dark:text-paper">
               {o}
             </option>
           ))}

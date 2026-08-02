@@ -199,7 +199,7 @@ export const EnergyFlow: React.FC = () => {
 
         {/* Label centered between the two segments */}
         <text x="400" y="255" textAnchor="middle" fontSize="13" fontFamily="Glacial Indifference, Montserrat, sans-serif" fontWeight="700" fill="currentColor">
-          ~ 30 000 GNF / mois
+          150k - 500k GNF / mois
         </text>
 
         {/* Small eyebrow label on return loop */}

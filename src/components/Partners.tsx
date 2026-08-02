@@ -6,29 +6,33 @@ type Recognition = {
   name: string;
   edition: string;
   description: string;
+  image: string;
 };
 
 const items: Recognition[] = [
+  {
+    status: '1ᵉʳ prix',
+    name: 'SADEN Fulbright Innovation Challenge',
+    edition: 'Édition 2026',
+    description:
+      'SoliBox a remporté le premier prix de ce challenge prestigieux, récompensant son potentiel d’innovation et son impact socio-économique majeur.',
+    image: '/assets/partenaires/saden.jpeg',
+  },
+  {
+    status: '1ᵉʳ prix',
+    name: 'Salon des Étudiants Entrepreneurs',
+    edition: 'Catégorie Numérique · 2026',
+    description:
+      'Premier prix de la catégorie numérique, saluant l’excellence technologique et la viabilité du modèle d’électrification rurale décentralisée.',
+    image: '/assets/partenaires/see.jpeg',
+  },
   {
     status: '2ᵉ place',
     name: 'Orange Summer Challenge',
     edition: 'Édition 2025',
     description:
       'Programme panafricain d’innovation porté par Orange Digital Center — SoliBox récompensé pour son modèle de redistribution énergétique.',
-  },
-  {
-    status: 'Participant',
-    name: 'Afrinov',
-    edition: 'Édition 2026',
-    description:
-      'Programme d’accompagnement et de visibilité pour les startups africaines à fort potentiel d’impact.',
-  },
-  {
-    status: 'En cours',
-    name: 'Salon des Étudiants Entrepreneurs',
-    edition: '2026',
-    description:
-      'Participation active au salon, exposition du prototype et échanges avec investisseurs, institutionnels et programmes énergie.',
+    image: '/assets/partenaires/osc.jpeg',
   },
 ];
 
@@ -58,11 +62,22 @@ export const Partners: React.FC = () => {
           </p>
         </div>
 
-        {/* Items strip — 3 col grid, no logos, focus on substance */}
+        {/* Items strip — 3 col grid, with images/logos */}
         <ul className="grid grid-cols-1 md:grid-cols-3 grid-divide border-t border-mist dark:border-ink-800">
           {items.map((item) => (
-            <li key={item.name} className="card-stat">
-              <p className="text-[10px] uppercase tracking-eyebrow text-solar-600 dark:text-solar-400 mb-6">
+            <li key={item.name} className="card-stat flex flex-col">
+              <div className="mb-8 relative aspect-[4/3] bg-mist dark:bg-ink-800 overflow-hidden w-full group">
+                <img 
+                  src={item.image} 
+                  alt={`Prix - ${item.name}`} 
+                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-[filter] duration-500"
+                  onError={(e) => {
+                    // Fallback visuel si l'image n'est pas encore ajoutée
+                    (e.currentTarget as HTMLImageElement).src = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100%25" height="100%25" viewBox="0 0 800 600"%3E%3Crect fill="%23e5e7eb" width="800" height="600"/%3E%3Ctext fill="%239ca3af" x="50%25" y="50%25" text-anchor="middle" font-family="sans-serif" font-size="24"%3EImage/Photo à venir%3C/text%3E%3C/svg%3E';
+                  }}
+                />
+              </div>
+              <p className="text-[10px] uppercase tracking-eyebrow text-solar-600 dark:text-solar-400 mb-4">
                 {item.status}
               </p>
               <p className="font-display font-semibold text-2xl lg:text-3xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] mb-2">
