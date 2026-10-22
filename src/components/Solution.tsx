@@ -96,8 +96,8 @@ export const Solution: React.FC = () => {
           <div className="relative aspect-video bg-ink-900 dark:bg-ink-800 ring-1 ring-mist dark:ring-ink-800 overflow-hidden">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/wd5hOg3iOJc"
-              title="Démonstration SoliBox"
+              src="https://www.youtube-nocookie.com/embed/XGxKl3it14k"
+              title="SoliBox, partager et vendre son surplus solaire entre voisins (démonstration)"
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
