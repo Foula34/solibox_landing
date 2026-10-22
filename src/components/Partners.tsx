@@ -57,9 +57,52 @@ export const Partners: React.FC = () => {
 
           <p className="col-span-12 lg:col-span-7 lg:pt-3 text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
             SoliBox cherche activement les programmes et financements qui
-            permettront de passer du prototype validé en laboratoire au premier
-            pilote terrain en intérieur Guinée. Voici où nous sommes engagés.
+            permettront de passer du prototype validé en laboratoire aux
+            premières installations chez de vrais foyers, prévues à Conakry en
+            novembre 2026. Voici où nous sommes engagés.
           </p>
+        </div>
+
+        {/* Featured distinction — POESAM 2026 */}
+        <div
+          data-reveal
+          className="grid grid-cols-12 gap-y-8 lg:gap-x-16 items-center mb-20 lg:mb-24 pt-10 border-t border-mist dark:border-ink-800"
+        >
+          <figure className="col-span-12 lg:col-span-7 m-0">
+            <div className="aspect-[4/3] bg-mist dark:bg-ink-800 overflow-hidden">
+              <img
+                src="/assets/distinctions/poesam-2026.jpg"
+                alt="L’équipe SoliBox recevant le premier prix national du POESAM 2026 à l’Orange Digital Center de Conakry"
+                width={1080}
+                height={810}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <figcaption className="mt-4 text-xs leading-relaxed text-ink-500 dark:text-ink-400">
+              L&rsquo;équipe SoliBox à l&rsquo;Orange Digital Center de Conakry,
+              septembre 2026.
+            </figcaption>
+          </figure>
+
+          <div className="col-span-12 lg:col-span-5">
+            <p className="text-[10px] uppercase tracking-eyebrow text-solar-600 dark:text-solar-400 mb-4">
+              1ᵉʳ prix national
+            </p>
+            <p className="font-display font-semibold text-3xl lg:text-4xl text-ink-900 dark:text-paper leading-tight tracking-[-0.01em] mb-3">
+              Prix Orange de l&rsquo;Entrepreneur Social en Afrique et au
+              Moyen-Orient
+            </p>
+            <p className="text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500 mb-6">
+              11ᵉ édition nationale · Guinée · Septembre 2026
+            </p>
+            <p className="text-base leading-relaxed text-ink-600 dark:text-ink-300 max-w-md">
+              SoliBox a remporté le premier prix national du POESAM 2026, doté
+              de 80 000 000 GNF, devant trois autres projets récompensés. À ce
+              titre, SoliBox représente la Guinée à la finale internationale du
+              concours.
+            </p>
+          </div>
         </div>
 
         {/* Items strip — 3 col grid, with images/logos */}
@@ -97,7 +140,7 @@ export const Partners: React.FC = () => {
         <div className="mt-20 lg:mt-24 pt-10 border-t border-mist dark:border-ink-800 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <p className="font-display font-medium text-2xl sm:text-3xl text-ink-900 dark:text-paper leading-snug tracking-[-0.01em] max-w-xl">
             Votre programme, fondation ou agence peut accompagner le pilote
-            village SoliBox.
+            SoliBox.
           </p>
           <button
             onClick={() => scrollToSection('#contact')}
