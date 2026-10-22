@@ -10,28 +10,28 @@ type Goal = {
 
 const goals: Goal[] = [
   {
-    metric: '100',
-    unit: 'foyers',
+    metric: '2',
+    unit: 'foyers pilotes',
     description:
-      'connectés à l’issue du premier pilote village — producteurs et bénéficiaires confondus, en intérieur Guinée.',
-    status: 'objectif',
-    horizon: 'Post-pilote · 2028',
+      'équipés à Conakry en novembre et décembre 2026, pour mesurer en conditions réelles l’énergie partagée, le revenu du producteur et la fiabilité du boîtier.',
+    status: 'en cours',
+    horizon: 'Pilote · fin 2026',
   },
   {
-    metric: '120',
-    unit: 'MWh / an',
+    metric: '1 010',
+    unit: 'boîtiers installés',
     description:
-      'd’électricité solaire redistribuée, traçable au compteur SoliBox installé chez chaque producteur.',
+      'visés en parc cumulé, après un premier déploiement commercial à Conakry en 2027 et l’extension aux grandes villes de l’intérieur.',
     status: 'objectif',
-    horizon: 'Post-pilote · 2028',
+    horizon: 'Horizon 2029',
   },
   {
-    metric: '~95 t',
-    unit: 'CO₂ évitées / an',
+    metric: '~1 400',
+    unit: 'MWh / an redistribués',
     description:
-      'par substitution à des sources thermiques (groupes électrogènes, bois de chauffe).',
+      'entre voisins à ce stade, soit près de 137 000 euros reversés chaque année aux foyers producteurs. Hypothèse prudente, calculée sur le seul profil résidentiel.',
     status: 'objectif',
-    horizon: 'Post-pilote · 2028',
+    horizon: 'Horizon 2029',
   },
 ];
 
@@ -47,11 +47,11 @@ const methodology: Method[] = [
   },
   {
     what: 'Revenu producteur',
-    how: 'kWh × tarif unitaire de la zone (200 GNF/kWh sur le pilote). Versement mensuel, traçable bancairement.',
+    how: 'kWh partagés × tarif de référence de 950 GNF/kWh, contre 453 GNF/kWh pour le tarif EDG domestique. Versement mensuel par mobile money, traçable.',
   },
   {
-    what: 'CO₂ évitée',
-    how: 'Substitution × facteur d’émission EDG 2023 (≈ 0,8 kg CO₂ / kWh thermique). Audit annuel indépendant prévu.',
+    what: 'Parc installé',
+    how: 'Boîtiers effectivement mis en service, et non boîtiers vendus. Chaque unité est rattachée à un producteur identifié et à ses voisins sous contrat.',
   },
 ];
 
@@ -75,10 +75,10 @@ export const Impact: React.FC = () => {
             il ne se proclame pas.
           </h2>
           <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
-            Voici les objectifs publics que SoliBox se fixe à l&rsquo;issue du
-            premier pilote village. Chaque métrique est rattachée à un
-            instrument de mesure, pas à une projection marketing. Le pilote
-            terrain démarre une fois le financement sécurisé.
+            Voici les objectifs publics que SoliBox se fixe, du pilote de fin 2026
+            à l&rsquo;horizon 2029. Chaque métrique est rattachée à un instrument de
+            mesure, pas à une projection marketing, et nous distinguons
+            délibérément ce qui sera mesuré de ce qui est projeté.
           </p>
         </header>
 

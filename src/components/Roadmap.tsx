@@ -12,31 +12,45 @@ type Phase = {
 
 const phases: Phase[] = [
   {
-    date: '2024 – 2025',
-    title: 'Prototype et tests laboratoire',
+    date: '2025 – 2026',
+    title: 'Prototype et validation en laboratoire',
     body:
-      'Validation technique du boîtier de redistribution au Fab Lab d’Orange Digital Center, sur des maisons-test construites en bois par l’équipe.',
+      'Validation du principe de fonctionnement au Fab Lab de l’Orange Digital Center de Conakry, sur des maisons-test construites en bois par l’équipe. Premier prix national du POESAM 2026.',
     status: 'done',
   },
   {
-    date: '2026',
-    title: 'Concours, financement, série',
+    date: 'Nov. – déc. 2026',
+    title: 'Pilote chez de vrais foyers',
     body:
-      'Participation à plusieurs concours d’innovation pour financer la production des premiers boîtiers de série destinés au pilote terrain.',
+      'Deux installations chez des foyers réels à Conakry, et mesure des performances réelles : énergie effectivement partagée, revenu du producteur, fiabilité du boîtier.',
     status: 'current',
   },
   {
-    date: '2027',
-    title: 'Premier pilote village',
+    date: 'T1 2027',
+    title: 'Industrialisation',
     body:
-      'Déploiement terrain en intérieur Guinée — premier village pilote, mesure réelle des kWh redistribués et des revenus générés.',
+      'Mise en place de l’atelier d’assemblage, passage en production de série et immatriculation en société.',
     status: 'planned',
   },
   {
-    date: '2028+',
-    title: 'Commercial et expansion',
+    date: 'T2 – T4 2027',
+    title: 'Premier déploiement commercial',
     body:
-      'Lancement commercial à plus grande échelle, conditionné aux résultats du pilote village, et extension à d’autres pays d’Afrique de l’Ouest.',
+      'Commercialisation à Conakry et lancement de la gamme Pro destinée aux écoles, cliniques, mosquées et entreprises.',
+    status: 'planned',
+  },
+  {
+    date: '2028',
+    title: 'Montée en cadence',
+    body:
+      'Extension aux grandes villes de l’intérieur : Kankan, Labé, Kindia, N’Zérékoré, qui présentent le même profil que Conakry à plus petite échelle.',
+    status: 'future',
+  },
+  {
+    date: '2029',
+    title: 'Production en série et sous-région',
+    body:
+      'Parc installé visé de 1 010 boîtiers, et première implantation dans un pays voisin.',
     status: 'future',
   },
 ];
