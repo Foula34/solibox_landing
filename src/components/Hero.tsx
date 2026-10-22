@@ -16,13 +16,13 @@ const stats: Stat[] = [
   },
   {
     kpi: '~40 %',
-    label: 'du surplus solaire résidentiel est perdu chaque jour, faute de stockage ou de redistribution.',
-    source: 'Estimation IRENA, 2023',
+    label: 'de la production d’un foyer solaire reste en surplus, et se dissipe faute de stockage ou de redistribution.',
+    source: 'Hypothèse SoliBox, business plan 2026-2029',
   },
   {
-    kpi: '2',
-    label: 'premiers prix de l’innovation remportés en 2026 (SADEN Fulbright et Salon des Étudiants Entrepreneurs).',
-    source: 'Palmarès SoliBox 2026',
+    kpi: '1er',
+    label: 'prix national du POESAM 2026 en Guinée, après le SADEN Fulbright et le Salon des Étudiants Entrepreneurs.',
+    source: 'Orange Guinée, septembre 2026',
   },
 ];
 

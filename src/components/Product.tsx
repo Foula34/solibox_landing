@@ -73,14 +73,16 @@ export const Product: React.FC = () => {
               Le boîtier SoliBox s&rsquo;intercale à la sortie 230V de votre
               onduleur solaire. Il mesure l&rsquo;énergie disponible en temps
               réel et gère l&rsquo;alimentation automatique des foyers voisins
-              connectés — le tout sans batterie supplémentaire et sans toucher
-              à votre installation existante.
+              connectés, le tout sans batterie supplémentaire et sans toucher
+              à votre installation existante. Le principe de fonctionnement est
+              validé en laboratoire ; les deux premières installations chez de
+              vrais foyers sont prévues en novembre 2026.
             </p>
             <dl className="grid grid-cols-2 gap-x-8 gap-y-4 mt-8 pt-6 border-t border-mist dark:border-ink-800 text-sm">
               <Spec label="Mesure" value="En temps réel (haute précision)" />
               <Spec label="Connectivité" value="Cellulaire (2G / 3G / 4G)" />
               <Spec label="Capacité" value="1 à 8 kW" />
-              <Spec label="Conception" value="100% conçu et assemblé à Conakry 🇬🇳" />
+              <Spec label="Conception" value="Conçu à Conakry, Guinée" />
             </dl>
           </div>
         </div>
@@ -95,7 +97,7 @@ export const Product: React.FC = () => {
               </h3>
             </div>
             <p className="hidden md:block text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-500">
-              Android · iOS · Q3 2026
+              Android · iOS · en développement
             </p>
           </div>
 

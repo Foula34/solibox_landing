@@ -11,38 +11,40 @@ type Plan = {
   terms: string[];
 };
 
-const KWH_PRICE = 1500; // GNF / kWh — prix estimé sur le marché
-const BOX_PRICE = 1_500_000; // GNF — prix prototype achat direct
-const LEASE_MONTHLY = 60_000; // GNF / mois indicatif
-const LEASE_MONTHS = 36;
+// Hypothèses du business plan SoliBox 2026-2029.
+// Le tarif de référence de 950 GNF/kWh est supérieur au tarif EDG domestique
+// (453 GNF/kWh) parce que l'alternative réelle du voisin est le groupe
+// électrogène ou le kiosque de recharge. Il reste à valider par le pilote.
+const KWH_PRICE = 950; // GNF / kWh — prix de référence de l'énergie partagée
+const BOX_PRICE = 2_800_000; // GNF — boîtier Résidentiel
 
 const plans: Plan[] = [
   {
-    key: 'achat',
-    label: 'Achat direct',
-    price: '1 500 000',
-    priceUnit: 'GNF · prix prototype',
+    key: 'residentiel',
+    label: 'SoliBox Résidentiel',
+    price: '2 800 000',
+    priceUnit: 'GNF + 17 000 GNF / mois d’abonnement',
     forWho:
-      'Vous financez le boîtier en une fois et commencez à rentabiliser votre installation solaire dès le premier jour.',
+      'Pour un foyer équipé d’environ 3 kWc qui partage son surplus avec un à trois voisins.',
     terms: [
-      'Propriété immédiate du boîtier SoliBox',
-      'Conservez 90% des revenus générés (10% de frais plateforme & Mobile Money)',
-      'Maintenance & Support inclus la première année',
-      'Garantie constructeur',
+      'Environ 118 kWh partagés par mois',
+      'Revenu producteur estimé à 112 100 GNF par mois',
+      'Amortissement estimé à 25 mois',
+      'Abonnement de supervision, maintenance et garantie inclus',
     ],
   },
   {
-    key: 'location-vente',
-    label: 'Rentabilisation Progressive (Location-vente)',
-    price: '60 000',
-    priceUnit: `GNF / mois × ${LEASE_MONTHS} mois`,
+    key: 'pro',
+    label: 'SoliBox Pro',
+    price: '6 000 000',
+    priceUnit: 'GNF + 105 000 GNF / mois d’abonnement',
     forWho:
-      'Ne déboursez pas une grosse somme au départ. Le boîtier s\'autofinance grâce à l\'énergie que vous revendez à vos voisins.',
+      'Pour une école, une clinique, une mosquée ou une entreprise équipée d’environ 15 kWc, dont le surplus alimente cinq à huit voisins.',
     terms: [
-      'Investissement initial réduit',
-      'Paiement lissé sur 36 mois (financé par vos gains)',
-      'Transfert de propriété automatique au terme du contrat',
-      'Maintenance & Assistance technique incluses',
+      'Environ 740 kWh partagés par mois',
+      'Revenu producteur estimé à 703 000 GNF par mois',
+      'Amortissement estimé à 9 mois',
+      'Abonnement de supervision, maintenance et garantie inclus',
     ],
   },
 ];
@@ -50,8 +52,8 @@ const plans: Plan[] = [
 export const Earnings: React.FC = () => {
   // Inline calculator state
   const [solarPower, setSolarPower] = useState(3); // kW
-  const [sunHours, setSunHours] = useState(6); // h/day
-  const [sharePercent, setSharePercent] = useState(40); // %
+  const [sunHours, setSunHours] = useState(4.5); // h/day — équivalent plein soleil
+  const [sharePercent, setSharePercent] = useState(30); // % de la production
 
   const dailyProduction = solarPower * sunHours;
   const monthlyProduction = dailyProduction * 30;
@@ -82,16 +84,16 @@ export const Earnings: React.FC = () => {
         <header data-reveal className="max-w-3xl mb-20 lg:mb-24">
           <p className="eyebrow mb-6">Modèle économique</p>
           <h2 className="headline-section mb-8">
-            Deux formules.{' '}
+            Deux gammes.{' '}
             <span className="text-ink-500 dark:text-ink-400 font-normal">
-              Une seule promesse : amorti en quelques mois.
+              Un boîtier que l&rsquo;énergie partagée rembourse.
             </span>
           </h2>
           <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
-            Le boîtier SoliBox est un produit de haute précision actuellement
-            assemblé à l&rsquo;unité. Nos prix reflètent ce statut
-            d&rsquo;innovation et diminueront lors de la production
-            industrielle post-pilote.
+            SoliBox ne vend pas d&rsquo;énergie. Nous fournissons l&rsquo;équipement
+            et la plateforme qui rendent le partage mesurable, traçable et payable.
+            Les prix ci-dessous sont ceux de notre business plan 2026-2029 et
+            baisseront avec la production en série.
           </p>
         </header>
 
@@ -173,35 +175,31 @@ export const Earnings: React.FC = () => {
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
                 <tr className="border-b border-mist dark:border-ink-800">
-                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">Profil Producteur</th>
-                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">Nombre de foyers raccordés</th>
-                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">Estimation Gain Mensuel (Net)</th>
+                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">&nbsp;</th>
+                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">Résidentiel · 3 kWc</th>
+                  <th className="py-4 px-4 font-semibold text-ink-900 dark:text-paper text-sm">Pro · 15 kWc</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-mist dark:divide-ink-800 text-sm">
                 <tr className="hover:bg-ink-50 dark:hover:bg-ink-900/50 transition-colors">
-                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">
-                    <span className="font-medium text-ink-900 dark:text-paper block mb-1">Basic</span>
-                    Petite installation
-                  </td>
-                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">1 foyer voisin</td>
-                  <td className="py-4 px-4 font-semibold text-solar-600 dark:text-solar-400">100 000 – 150 000 GNF</td>
+                  <td className="py-4 px-4 font-medium text-ink-900 dark:text-paper">Énergie partagée</td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">118 kWh / mois</td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">740 kWh / mois</td>
                 </tr>
                 <tr className="hover:bg-ink-50 dark:hover:bg-ink-900/50 transition-colors">
-                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">
-                    <span className="font-medium text-ink-900 dark:text-paper block mb-1">Standard</span>
-                    Installation moyenne
-                  </td>
-                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">2 à 3 foyers voisins</td>
-                  <td className="py-4 px-4 font-semibold text-solar-600 dark:text-solar-400">250 000 – 450 000 GNF</td>
+                  <td className="py-4 px-4 font-medium text-ink-900 dark:text-paper">Voisins desservis</td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">1 à 3</td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">5 à 8</td>
                 </tr>
                 <tr className="hover:bg-ink-50 dark:hover:bg-ink-900/50 transition-colors">
-                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">
-                    <span className="font-medium text-ink-900 dark:text-paper block mb-1">Pro</span>
-                    Grande installation
-                  </td>
-                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">4+ foyers / Boutiques</td>
-                  <td className="py-4 px-4 font-semibold text-solar-600 dark:text-solar-400">+ 600 000 GNF</td>
+                  <td className="py-4 px-4 font-medium text-ink-900 dark:text-paper">Revenu du producteur</td>
+                  <td className="py-4 px-4 font-semibold text-solar-600 dark:text-solar-400">112 100 GNF / mois</td>
+                  <td className="py-4 px-4 font-semibold text-solar-600 dark:text-solar-400">703 000 GNF / mois</td>
+                </tr>
+                <tr className="hover:bg-ink-50 dark:hover:bg-ink-900/50 transition-colors">
+                  <td className="py-4 px-4 font-medium text-ink-900 dark:text-paper">Amortissement</td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">25 mois</td>
+                  <td className="py-4 px-4 text-ink-700 dark:text-ink-300">9 mois</td>
                 </tr>
               </tbody>
             </table>
@@ -273,24 +271,27 @@ export const Earnings: React.FC = () => {
                 <Stat label="Production / mois" value={`${formatGNF(monthlyProduction)} kWh`} />
                 <Stat label="Surplus partagé" value={`${formatGNF(sharedEnergy)} kWh / mois`} />
                 <Stat
-                  label="Amortissement achat"
+                  label="Amortissement du boîtier"
                   value={formatAmort()}
                   highlight
                 />
                 <Stat
-                  label="Coût location-vente"
-                  value={`${formatGNF(LEASE_MONTHLY * LEASE_MONTHS)} GNF total`}
+                  label="Abonnement mensuel"
+                  value="17 000 GNF"
                 />
               </dl>
             </div>
           </div>
 
           <p className="mt-10 text-xs leading-relaxed text-ink-500 dark:text-ink-400 max-w-2xl">
-            Projection indicative basée sur un tarif de {KWH_PRICE} GNF/kWh et un
-            prix prototype de {formatGNF(BOX_PRICE)} GNF. Les revenus réels
-            dépendront de la demande locale, du profil de consommation des
-            voisins et des conditions d&rsquo;ensoleillement. Les chiffres
-            seront ajustés à l&rsquo;issue du premier pilote terrain.
+            Projection indicative basée sur le tarif de référence de {KWH_PRICE} GNF/kWh
+            et le prix du boîtier Résidentiel, {formatGNF(BOX_PRICE)} GNF. À titre de
+            comparaison, le tarif EDG domestique basse tension est de 453 GNF/kWh ;
+            notre tarif lui est supérieur parce que l&rsquo;alternative réelle du voisin
+            est le groupe électrogène ou le kiosque de recharge payant. Les revenus
+            réels dépendront de la demande locale, du profil de consommation des
+            voisins et de l&rsquo;ensoleillement. Toutes ces hypothèses seront mesurées
+            pendant le pilote de novembre 2026.
           </p>
         </div>
       </div>
