@@ -47,12 +47,11 @@ export const Hero: React.FC = () => {
           {/* Headline column */}
           <div className="col-span-12 lg:col-span-8">
             <h1 className="headline-display max-w-4xl">
-              L&rsquo;électricité que vous ne consommez pas{' '}
+              Avec SoliBox, l&rsquo;électricité que vous ne consommez pas{' '}
               <span className="text-solar-600 dark:text-solar-400">
                 devient un revenu
               </span>
-              <span className="text-ink-400 dark:text-ink-500"> — </span>
-              et l&rsquo;énergie de vos voisins.
+              , et l&rsquo;énergie de vos voisins.
             </h1>
 
             {/* Editorial rule */}
