@@ -58,10 +58,10 @@ export const Footer: React.FC = () => {
             <dl className="space-y-2.5 text-sm">
               <ContactRow label="Email">
                 <a
-                  href="mailto:contact@soliboxgn.com"
+                  href="mailto:fofanafoula70@gmail.com"
                   className="text-paper hover:text-solar-400 transition-colors"
                 >
-                  contact@soliboxgn.com
+                  fofanafoula70@gmail.com
                 </a>
               </ContactRow>
               <ContactRow label="Tél.">

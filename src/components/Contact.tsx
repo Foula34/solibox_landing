@@ -70,10 +70,10 @@ export const Contact: React.FC = () => {
             <dl className="space-y-6 border-t border-mist dark:border-ink-800 pt-8">
               <ContactLine label="Email">
                 <a
-                  href="mailto:contact@soliboxgn.com"
+                  href="mailto:fofanafoula70@gmail.com"
                   className="text-ink-900 dark:text-paper border-b border-mist dark:border-ink-800 hover:border-ink-900 dark:hover:border-paper transition-colors pb-px"
                 >
-                  contact@soliboxgn.com
+                  fofanafoula70@gmail.com
                 </a>
               </ContactLine>
               <ContactLine label="Téléphone">
