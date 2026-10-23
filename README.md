@@ -20,7 +20,7 @@ Le site suit le parcours d'un visiteur, du problème jusqu'au contact :
 - **React 18**, **TypeScript** et **Vite**
 - **Tailwind CSS**, avec un thème clair et un thème sombre
 - **lucide-react** pour les icônes
-- Déploiement et statistiques de visite avec **Vercel** (Vercel Analytics)
+- Déploiement sur **Vercel**
 
 ## Choix techniques
 

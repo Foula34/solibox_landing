@@ -1,16 +1,18 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ThemeContext } from './theme';
 
-interface ThemeContextType {
-  isDark: boolean;
-  toggleTheme: () => void;
+// localStorage peut être indisponible (navigation privée, stockage bloqué) : on ne plante pas.
+function readSavedTheme(): string | null {
+  try {
+    return localStorage.getItem('theme');
+  } catch {
+    return null;
+  }
 }
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
-    // Initialiser directement avec la valeur du localStorage
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = readSavedTheme();
     if (savedTheme) {
       return savedTheme === 'dark';
     }
@@ -20,30 +22,17 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     // Appliquer la classe dark sur l'élément HTML
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+    document.documentElement.classList.toggle('dark', isDark);
+    try {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch {
+      // Pas de stockage disponible : le thème reste valable pour la visite en cours.
     }
   }, [isDark]);
 
   const toggleTheme = () => {
-    setIsDark(prev => !prev);
+    setIsDark((prev) => !prev);
   };
 
-  return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
+  return <ThemeContext.Provider value={{ isDark, toggleTheme }}>{children}</ThemeContext.Provider>;
 };

@@ -88,11 +88,8 @@ export const Team: React.FC = () => {
             <div className="relative aspect-[3/4] bg-mist dark:bg-ink-800 overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <p className="text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-600 mb-2">
-                    Photo équipe en atelier
-                  </p>
-                  <p className="text-xs text-ink-400 dark:text-ink-600">
-                    /public/assets/equipe/atelier.jpeg
+                  <p className="text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-600">
+                    L&rsquo;équipe SoliBox
                   </p>
                 </div>
               </div>

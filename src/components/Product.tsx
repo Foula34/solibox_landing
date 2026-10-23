@@ -128,18 +128,14 @@ const Spec: React.FC<{ label: string; value: string }> = ({ label, value }) => (
   </div>
 );
 
-// Photo of the prototype box. File served from /public/assets/app/boitier.jpeg.
-// If missing, the placeholder behind shows through.
+// Photo du prototype du boîtier. Si l'image ne charge pas, le fond neutre reste visible.
 const BoitierPhoto: React.FC = () => (
   <figure className="relative w-full aspect-[5/4] bg-mist dark:bg-ink-800 overflow-hidden">
-    {/* Placeholder behind, visible if image fails */}
+    {/* Fond neutre, visible si l'image ne charge pas */}
     <div className="absolute inset-0 flex items-center justify-center">
       <div className="text-center">
-        <p className="text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-600 mb-2">
-          Photo prototype
-        </p>
-        <p className="text-xs text-ink-400 dark:text-ink-600">
-          /public/assets/app/boitier.jpeg
+        <p className="text-[10px] uppercase tracking-eyebrow text-ink-400 dark:text-ink-600">
+          Prototype SoliBox
         </p>
       </div>
     </div>
@@ -154,7 +150,7 @@ const BoitierPhoto: React.FC = () => (
   </figure>
 );
 
-// Mobile phone mockup — minimal frame, drop screenshot at src.
+// Cadre de téléphone avec la capture d'écran de l'application.
 const PhoneFrame: React.FC<{ label: string; src: string; skeleton: Screen['skeleton'] }> = ({
   label,
   src,
@@ -163,9 +159,9 @@ const PhoneFrame: React.FC<{ label: string; src: string; skeleton: Screen['skele
   <figure className="flex flex-col">
     <div className="relative mx-auto w-full max-w-[240px]">
       <div className="relative aspect-[9/19.5] rounded-[2rem] border-[5px] border-ink-900 dark:border-ink-700 overflow-hidden bg-paper dark:bg-ink-900">
-        {/* Skeleton fallback */}
+        {/* Écran schématique, visible si la capture ne charge pas */}
         <ScreenSkeleton type={skeleton} />
-        {/* Real screenshot — drops over the skeleton when the file exists */}
+        {/* Capture réelle, affichée par-dessus */}
         <img
           src={src}
           alt={`Capture d'écran SoliBox — ${label}`}
@@ -182,8 +178,7 @@ const PhoneFrame: React.FC<{ label: string; src: string; skeleton: Screen['skele
   </figure>
 );
 
-// Skeleton UI shown when no screenshot is provided yet — gives the page
-// a finished look during dev and acts as a fallback in production.
+// Écran schématique de secours si une capture ne charge pas.
 const ScreenSkeleton: React.FC<{ type: Screen['skeleton'] }> = ({ type }) => {
   const Block = ({ className }: { className: string }) => (
     <div className={`bg-ink-100 dark:bg-ink-800 ${className}`} />
@@ -197,7 +192,7 @@ const ScreenSkeleton: React.FC<{ type: Screen['skeleton'] }> = ({ type }) => {
         <Block className="h-px w-full bg-mist dark:bg-ink-800" />
         <div className="mt-2">
           <Block className="h-2 w-10 rounded-sm mb-2" />
-          {/* fake chart */}
+          {/* graphique schématique */}
           <svg viewBox="0 0 160 60" className="w-full h-16">
             <polyline
               points="0,45 20,40 40,42 60,30 80,25 100,15 120,18 140,12 160,8"
