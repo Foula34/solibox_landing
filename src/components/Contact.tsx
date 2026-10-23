@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
-type FormStatus = 'idle' | 'loading' | 'success';
+type FormStatus = 'idle' | 'opened';
+
+// Le formulaire prépare un e-mail dans la messagerie du visiteur (mailto) :
+// pas de serveur, et chaque message arrive vraiment dans cette boîte.
+const CONTACT_EMAIL = 'fofanafoula70@gmail.com';
 
 const interestOptions = [
   'Pour mon foyer ou ma communauté',
@@ -26,13 +30,19 @@ export const Contact: React.FC = () => {
     >,
   ) => setData((d) => ({ ...d, [e.target.name]: e.target.value }));
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-    await new Promise((r) => setTimeout(r, 1200));
-    setStatus('success');
-    setData({ name: '', email: '', interest: '', message: '' });
-    setTimeout(() => setStatus('idle'), 4000);
+    const subject = `[SoliBox] ${data.interest} : ${data.name}`;
+    const body = [
+      data.message || '(pas de message)',
+      '',
+      '---',
+      `Nom : ${data.name}`,
+      `Email : ${data.email}`,
+      `Sujet : ${data.interest}`,
+    ].join('\n');
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus('opened');
   };
 
   return (
@@ -89,16 +99,31 @@ export const Contact: React.FC = () => {
 
           {/* Right: editorial form */}
           <div className="col-span-12 lg:col-span-7">
-            {status === 'success' ? (
+            {status === 'opened' ? (
               <div className="border-t border-mist dark:border-ink-800 pt-12">
-                <p className="eyebrow mb-6">Message reçu</p>
+                <p className="eyebrow mb-6">Dernière étape</p>
                 <h3 className="font-display font-semibold text-4xl sm:text-5xl text-ink-900 dark:text-paper leading-tight tracking-[-0.015em] mb-6">
-                  Merci.
+                  Votre message est prêt.
                 </h3>
                 <p className="text-base leading-relaxed text-ink-600 dark:text-ink-300 max-w-md">
-                  Votre message est arrivé. L&rsquo;équipe SoliBox vous recontacte
-                  sous 48 h ouvrées à l&rsquo;adresse indiquée.
+                  Votre messagerie vient de s&rsquo;ouvrir avec le message déjà rempli :
+                  il ne reste qu&rsquo;à l&rsquo;envoyer. Rien ne s&rsquo;est ouvert ? Écrivez-nous
+                  directement à{' '}
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-ink-900 dark:text-paper underline underline-offset-4"
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
+                  .
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus('idle')}
+                  className="mt-8 text-sm text-ink-600 dark:text-ink-300 underline underline-offset-4 hover:text-ink-900 dark:hover:text-paper"
+                >
+                  Revenir au formulaire
+                </button>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="space-y-10 border-t border-mist dark:border-ink-800 pt-8">
@@ -137,12 +162,9 @@ export const Contact: React.FC = () => {
                 <div className="flex flex-wrap items-center gap-6 pt-2">
                   <button
                     type="submit"
-                    disabled={status === 'loading'}
-                    className="btn-primary group disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="btn-primary group"
                   >
-                    <span>
-                      {status === 'loading' ? 'Envoi en cours…' : 'Envoyer le message'}
-                    </span>
+                    <span>Envoyer le message</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </button>
                   <p className="text-xs text-ink-500 dark:text-ink-400">
