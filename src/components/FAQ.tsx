@@ -46,7 +46,7 @@ const faqs: Item[] = [
   {
     question: 'SoliBox est-il fait pour les villages ?',
     answer:
-      'Oui — c’est précisément la cible prioritaire. SoliBox vise les villages d’intérieur Guinée où le réseau est intermittent ou absent. Une connexion mobile basique (2G/3G) suffit pour la télémétrie. Le premier pilote terrain est prévu en intérieur Guinée pour 2027, dès que le financement est sécurisé.',
+      'À terme oui, mais ce n’est pas par là que nous commençons. Le premier pilote aura lieu à Conakry, chez deux foyers voisins, parce que c’est là que nous pouvons revenir chaque semaine mesurer et corriger. L’extension aux grandes villes de l’intérieur est prévue pour 2028. Une connexion mobile basique suffit pour la télémétrie, donc rien n’empêche techniquement le déploiement en zone rurale.',
   },
 ];
 

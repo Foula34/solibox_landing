@@ -13,16 +13,23 @@ type Phase = {
 const phases: Phase[] = [
   {
     date: '2025 – 2026',
-    title: 'Prototype et validation en laboratoire',
+    title: 'Prototype et premières distinctions',
     body:
-      'Validation du principe de fonctionnement au Fab Lab de l’Orange Digital Center de Conakry, sur des maisons-test construites en bois par l’équipe. Premier prix national du POESAM 2026.',
+      'Conception du prototype au Fab Lab de l’Orange Digital Center de Conakry, sur des maisons-test construites en bois par l’équipe. Premier prix national du POESAM 2026.',
     status: 'done',
   },
   {
-    date: 'Nov. – déc. 2026',
+    date: 'Octobre 2026',
+    title: 'Validation en conditions réelles',
+    body:
+      'Le 27 octobre, SoliBox V0 est validé au laboratoire : mesures, commande des relais et supervision à distance. Le 30 octobre, panneaux exposés au soleil, le basculement d’une batterie à l’autre fonctionne et les deux batteries se chargent.',
+    status: 'done',
+  },
+  {
+    date: 'Prochaine étape',
     title: 'Pilote chez de vrais foyers',
     body:
-      'Deux installations chez des foyers réels à Conakry, et mesure des performances réelles : énergie effectivement partagée, revenu du producteur, fiabilité du boîtier.',
+      'Deux installations chez des foyers réels à Conakry, pour mesurer en usage quotidien l’énergie effectivement partagée, le revenu du producteur et la fiabilité du boîtier.',
     status: 'current',
   },
   {
