@@ -291,7 +291,7 @@ export const Earnings: React.FC = () => {
             est le groupe électrogène ou le kiosque de recharge payant. Les revenus
             réels dépendront de la demande locale, du profil de consommation des
             voisins et de l&rsquo;ensoleillement. Toutes ces hypothèses seront mesurées
-            pendant le pilote de novembre 2026.
+            pendant le pilote, chez les deux premiers foyers équipés.
           </p>
         </div>
       </div>

@@ -4,7 +4,7 @@ type Goal = {
   metric: string;
   unit: string;
   description: string;
-  status: 'en cours' | 'objectif';
+  status: 'en cours' | 'en préparation' | 'objectif';
   horizon: string;
 };
 
@@ -13,9 +13,9 @@ const goals: Goal[] = [
     metric: '2',
     unit: 'foyers pilotes',
     description:
-      'équipés à Conakry en novembre et décembre 2026, pour mesurer en conditions réelles l’énergie partagée, le revenu du producteur et la fiabilité du boîtier.',
-    status: 'en cours',
-    horizon: 'Pilote · fin 2026',
+      'à équiper à Conakry, pour mesurer en usage quotidien l’énergie partagée, le revenu du producteur et la fiabilité du boîtier. Le principe de fonctionnement est validé depuis le 30 octobre 2026.',
+    status: 'en préparation',
+    horizon: 'Prochaine étape',
   },
   {
     metric: '1 010',
@@ -75,7 +75,7 @@ export const Impact: React.FC = () => {
             il ne se proclame pas.
           </h2>
           <p className="text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
-            Voici les objectifs publics que SoliBox se fixe, du pilote de fin 2026
+            Voici les objectifs publics que SoliBox se fixe, du pilote à venir
             à l&rsquo;horizon 2029. Chaque métrique est rattachée à un instrument de
             mesure, pas à une projection marketing, et nous distinguons
             délibérément ce qui sera mesuré de ce qui est projeté.

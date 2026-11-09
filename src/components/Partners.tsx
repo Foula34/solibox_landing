@@ -57,9 +57,9 @@ export const Partners: React.FC = () => {
 
           <p className="col-span-12 lg:col-span-7 lg:pt-3 text-lg leading-relaxed text-ink-600 dark:text-ink-300 max-w-2xl">
             SoliBox cherche activement les programmes et financements qui
-            permettront de passer du prototype validé en laboratoire aux
-            premières installations chez de vrais foyers, prévues à Conakry en
-            novembre 2026. Voici où nous sommes engagés.
+            permettront de passer du prototype, validé en conditions réelles
+            d&rsquo;ensoleillement le 30 octobre 2026, aux premières installations
+            chez de vrais foyers à Conakry. Voici où nous sommes engagés.
           </p>
         </div>
 

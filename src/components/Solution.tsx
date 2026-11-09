@@ -29,7 +29,7 @@ const steps: Step[] = [
 type Spec = { label: string; value: string };
 
 const specs: Spec[] = [
-  { label: 'Cible pilote', value: 'Deux foyers · Conakry · nov. 2026' },
+  { label: 'Cible pilote', value: 'Deux foyers voisins · Conakry' },
   { label: 'Capacité', value: '1 à 8 kW résidentiel' },
   { label: 'Paiement prévu', value: 'Orange Money · MTN · virement' },
   { label: 'Installation prévue', value: '48 h, sans modification système' },

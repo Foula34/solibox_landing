@@ -74,9 +74,10 @@ export const Product: React.FC = () => {
               onduleur solaire. Il mesure l&rsquo;énergie disponible en temps
               réel et gère l&rsquo;alimentation automatique des foyers voisins
               connectés, le tout sans batterie supplémentaire et sans toucher
-              à votre installation existante. Le principe de fonctionnement est
-              validé en laboratoire ; les deux premières installations chez de
-              vrais foyers sont prévues en novembre 2026.
+              à votre installation existante. Le principe de fonctionnement a
+              été validé au laboratoire le 27 octobre 2026, puis en conditions
+              réelles d&rsquo;ensoleillement le 30 octobre. Les deux premières
+              installations chez de vrais foyers sont en préparation.
             </p>
             <dl className="grid grid-cols-2 gap-x-8 gap-y-4 mt-8 pt-6 border-t border-mist dark:border-ink-800 text-sm">
               <Spec label="Mesure" value="En temps réel (haute précision)" />
